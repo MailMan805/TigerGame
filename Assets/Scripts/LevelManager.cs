@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Collections;
 using UnityEngine;
 
@@ -9,14 +10,27 @@ public class LevelManager : MonoBehaviour
     [HideInInspector] public int bodiesCollected = 0;
 
     public GameObject bodyToSpawn;
+    GameObject UIcanvas;
+
+    public float ShowBodyCountInSeconds = 3f;
+
+    TextMeshProUGUI BodyCountText;
 
     const string BODY_SPAWN_MARKER_TAG = "Body Spawn Marker";
+    const string BODY_COUNT_TEXT_NAME = "Body Count Text";
+    const string BODY_COUNT_TEXT = " left.";
+    const string BODY_ALL_FOUND_TEXT = "All found. Leave.";
 
     private void Start()
     {
         GameManager.instance.BodyCollected.AddListener(IncrementBodyAmount);
+        UIcanvas = GetComponentInChildren<Canvas>().gameObject;
+
+        BodyCountText = UIcanvas.gameObject.transform.Find(BODY_COUNT_TEXT_NAME).GetComponent<TextMeshProUGUI>();
 
         SpawnBodies();
+
+        BodyCountText.enabled = false;
     }
 
     void SpawnBodies()
@@ -50,8 +64,30 @@ public class LevelManager : MonoBehaviour
         bodiesCollected++;
         print("Bodies Collected: " + bodiesCollected);
 
-        if (bodiesCollected >= initalBodiesInLevel) {
+        UpdateBodyCountText();
+
+        
+    }
+
+    void UpdateBodyCountText()
+    {
+        BodyCountText.enabled = true;
+
+        BodyCountText.text = (initalBodiesInLevel - bodiesCollected) + BODY_COUNT_TEXT;
+
+        if (bodiesCollected >= initalBodiesInLevel)
+        {
             print("Yay you robbed all the bodies!!");
+            BodyCountText.text = BODY_ALL_FOUND_TEXT;
         }
+
+        StopCoroutine(HideBodyText()); // If already playing, reset timer.
+        StartCoroutine(HideBodyText());
+    }
+
+    IEnumerator HideBodyText()
+    {
+        yield return new WaitForSeconds(ShowBodyCountInSeconds);
+        BodyCountText.enabled = false;
     }
 }
