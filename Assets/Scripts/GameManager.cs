@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public int currentDay = 1;
+
     public KeyCode PlayerInteractButton = KeyCode.Return;
 
     public UnityEvent BodyCollected;
