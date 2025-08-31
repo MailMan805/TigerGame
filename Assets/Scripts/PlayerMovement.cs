@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float movementSpeed = 4.0f;
+    public float movementSpeed;
     public float jumpForce = 300f;
     public float mouseSensitivity = 2.0f;
     public float gravity = -9.81f;
@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
 
         // Jumping
-
         isGrounded = characterController.isGrounded;
 
         if (isGrounded && verticalVelocity < 0)
@@ -55,6 +54,21 @@ public class PlayerMovement : MonoBehaviour
         float moveEW = Input.GetAxis("Horizontal");
 
         Vector3 move = transform.right * moveEW + transform.forward * moveNS;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            movementSpeed = 6.0f;
+        }
+        else if (Input.GetKey(KeyCode.Quote))
+        {
+            print("Speed. I am speed. - Lightning McQueen");
+            movementSpeed = 100.0f;
+        }
+        else
+        {
+            movementSpeed = 4.0f;
+        }
+
         move *= movementSpeed;
 
         move.y = verticalVelocity;
