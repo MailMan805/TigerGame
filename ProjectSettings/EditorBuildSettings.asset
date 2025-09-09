@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MainMenu.unity
+    guid: 1162023f88134fa45865724efc92e2fa
+  - enabled: 1
+    path: Assets/Scenes/PauseMenu.unity
+    guid: c82aac1300a3ee94199bb0a52af1d49f
+  - enabled: 1
+    path: Assets/Scenes/JadenTigerTest.unity
+    guid: 948bddf005db5184cb62fc0895fb0bd1
   m_configObjects: {}
