@@ -5,25 +5,40 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Player Movement Variables")]
     public float movementSpeed;
     public float jumpForce = 300f;
     public float mouseSensitivity = 2.0f;
-    public float gravity = -9.81f;
-
-    public Transform playerCamera;
-
-    private CharacterController characterController;
+    private float gravity = -9.81f;
     private float verticalRotation;
     private float verticalVelocity;
+    private float moveNS, moveEW;
+
+    [Header("Player Parts")]
+    public Transform playerCamera;
+    private CharacterController characterController;
+    private TigerAI tiger; 
+
+    [Header("Player Movement Status")]
     private bool isGrounded;
+    private bool isRunning;
+    private bool isCrouching;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         characterController = GetComponent<CharacterController>();
+        tiger = FindAnyObjectByType<TigerAI>();
     }
 
     void Update()
+    {
+        PlayerInput();
+
+        AwarenessStates();
+    }
+
+    public void PlayerInput()
     {
         // Looking Around
         float horizontalRotation = Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -44,29 +59,38 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
-            verticalVelocity = Mathf.Sqrt(jumpForce * -2f * gravity);
+            verticalVelocity = Mathf.Sqrt(jumpForce * -1.2f * gravity);
         }
 
         verticalVelocity += gravity * Time.deltaTime;
 
-        // Movement
-        float moveNS = Input.GetAxis("Vertical");
-        float moveEW = Input.GetAxis("Horizontal");
-
-        Vector3 move = transform.right * moveEW + transform.forward * moveNS;
-
-        if (Input.GetKey(KeyCode.LeftShift))
+        // Crouching
+        if (isGrounded && Input.GetKey(KeyCode.LeftControl))
         {
-            movementSpeed = 6.0f;
-        }
-        else if (Input.GetKey(KeyCode.Quote))
-        {
-            print("Speed. I am speed. - Lightning McQueen");
-            movementSpeed = 100.0f;
+            isCrouching = true;
+            movementSpeed = 1.5f;
+            print("crouching");
         }
         else
         {
-            movementSpeed = 4.0f;
+            isCrouching = false;
+        }
+
+        // Movement
+        moveNS = Input.GetAxis("Vertical");
+        moveEW = Input.GetAxis("Horizontal");
+
+        Vector3 move = transform.right * moveEW + transform.forward * moveNS;
+
+        if (isGrounded && Input.GetKey(KeyCode.LeftShift) && !isCrouching)
+        {
+            isRunning = true;
+            movementSpeed = 5.0f;
+        }
+        else if (!isCrouching)
+        {
+            isRunning = false;
+            movementSpeed = 3.0f;
         }
 
         move *= movementSpeed;
@@ -74,6 +98,13 @@ public class PlayerMovement : MonoBehaviour
         move.y = verticalVelocity;
 
         characterController.Move(move * Time.deltaTime);
+    }
 
+    public void AwarenessStates()
+    {
+        if (isRunning && !isCrouching) { tiger.awareness = 3.0f; } // Player is running
+        else if ((moveNS != 0) || (moveEW != 0) && !isCrouching) { tiger.awareness = 2.0f; } // Player is walking
+        else if ((moveNS == 0) && (moveEW == 0) && isCrouching) { tiger.awareness = 0.0f; } // Player standing still with no movement at all
+        else if ((moveNS == 0) && (moveEW == 0) || isCrouching) { tiger.awareness = 1.0f; } // Player standing still or crouching
     }
 }
