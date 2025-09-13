@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Rendering.Universal.Internal;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,11 +14,13 @@ public class PlayerMovement : MonoBehaviour
     private float verticalRotation;
     private float verticalVelocity;
     private float moveNS, moveEW;
+    private Vector3 cameraVelocity = Vector3.zero;
 
     [Header("Player Parts")]
     public Transform playerCamera;
     private CharacterController characterController;
-    private TigerAI tiger; 
+    private TigerAI tiger;
+    CapsuleCollider playerCollider;
 
     [Header("Player Movement Status")]
     private bool isGrounded;
@@ -27,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        playerCollider = GetComponent<CapsuleCollider>();
         characterController = GetComponent<CharacterController>();
         tiger = FindAnyObjectByType<TigerAI>();
     }
@@ -69,11 +73,14 @@ public class PlayerMovement : MonoBehaviour
         {
             isCrouching = true;
             movementSpeed = 1.5f;
-            print("crouching");
+            playerCollider.height = 1.0f;
+            playerCamera.localPosition = new Vector3(0f, 0.2f, 0f);
         }
         else
         {
             isCrouching = false;
+            playerCollider.height = 2.0f;
+            playerCamera.localPosition = new Vector3(0f, 0.5f, 0f);
         }
 
         // Movement
