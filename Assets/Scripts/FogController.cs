@@ -18,6 +18,7 @@ public enum FogDensity
 
 public class FogController : MonoBehaviour
 {
+    public static FogController instance;
 
     public FogDensity density = FogDensity.NORMAL;
 
@@ -39,6 +40,15 @@ public class FogController : MonoBehaviour
     float time = 0f;
 
     const float MAXREDCOLORAMOUNT = 0.4f; // How much R in RGB the fog color can be in float percentage. 0~255 == 0.0f~1.0f
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
