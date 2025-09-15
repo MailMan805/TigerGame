@@ -171,10 +171,10 @@ MonoBehaviour:
     m_Value: 1
   colorMode:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
   color:
-    m_OverrideState: 0
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.7735849, g: 0.20063592, b: 0, a: 1}
   tint:
     m_OverrideState: 0
     m_Value: {r: 1, g: 0, b: 0, a: 1}
@@ -198,13 +198,13 @@ MonoBehaviour:
     m_Value: 859
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 9.08
+    m_Value: 52.73
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 0.33962262, g: 0.15539338, b: 0.16275762, a: 1}
+    m_Value: {r: 0.4433962, g: 0, b: 0, a: 1}
   globalLightProbeDimmer:
     m_OverrideState: 0
     m_Value: 1
