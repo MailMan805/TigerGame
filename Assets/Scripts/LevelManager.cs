@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public int initalBodiesInLevel = 3;
+    public static LevelManager Instance;
+
+    int initalBodiesInLevel = 3;
     [HideInInspector] public int bodiesCollected = 0;
 
     public GameObject bodyToSpawn;
@@ -30,6 +32,12 @@ public class LevelManager : MonoBehaviour
     const string BODY_COUNT_TEXT = " left.";
     const string BODY_ALL_FOUND_TEXT = "All found. Leave.";
 
+    private void Awake()
+    {
+        Instance = this;
+        GameManager.instance.OnMainLevelLoaded.AddListener(SetupLevel);
+    }
+
     private void Start()
     {
         GameManager.instance.BodyCollected.AddListener(IncrementBodyAmount);
@@ -37,9 +45,6 @@ public class LevelManager : MonoBehaviour
         directionalLight = GetComponentInChildren<Light>().gameObject;
 
         BodyCountText = UIcanvas.gameObject.transform.Find(BODY_COUNT_TEXT_NAME).GetComponent<TextMeshProUGUI>();
-
-        SpawnBodies();
-        LightSplitSetup();
 
         BodyCountText.enabled = false;
     }
@@ -49,8 +54,16 @@ public class LevelManager : MonoBehaviour
         directionalLight.transform.rotation = Quaternion.Lerp(directionalLight.transform.rotation, NewLightRotation, Time.deltaTime);
     }
 
-    void SpawnBodies()
+    void SetupLevel(Night night)
     {
+        SpawnBodies(night.BodyCount);
+        LightSplitSetup();
+    }
+
+    void SpawnBodies(int numOfBodiesToSpawn=3)
+    {
+        initalBodiesInLevel = numOfBodiesToSpawn;
+
         GameObject[] SpawnMarkers = GameObject.FindGameObjectsWithTag(BODY_SPAWN_MARKER_TAG);
 
         if (initalBodiesInLevel > SpawnMarkers.Length) {
