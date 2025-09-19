@@ -5,11 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public void Update()
+    public GameObject pauseMenuPrefab;
+    public static bool gameIsPaused;
+    
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MainMenu")
         {
-            OpenPauseMenu();
+            if (gameIsPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
         }
     }
 
@@ -24,13 +34,23 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void OpenPauseMenu()
+    public void PauseGame()
     {
-        SceneManager.LoadScene("PauseMenu");
+        pauseMenuPrefab.SetActive(true);
+        Time.timeScale = 0f;
+        gameIsPaused = true;
+    }
+
+    public void ResumeGame()
+    {
+        pauseMenuPrefab.SetActive(false);
+        Time.timeScale = 1f;
+        gameIsPaused = false;
     }
 
     public void OpenMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 
