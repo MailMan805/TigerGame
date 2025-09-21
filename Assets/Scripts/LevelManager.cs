@@ -35,11 +35,11 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        GameManager.instance.OnMainLevelLoaded.AddListener(SetupLevel);
     }
 
     private void Start()
     {
+        GameManager.instance.OnMainLevelLoaded.AddListener(SetupLevel);
         GameManager.instance.BodyCollected.AddListener(IncrementBodyAmount);
         UIcanvas = GetComponentInChildren<Canvas>().gameObject;
         directionalLight = GetComponentInChildren<Light>().gameObject;
