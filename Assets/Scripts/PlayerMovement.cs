@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Rendering.Universal.Internal;
 
 public class PlayerMovement : MonoBehaviour
@@ -21,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     private TigerAI tiger;
     CapsuleCollider playerCollider;
+    public RawImage crouchingIcon;
+    public RawImage standingIcon;
+    public RawImage grabIcon;
+
 
     [Header("Player Movement Status")]
     private bool isGrounded;
@@ -33,6 +38,10 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<CapsuleCollider>();
         characterController = GetComponent<CharacterController>();
         tiger = FindAnyObjectByType<TigerAI>();
+
+        standingIcon.gameObject.SetActive(true);
+        crouchingIcon.gameObject.SetActive(false);
+        grabIcon.gameObject.SetActive(false);
     }
 
     void Update()
@@ -69,18 +78,27 @@ public class PlayerMovement : MonoBehaviour
         verticalVelocity += gravity * Time.deltaTime;
 
         // Crouching
-        if (isGrounded && Input.GetKey(KeyCode.LeftControl))
+        isCrouching = (isGrounded && Input.GetKey(KeyCode.LeftControl));
+
+        float targetHeight = isCrouching ? 1.0f : 2.0f;
+        Vector3 targetCamPos = isCrouching ? new Vector3(0f, 0.2f, 0f) : new Vector3(0f, 0.5f, 0f);
+        float crouchLerpSpeed = 8f;
+
+        playerCollider.height = Mathf.Lerp(playerCollider.height, targetHeight, Time.deltaTime * crouchLerpSpeed);
+        playerCamera.localPosition = Vector3.Lerp(playerCamera.localPosition, targetCamPos, Time.deltaTime * crouchLerpSpeed);
+
+        if (isCrouching)
         {
             isCrouching = true;
             movementSpeed = 1.5f;
-            playerCollider.height = 1.0f;
-            playerCamera.localPosition = new Vector3(0f, 0.2f, 0f);
+            standingIcon.gameObject.SetActive(false);
+            crouchingIcon.gameObject.SetActive(true);
         }
         else
         {
             isCrouching = false;
-            playerCollider.height = 2.0f;
-            playerCamera.localPosition = new Vector3(0f, 0.5f, 0f);
+            standingIcon.gameObject.SetActive(true);
+            crouchingIcon.gameObject.SetActive(false);
         }
 
         // Movement
