@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && Input.GetKey(KeyCode.LeftControl))
         {
             isCrouching = true;
-            movementSpeed = 1.5f;
+            movementSpeed = 3f;
             playerCollider.height = 1.0f;
             playerCamera.localPosition = new Vector3(0f, 0.2f, 0f);
         }
@@ -92,12 +92,12 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && Input.GetKey(KeyCode.LeftShift) && !isCrouching)
         {
             isRunning = true;
-            movementSpeed = 5.0f;
+            movementSpeed = 7.0f;
         }
         else if (!isCrouching)
         {
             isRunning = false;
-            movementSpeed = 3.0f;
+            movementSpeed = 5f;
         }
 
         move *= movementSpeed;
@@ -110,8 +110,9 @@ public class PlayerMovement : MonoBehaviour
     public void AwarenessStates()
     {
         if (isRunning && !isCrouching) { tiger.awareness = 3.0f; } // Player is running
-        else if ((moveNS != 0) || (moveEW != 0) && !isCrouching) { tiger.awareness = 2.0f; } // Player is walking
         else if ((moveNS == 0) && (moveEW == 0) && isCrouching) { tiger.awareness = 0.0f; } // Player standing still with no movement at all
-        else if ((moveNS == 0) && (moveEW == 0) || isCrouching) { tiger.awareness = 1.0f; } // Player standing still or crouching
+        else if (((moveNS == 0) && (moveEW == 0)) || (isCrouching && (moveNS != 0) || (moveEW != 0))) { tiger.awareness = 1.0f; } // Player standing still or crouching
+        else if ((moveNS != 0) || (moveEW != 0) && !isCrouching) { tiger.awareness = 2.0f; } // Player is walking
+        
     }
 }
