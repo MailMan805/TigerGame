@@ -5,13 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public enum SceneID
-{
-    MAINMENU,
-    HOUSE,
-    MAINLEVEL,
-    FINALLEVEL
-}
+
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     [Range(0,7)] public int currentDay = 0;
     public int Karma { get; set; }
+    public int MaxKarma = 100;
 
 
     public KeyCode PlayerInteractButton = KeyCode.Return;
@@ -29,27 +24,30 @@ public class GameManager : MonoBehaviour
     public UnityEvent LeaveHouse;
 
     // NIGHT SETUP
-    static Night NightOne = new Night(2);
-    static Night NightTwo = new Night(2);
-    static Night NightThree = new Night(3);
-    static Night NightFour = new Night(3);
-    static Night NightFive = new Night(4);
-    static Night NightSix = new Night(4);
+    static Night NightOne = new Night(2, FogDensity.NONE);
+    static Night NightTwo = new Night(2, FogDensity.VERYLIGHT);
+    static Night NightThree = new Night(3, FogDensity.LIGHT);
+    static Night NightFour = new Night(3, FogDensity.NORMAL);
+    static Night NightFive = new Night(4, FogDensity.HEAVY);
+    static Night NightSix = new Night(4, FogDensity.VERYHEAVY);
 
-    const int FINAL_LEVEL_NUMBER = 7;
-
-   
-
+    // Manager Setup
+    SceneLoadingManager sceneLoadingManager = new SceneLoadingManager();
 
     void Awake() {
         if (instance != null) {
             Destroy(gameObject);
+            return;
         }
 
         instance = this;
+        currentDay = 0;
         DontDestroyOnLoad(gameObject);
+    }
 
-        LeaveHouse.AddListener(IncrementDay);
+    private void Update()
+    {
+        TestLoading();
     }
 
     private void OnLevelWasLoaded(int level)
@@ -60,7 +58,7 @@ public class GameManager : MonoBehaviour
             case (int)SceneID.HOUSE:
                 break;
             case (int)SceneID.MAINLEVEL:
-                MainLevelSetup();
+                StartCoroutine(MainLevelSetup());
                 break;
             case (int)SceneID.FINALLEVEL:
                 break;
@@ -68,9 +66,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void MainLevelSetup()
+    IEnumerator MainLevelSetup()
     {
-        switch (currentDay){
+        yield return null; // Wait a frame
+
+        switch (currentDay)
+        {
             case 1:
                 OnMainLevelLoaded.Invoke(NightOne);
                 break;
@@ -92,31 +93,47 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void LoadNextLevel()
+    /// <summary>
+    /// Returns a float value between 0.0f~1.0f depending on Karma / MaxKarma
+    /// </summary>
+    /// <returns></returns>
+    public float GetKarmaLevel()
     {
-        IncrementDay();
-        if (currentDay >= FINAL_LEVEL_NUMBER)
+        return Karma / MaxKarma;
+    }
+
+    /// <summary>
+    /// Increase/Decrease Karma by a certain amount. Will not go over MaxKarma.
+    /// </summary>
+    /// <param name="amountOfChange">Int that will add/subtract from karma</param>
+    public void ChangeKarmaLevel(int amountOfChange)
+    {
+        Karma += amountOfChange;
+
+        if (Karma > MaxKarma)
         {
-            SceneManager.LoadScene((int)SceneID.FINALLEVEL);
-            return;
+            Karma = MaxKarma;
         }
-
-        SceneManager.LoadScene((int)SceneID.MAINLEVEL);
     }
 
-    void LoadHouse()
-    {
-        SceneManager.LoadScene((int)SceneID.HOUSE);
-    }
-
-    void LoadMainMenu()
-    {
-        SceneManager.LoadScene((int)SceneID.MAINMENU);
-    }
-
-    void IncrementDay()
+    public void IncrementDay()
     {
         currentDay++;
     }
 
+    void TestLoading()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            sceneLoadingManager.LoadMainMenu();
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            sceneLoadingManager.LoadHouse();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            sceneLoadingManager.LoadNextLevel();
+        }
+    }
 }

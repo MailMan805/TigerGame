@@ -46,6 +46,7 @@ public class FogController : MonoBehaviour
         if (instance != null)
         {
             Destroy(gameObject);
+            return;
         }
         instance = this;
     }
@@ -53,6 +54,8 @@ public class FogController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.instance.OnMainLevelLoaded.AddListener(StartFogSetup);
+
         volume = GetComponent<Volume>();
 
         if (volume.profile.TryGet<Fog>(out fog))
@@ -139,6 +142,13 @@ public class FogController : MonoBehaviour
         {
             fog.albedo.value = newFogColor;
         }
+    }
+
+    void StartFogSetup(Night night)
+    {
+        print("Fog is being set up!");
+        SetEvilFogColorAmount(GameManager.instance.GetKarmaLevel());
+        SetFogDensity(night.StartingFogDensity);
     }
 
     void TestFog()

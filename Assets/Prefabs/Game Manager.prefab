@@ -44,7 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1c8a2c0cb3acd488a3f347ae28fd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentDay: 0
   PlayerInteractButton: 13
   BodyCollected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMainLevelLoaded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHouseLevelLoaded:
+    m_PersistentCalls:
+      m_Calls: []
+  LeaveHouse:
     m_PersistentCalls:
       m_Calls: []
