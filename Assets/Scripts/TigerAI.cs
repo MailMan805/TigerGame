@@ -41,7 +41,7 @@ public class TigerAI : MonoBehaviour
     public bool isCheckingAware = false;
 
     [Header("References")]
-    private NavMeshAgent navMeshAgent;
+    public NavMeshAgent navMeshAgent;
     private Transform player;
     private GameManager gameManager;
 
@@ -433,7 +433,7 @@ public class TigerAI : MonoBehaviour
     #endregion
 
     #region Helper Methods
-    private void TransitionToState(TigerState newState)
+    public void TransitionToState(TigerState newState)
     {
         // Exit current state logic
         switch (currentState)

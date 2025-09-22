@@ -12,8 +12,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Range(0,7)] public int currentDay = 0;
-    public int Karma { get; set; }
-    public int MaxKarma = 100;
+    public int bodyCount = 0;
+    public int Karma = 10;
+    public int MaxKarma = 20; // 8 - 12 Neutral, Starts at 10, <= 8 Negative, >= 12 Positive.
+
+    public bool inItemMenu = false;
 
 
     public KeyCode PlayerInteractButton = KeyCode.Return;
@@ -113,6 +116,9 @@ public class GameManager : MonoBehaviour
         if (Karma > MaxKarma)
         {
             Karma = MaxKarma;
+        }
+        if (Karma < 0) {
+            Karma = 0;
         }
     }
 

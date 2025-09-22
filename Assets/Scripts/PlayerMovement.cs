@@ -27,12 +27,15 @@ public class PlayerMovement : MonoBehaviour
     private bool isRunning;
     private bool isCrouching;
 
+    public GameManager gameManager;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         playerCollider = GetComponent<CapsuleCollider>();
         characterController = GetComponent<CharacterController>();
         tiger = FindAnyObjectByType<TigerAI>();
+        gameManager = GameManager.instance;
     }
 
     void Update()
@@ -46,12 +49,16 @@ public class PlayerMovement : MonoBehaviour
     {
         // Looking Around
         float horizontalRotation = Input.GetAxis("Mouse X") * mouseSensitivity;
-        transform.Rotate(0, horizontalRotation, 0);
+        
 
         verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
         verticalRotation = Mathf.Clamp(verticalRotation, -90, 90);
 
-        playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+        if(!gameManager.inItemMenu)
+        {
+            transform.Rotate(0, horizontalRotation, 0);
+            playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+        }
 
         // Jumping
         isGrounded = characterController.isGrounded;
