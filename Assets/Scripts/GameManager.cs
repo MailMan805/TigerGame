@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     static Night NightFive = new Night(4, FogDensity.HEAVY);
     static Night NightSix = new Night(4, FogDensity.VERYHEAVY);
 
-    static Night DemoNight = new Night(1, FogDensity.NORMAL);
+    static Night DemoNight = new Night(1, FogDensity.NONE);
     public bool DemoNightOnly = false;
 
     // Manager Setup
