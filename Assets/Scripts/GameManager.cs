@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public bool inItemMenu = false;
 
 
-    public KeyCode PlayerInteractButton = KeyCode.Return;
+    public KeyCode PlayerInteractButton = KeyCode.E;
 
     public UnityEvent BodyCollected;
     public UnityEvent<Night> OnMainLevelLoaded;
@@ -34,8 +34,11 @@ public class GameManager : MonoBehaviour
     static Night NightFive = new Night(4, FogDensity.HEAVY);
     static Night NightSix = new Night(4, FogDensity.VERYHEAVY);
 
+    static Night DemoNight = new Night(1, FogDensity.NORMAL);
+    public bool DemoNightOnly = false;
+
     // Manager Setup
-    SceneLoadingManager sceneLoadingManager = new SceneLoadingManager();
+    public SceneLoadingManager sceneLoadingManager { get; set; }
 
     void Awake() {
         if (instance != null) {
@@ -45,12 +48,10 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         currentDay = 0;
-        DontDestroyOnLoad(gameObject);
-    }
 
-    private void Update()
-    {
-        TestLoading();
+        sceneLoadingManager = gameObject.AddComponent<SceneLoadingManager>();
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnLevelWasLoaded(int level)
@@ -71,8 +72,17 @@ public class GameManager : MonoBehaviour
 
     IEnumerator MainLevelSetup()
     {
+        print("Setting Up Level!!");
+
         yield return null; // Wait a frame
 
+        if (DemoNightOnly)
+        {
+            OnMainLevelLoaded.Invoke(DemoNight);
+            yield break;
+        }
+
+        // Invoke the main level event with the responding night
         switch (currentDay)
         {
             case 1:
