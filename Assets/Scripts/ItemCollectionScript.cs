@@ -45,7 +45,7 @@ public class ItemCollectionScript : MonoBehaviour
         render = PlaceholderObject.GetComponent<MeshRenderer>();
         gameManager = GameManager.instance;
         ItemCanvas.SetActive(false);
-        tiger = FindAnyObjectByType<TigerAI>();
+        gameManager.OnMainLevelLoaded.AddListener(setTiger);
     }
 
     // Update is called once per frame
@@ -55,6 +55,12 @@ public class ItemCollectionScript : MonoBehaviour
         {
             CollectItem();
         }
+    }
+
+
+    public void setTiger(Night night)
+    {
+        tiger = FindAnyObjectByType<TigerAI>();
     }
 
     public void CollectItem()
