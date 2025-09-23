@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2936911939066583398}
   - component: {fileID: 4575271359115587038}
+  - component: {fileID: 403501780894701635}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -44,7 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1c8a2c0cb3acd488a3f347ae28fd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDay: 0
+  currentDay: 1
+  bodyCount: 0
+  Karma: 10
+  MaxKarma: 20
+  inItemMenu: 0
   PlayerInteractButton: 13
   BodyCollected:
     m_PersistentCalls:
@@ -58,3 +63,41 @@ MonoBehaviour:
   LeaveHouse:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &403501780894701635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455066525341771601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf06fa8c74c695449fe0110aa683ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  ItemCanvas: {fileID: 0}
+  PlaceholderObject: {fileID: 0}
+  items:
+  - {fileID: 11400000, guid: 8c2bd08c455aa4a419c654ff5244c1f6, type: 2}
+  - {fileID: 11400000, guid: abdc7c1948a34e746ba7165471faa9b1, type: 2}
+  - {fileID: 11400000, guid: ab6f708989031b04f9e6b45eb04a2bb0, type: 2}
+  - {fileID: 11400000, guid: b8db78e3cfb5b9247995359fcf9fc6ad, type: 2}
+  - {fileID: 11400000, guid: 3225aa6f99cc46f4a85cc29ea7dc3334, type: 2}
+  - {fileID: 11400000, guid: 91847b9f9fd640843a449a44a4e22141, type: 2}
+  - {fileID: 11400000, guid: 263374531688c9e41a1e0c9324070def, type: 2}
+  - {fileID: 11400000, guid: 9f697d48f6f2afd47bc7931cb112aa46, type: 2}
+  - {fileID: 11400000, guid: 3e6ce8929aac9f44c881aafb2f885c1c, type: 2}
+  - {fileID: 11400000, guid: 40dbbf3c91f68fc43b5ca0a7cbf07cac, type: 2}
+  - {fileID: 11400000, guid: 8bdfbdccff1db3d4c8de0710a11ba577, type: 2}
+  - {fileID: 11400000, guid: 586ed21e1d19833438c3f6c3cf4dd3a7, type: 2}
+  - {fileID: 11400000, guid: dceb71e99aea19b4c9a253287559442c, type: 2}
+  - {fileID: 11400000, guid: 466dd932ba2c25a4492382f2dfb73ee3, type: 2}
+  - {fileID: 11400000, guid: 2b11bb816efae6643ba3f7c00c75484b, type: 2}
+  - {fileID: 11400000, guid: 74afb71bfa7b7994da1f15c56e3c33f0, type: 2}
+  - {fileID: 11400000, guid: 83340ce7127305542a6653d8d5e0aca4, type: 2}
+  - {fileID: 11400000, guid: 9f861b8def9f3ff44b88defc0796e532, type: 2}
+  - {fileID: 11400000, guid: b2048cf92d707ad42a1ae7aeea7f0f56, type: 2}
+  - {fileID: 11400000, guid: d916975eb66e56d4d938e6022ccd7e34, type: 2}
+  NegativeThreashHold: 8
+  PositiveThreashHold: 12

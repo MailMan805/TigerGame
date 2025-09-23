@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using static TigerAI;
 
 public class ItemCollectionScript : MonoBehaviour
@@ -12,6 +13,11 @@ public class ItemCollectionScript : MonoBehaviour
     [Header("ItemCanvas")]
     public GameObject ItemCanvas;
     public GameObject PlaceholderObject;
+    private MeshRenderer render;
+
+
+    public TextMeshProUGUI Description;
+    public TextMeshProUGUI Thoughts;
 
     [Header("Item Information")]
     public ItemScriptableObject[] items; //List of items in order
@@ -24,6 +30,7 @@ public class ItemCollectionScript : MonoBehaviour
 
     private void Start()
     {
+        render = PlaceholderObject.GetComponent<MeshRenderer>();
         gameManager = GameManager.instance;
         ItemCanvas.SetActive(false);
         tiger = FindAnyObjectByType<TigerAI>();
@@ -34,17 +41,55 @@ public class ItemCollectionScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I)) //Testing Button
         {
-            UnlockCursor();
-            gameManager.inItemMenu = true;
-            tiger.TransitionToState(TigerState.Evacuating);
-            ItemCanvas.SetActive(true);
+            CollectItem();
+        }
+    }
+
+    public void CollectItem()
+    {
+        UnlockCursor();
+        gameManager.inItemMenu = true;
+        tiger.TransitionToState(TigerState.Evacuating);
+        ItemCanvas.SetActive(true);
+
+        // Destroy the current PlaceholderObject model if it exists
+        if (PlaceholderObject.transform.childCount > 0)
+        {
+            Destroy(PlaceholderObject.transform.GetChild(0).gameObject); // Destroy the existing child
+        }
+
+        // Instantiate the new 3D model from the selected item
+        GameObject newItem = Instantiate(items[itemMarker].Item3D);
+
+        // Set the new model as the child of the PlaceholderObject
+        newItem.transform.SetParent(PlaceholderObject.transform);
+
+        // Optionally reset the position and rotation of the new model to match the PlaceholderObject
+        newItem.transform.localPosition = Vector3.zero;
+        newItem.transform.localRotation = Quaternion.identity;
+
+        // Update thoughts and description based on Karma value
+        if (gameManager.Karma <= NegativeThreashHold)
+        {
+            Thoughts.text = items[itemMarker].ItemNegativeThoughts;
+            Description.text = items[itemMarker].ItemDescription;
+        }
+        else if (gameManager.Karma >= PositiveThreashHold)
+        {
+            Thoughts.text = items[itemMarker].ItemPositiveThoughts;
+            Description.text = items[itemMarker].ItemDescription;
+        }
+        else
+        {
+            Thoughts.text = items[itemMarker].ItemThoughts;
+            Description.text = items[itemMarker].ItemDescription;
         }
     }
 
     public void ReturnItemBTN()
     {
         itemMarker += 1;
-        gameManager.ChangeKarmaLevel(-1);
+        gameManager.ChangeKarmaLevel(1);
         tiger.navMeshAgent.ResetPath();
         tiger.TransitionToState(TigerState.HuntingSearching);
         ItemCanvas.SetActive(false);
@@ -56,7 +101,7 @@ public class ItemCollectionScript : MonoBehaviour
     public void KeepItemBTN()
     {
         itemMarker += 1;
-        gameManager.ChangeKarmaLevel(1);
+        gameManager.ChangeKarmaLevel(-1);
         tiger.navMeshAgent.ResetPath();
         tiger.TransitionToState(TigerState.HuntingSearching);
         ItemCanvas.SetActive(false);
