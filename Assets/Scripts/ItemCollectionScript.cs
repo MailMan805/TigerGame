@@ -6,6 +6,8 @@ using static TigerAI;
 
 public class ItemCollectionScript : MonoBehaviour
 {
+
+    public static ItemCollectionScript instance;
     [Header("Managers")]
     public GameManager gameManager;
     private TigerAI tiger;
@@ -27,7 +29,17 @@ public class ItemCollectionScript : MonoBehaviour
     public int NegativeThreashHold = 8;
     public int PositiveThreashHold = 12;
 
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
         render = PlaceholderObject.GetComponent<MeshRenderer>();

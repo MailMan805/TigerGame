@@ -5,20 +5,35 @@ using UnityEngine;
 public class Body : MonoBehaviour
 {
     public bool TEST = false;
+    public bool withinRange = false;
 
     private void Update()
     {
-        if (Input.GetKey(GameManager.instance.PlayerInteractButton))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (!TEST) { CollectBody(); }
-
-            
+            if (withinRange) { CollectBody(); }
         }
     }
 
     void CollectBody()
     {
-        GameManager.instance.BodyCollected.Invoke();
+        ItemCollectionScript.instance.CollectItem();
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            withinRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            withinRange = false;
+        }
     }
 }
