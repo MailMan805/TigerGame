@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0af942098b3813448aee02239c5eec84
+guid: c701cda8825038146b623e1f4730f5a6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 25d735608cf2c754c86644ef1e1a6749, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: salLeaf.001
-    second: {fileID: 2100000, guid: dc9a14f3fc0da1a4891fd764006c6bef, type: 2}
+      name: mossyRock
+    second: {fileID: 2100000, guid: 5fae007a68d531d478bf7928b160b8ac, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
