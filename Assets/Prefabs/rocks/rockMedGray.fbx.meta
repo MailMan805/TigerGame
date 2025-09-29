@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 38f8a545090d865418363298a255de36
+guid: 56c50a3b46390394f8fc3c1d87040afb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: e41b82e2840a3a842b77a115c4d2ae0f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pineLeaf
-    second: {fileID: 2100000, guid: 6bf0b487e6402064383144089803e4c1, type: 2}
+      name: grayRock
+    second: {fileID: 2100000, guid: 917a8faf84f19be4eb7cf67ac68a020a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -62,7 +57,7 @@ ModelImporter:
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
-    bakeAxisConversion: 0
+    bakeAxisConversion: 1
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
