@@ -24,6 +24,7 @@ public class TigerAI : MonoBehaviour
     public float fullAgressiveness = 0f; //The total with awareness calculated.
     public float awareness = 0f;
     public float playerDistance = 0f;
+    public bool isPlayerLooking = false;
 
     [Header("Timers")]
     private float idleTimer = 0f; //How long it takes to get out of idle
@@ -36,17 +37,24 @@ public class TigerAI : MonoBehaviour
     [Header("StateModifiers")]
     private bool prowlChase = false;
     private bool stalkChase = false;
+    public bool isCheckingLook = false;
+    public bool isCheckingAware = false;
 
     [Header("References")]
-    private NavMeshAgent navMeshAgent;
+    public NavMeshAgent navMeshAgent;
     private Transform player;
     private GameManager gameManager;
 
     [Header("State Parameters")]
     [SerializeField] private float maxAggressiveness = 20f;
-    [SerializeField] private float idleToActiveDelay = 3f;
+    [SerializeField] private float idleToActiveDelay = 1f;
     [SerializeField] private float lowAwarenessThreshold = 1f;
     [SerializeField] private float lowAwarenessDurationForIdle = 10f;
+
+    [Header("Teleport Settings")]
+    [SerializeField] private float teleportDistanceThreshold = 200f;
+    [SerializeField] private float teleportMinDistance = 80f;
+    [SerializeField] private float teleportMaxDistance = 120f;
 
     void Start()
     {
@@ -61,6 +69,14 @@ public class TigerAI : MonoBehaviour
     {
         UpdateHiddenStats();
         UpdatePlayerDistance();
+        isPlayerLooking = IsPlayerLookingAtTiger();
+
+        // Check if tiger is too far from player and teleport if needed
+        if (playerDistance > teleportDistanceThreshold)
+        {
+            TeleportToRandomLocationNearPlayer();
+            TransitionToState(TigerState.HuntingSearching);
+        }
 
         if (currentState != previousState)
         {
@@ -253,8 +269,8 @@ public class TigerAI : MonoBehaviour
             // PlaySoundCue(prowlingSound);
         }
 
-        // Check if player looks at tiger
-        if (IsPlayerLookingAtTiger() || playerDistance < 7.5f)
+        // Check if tiger is close enough to the player to attack outright.
+        if (playerDistance < 7.5f)
         {
             // Attack based on aggressiveness
             if (ShouldAttackBasedOnAggressiveness())
@@ -263,13 +279,33 @@ public class TigerAI : MonoBehaviour
             }
         }
 
-        if (playerDistance > 25) 
+        if (playerDistance > 20)
         {
             prowlChase = true;
             TransitionToState(TigerState.Chase);
         }
 
-        // Other prowling logic...
+        if (!isCheckingLook)
+        {
+            StartCoroutine(ProwlingPlayerLookingCheck());
+        }
+
+    }
+
+    IEnumerator ProwlingPlayerLookingCheck()
+    {
+        isCheckingLook = true;
+        if (IsPlayerLookingAtTiger())
+        {
+            yield return new WaitForSeconds(2);
+            if (IsPlayerLookingAtTiger())
+            {
+                stalkChase = true;
+                TransitionToState(TigerState.Chase);
+                isCheckingLook = false;
+            }
+        }
+        isCheckingLook = false;
     }
 
     private void HandleStalkingState()
@@ -287,18 +323,56 @@ public class TigerAI : MonoBehaviour
             // PlaySoundCue(stalkingSound);
         }
 
-        // Check awareness level for immediate attack
-        if (awareness > 1f)
-        {
-            stalkChase = true;
-            TransitionToState(TigerState.Chase);
-        }
 
         // Stalking duration based on aggressiveness
         if (ShouldStopStalking() || playerDistance > 35)
         {
             TransitionToState(TigerState.Evacuating);
         }
+
+        if (!isCheckingLook)
+        {
+            StartCoroutine(StalkingPlayerLookingCheck());
+        }
+
+        if (!isCheckingAware)
+        {
+            StartCoroutine(StalkingPlayerAwarenessCheck());
+        }
+    }
+
+    IEnumerator StalkingPlayerLookingCheck()
+    {
+        isCheckingLook = true;
+        if (!IsPlayerLookingAtTiger())
+        {
+            yield return new WaitForSeconds(2);
+            if (!IsPlayerLookingAtTiger())
+            {
+                Debug.Log("KEEP LOOKING");
+                stalkChase = true;
+                TransitionToState(TigerState.Chase);
+                isCheckingLook = false;
+            }
+        }
+        isCheckingLook = false;
+    }
+
+    IEnumerator StalkingPlayerAwarenessCheck()
+    {
+        isCheckingAware = true;
+
+        if (awareness > 1f)
+        {
+            yield return new WaitForSeconds(2);
+            if (awareness > 1f)
+            {
+                Debug.Log("NO RUNNING");
+                stalkChase = true;
+                TransitionToState(TigerState.Chase);
+            }
+        }
+        isCheckingAware = false;
     }
 
     private void HandleEvacuatingState()
@@ -331,14 +405,14 @@ public class TigerAI : MonoBehaviour
     {
         navMeshAgent.SetDestination(player.position);
 
-        if(stalkChase)
+        if (stalkChase)
         {
             navMeshAgent.speed = 10f;
         }
-        if(prowlChase)
+        if (prowlChase)
         {
-            navMeshAgent.speed = 5f;
-        }    
+            navMeshAgent.speed = 4f;
+        }
 
         if (playerDistance < 3f)
         {
@@ -349,7 +423,7 @@ public class TigerAI : MonoBehaviour
             }
         }
 
-        if (playerDistance > 40)
+        if (playerDistance > 30)
         {
             stalkChase = false;
             prowlChase = false;
@@ -359,7 +433,7 @@ public class TigerAI : MonoBehaviour
     #endregion
 
     #region Helper Methods
-    private void TransitionToState(TigerState newState)
+    public void TransitionToState(TigerState newState)
     {
         // Exit current state logic
         switch (currentState)
@@ -414,9 +488,32 @@ public class TigerAI : MonoBehaviour
 
     private bool IsPlayerLookingAtTiger()
     {
-        // Implement player sight detection
-        // This would use raycasts and player camera direction
-        return false; // Placeholder
+        // Get the player's camera
+        Camera playerCamera = Camera.main;
+        if (playerCamera == null) return false;
+
+        // Calculate the direction from camera to tiger
+        Vector3 directionToTiger = (transform.position - playerCamera.transform.position).normalized;
+
+        // Check if tiger is within the camera's field of view
+        float angleToTiger = Vector3.Angle(playerCamera.transform.forward, directionToTiger);
+
+        if (angleToTiger <= playerCamera.fieldOfView * 0.6f) // 60% of FOV for center focus
+        {
+            // Raycast to check if there's line of sight
+            RaycastHit hit;
+            if (Physics.Raycast(playerCamera.transform.position, directionToTiger, out hit, Mathf.Infinity))
+            {
+                // Check if the ray hit the tiger or its collider
+                if (hit.collider.transform == transform || hit.collider.transform.IsChildOf(transform))
+                {
+                    Debug.Log("TIGER SPOTTED");
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     private bool ShouldAttackBasedOnAggressiveness()
@@ -486,6 +583,40 @@ public class TigerAI : MonoBehaviour
         NavMeshHit fallbackHit;
         NavMesh.SamplePosition(fallbackPosition, out fallbackHit, 200f, NavMesh.AllAreas);
         return fallbackHit.position;
+    }
+
+    private void TeleportToRandomLocationNearPlayer()
+    {
+        if (player == null) return;
+
+        int maxAttempts = 10;
+        int attempts = 0;
+
+        while (attempts < maxAttempts)
+        {
+            // Get a random direction on the XZ plane
+            Vector2 randomCircle = Random.insideUnitCircle.normalized;
+            Vector3 randomDirection = new Vector3(randomCircle.x, 0f, randomCircle.y);
+
+            // Random distance between min and max
+            float distance = Random.Range(teleportMinDistance, teleportMaxDistance);
+            Vector3 targetPosition = player.position + randomDirection * distance;
+
+            // Find the nearest valid NavMesh position
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(targetPosition, out hit, 100f, NavMesh.AllAreas))
+            {
+                // Teleport the tiger to this position
+                navMeshAgent.Warp(hit.position);
+                Debug.Log("Tiger teleported to: " + hit.position);
+                return;
+            }
+
+            attempts++;
+        }
+
+        // Fallback if all attempts fail
+        Debug.LogWarning("Failed to find valid teleport location after " + maxAttempts + " attempts");
     }
 
     private void AttackPlayer()
