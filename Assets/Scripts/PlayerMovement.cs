@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Rendering.Universal.Internal;
 
 public class PlayerMovement : MonoBehaviour
@@ -21,13 +22,15 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     private TigerAI tiger;
     CapsuleCollider playerCollider;
+    public RawImage crouchingIcon;
+    public RawImage standingIcon;
+    public RawImage grabIcon;
+
 
     [Header("Player Movement Status")]
     private bool isGrounded;
     private bool isRunning;
     private bool isCrouching;
-
-    public GameManager gameManager;
 
     void Start()
     {
@@ -35,7 +38,10 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<CapsuleCollider>();
         characterController = GetComponent<CharacterController>();
         tiger = FindAnyObjectByType<TigerAI>();
-        gameManager = GameManager.instance;
+
+        standingIcon.gameObject.SetActive(true);
+        crouchingIcon.gameObject.SetActive(false);
+        grabIcon.gameObject.SetActive(false);
     }
 
     void Update()
@@ -49,16 +55,12 @@ public class PlayerMovement : MonoBehaviour
     {
         // Looking Around
         float horizontalRotation = Input.GetAxis("Mouse X") * mouseSensitivity;
-        
+        transform.Rotate(0, horizontalRotation, 0);
 
         verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
         verticalRotation = Mathf.Clamp(verticalRotation, -90, 90);
 
-        if(!gameManager.inItemMenu)
-        {
-            transform.Rotate(0, horizontalRotation, 0);
-            playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
-        }
+        playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
 
         // Jumping
         isGrounded = characterController.isGrounded;
@@ -76,18 +78,27 @@ public class PlayerMovement : MonoBehaviour
         verticalVelocity += gravity * Time.deltaTime;
 
         // Crouching
-        if (isGrounded && Input.GetKey(KeyCode.LeftControl))
+        isCrouching = (isGrounded && Input.GetKey(KeyCode.LeftControl));
+
+        float targetHeight = isCrouching ? 1.0f : 2.0f;
+        Vector3 targetCamPos = isCrouching ? new Vector3(0f, 0.2f, 0f) : new Vector3(0f, 0.5f, 0f);
+        float crouchLerpSpeed = 8f;
+
+        playerCollider.height = Mathf.Lerp(playerCollider.height, targetHeight, Time.deltaTime * crouchLerpSpeed);
+        playerCamera.localPosition = Vector3.Lerp(playerCamera.localPosition, targetCamPos, Time.deltaTime * crouchLerpSpeed);
+
+        if (isCrouching)
         {
             isCrouching = true;
-            movementSpeed = 3f;
-            playerCollider.height = 1.0f;
-            playerCamera.localPosition = new Vector3(0f, 0.2f, 0f);
+            movementSpeed = 1.5f;
+            standingIcon.gameObject.SetActive(false);
+            crouchingIcon.gameObject.SetActive(true);
         }
         else
         {
             isCrouching = false;
-            playerCollider.height = 2.0f;
-            playerCamera.localPosition = new Vector3(0f, 0.5f, 0f);
+            standingIcon.gameObject.SetActive(true);
+            crouchingIcon.gameObject.SetActive(false);
         }
 
         // Movement
@@ -99,12 +110,12 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && Input.GetKey(KeyCode.LeftShift) && !isCrouching)
         {
             isRunning = true;
-            movementSpeed = 7.0f;
+            movementSpeed = 5.0f;
         }
         else if (!isCrouching)
         {
             isRunning = false;
-            movementSpeed = 5f;
+            movementSpeed = 3.0f;
         }
 
         move *= movementSpeed;
@@ -117,9 +128,8 @@ public class PlayerMovement : MonoBehaviour
     public void AwarenessStates()
     {
         if (isRunning && !isCrouching) { tiger.awareness = 3.0f; } // Player is running
-        else if ((moveNS == 0) && (moveEW == 0) && isCrouching) { tiger.awareness = 0.0f; } // Player standing still with no movement at all
-        else if (((moveNS == 0) && (moveEW == 0)) || (isCrouching && (moveNS != 0) || (moveEW != 0))) { tiger.awareness = 1.0f; } // Player standing still or crouching
         else if ((moveNS != 0) || (moveEW != 0) && !isCrouching) { tiger.awareness = 2.0f; } // Player is walking
-        
+        else if ((moveNS == 0) && (moveEW == 0) && isCrouching) { tiger.awareness = 0.0f; } // Player standing still with no movement at all
+        else if ((moveNS == 0) && (moveEW == 0) || isCrouching) { tiger.awareness = 1.0f; } // Player standing still or crouching
     }
 }
