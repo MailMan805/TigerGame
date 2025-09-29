@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        GameManager.instance.sceneLoadingManager.LoadNextLevel(); // Switch this with house later
+        SceneManager.LoadScene("JadenTigerTest");
     }
 
     public void QuitGame()
