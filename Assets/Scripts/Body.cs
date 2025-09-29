@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Body : MonoBehaviour
 {
-    public bool TEST = false;
 
-    private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKey(GameManager.instance.PlayerInteractButton))
+        if (other.gameObject.tag == "Player")
         {
-            if (!TEST) { CollectBody(); }
-
-            
+            if (Input.GetKeyDown(GameManager.instance.PlayerInteractButton))
+            {
+                CollectBody();
+            }
         }
     }
 
