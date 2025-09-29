@@ -34,7 +34,11 @@ public class GameManager : MonoBehaviour
     static Night NightFive = new Night(4, FogDensity.HEAVY);
     static Night NightSix = new Night(4, FogDensity.VERYHEAVY);
 
+<<<<<<< HEAD
     static Night DemoNight = new Night(1, FogDensity.NONE);
+=======
+    static Night DemoNight = new Night(1, FogDensity.NORMAL);
+>>>>>>> parent of f5f51a1 (Revert "Merge branch 'VignetteBasedOnMashing' into Lily_Branch_2")
     public bool DemoNightOnly = false;
 
     // Manager Setup

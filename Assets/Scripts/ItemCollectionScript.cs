@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
 using TMPro;
+=======
+>>>>>>> parent of f5f51a1 (Revert "Merge branch 'VignetteBasedOnMashing' into Lily_Branch_2")
 using static TigerAI;
 
 public class ItemCollectionScript : MonoBehaviour
 {
+<<<<<<< HEAD
 
     public static ItemCollectionScript instance;
+=======
+>>>>>>> parent of f5f51a1 (Revert "Merge branch 'VignetteBasedOnMashing' into Lily_Branch_2")
     [Header("Managers")]
     public GameManager gameManager;
     private TigerAI tiger;
@@ -15,11 +21,14 @@ public class ItemCollectionScript : MonoBehaviour
     [Header("ItemCanvas")]
     public GameObject ItemCanvas;
     public GameObject PlaceholderObject;
+<<<<<<< HEAD
     private MeshRenderer render;
 
 
     public TextMeshProUGUI Description;
     public TextMeshProUGUI Thoughts;
+=======
+>>>>>>> parent of f5f51a1 (Revert "Merge branch 'VignetteBasedOnMashing' into Lily_Branch_2")
 
     [Header("Item Information")]
     public ItemScriptableObject[] items; //List of items in order
@@ -29,6 +38,7 @@ public class ItemCollectionScript : MonoBehaviour
     public int NegativeThreashHold = 8;
     public int PositiveThreashHold = 12;
 
+<<<<<<< HEAD
     void Awake()
     {
         if (instance != null)
@@ -46,6 +56,14 @@ public class ItemCollectionScript : MonoBehaviour
         gameManager = GameManager.instance;
         ItemCanvas.SetActive(false);
         gameManager.OnMainLevelLoaded.AddListener(setTiger);
+=======
+
+    private void Start()
+    {
+        gameManager = GameManager.instance;
+        ItemCanvas.SetActive(false);
+        tiger = FindAnyObjectByType<TigerAI>();
+>>>>>>> parent of f5f51a1 (Revert "Merge branch 'VignetteBasedOnMashing' into Lily_Branch_2")
     }
 
     // Update is called once per frame
@@ -53,6 +71,7 @@ public class ItemCollectionScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I)) //Testing Button
         {
+<<<<<<< HEAD
             CollectItem();
         }
     }
@@ -101,13 +120,23 @@ public class ItemCollectionScript : MonoBehaviour
         {
             Thoughts.text = items[itemMarker].ItemThoughts;
             Description.text = items[itemMarker].ItemDescription;
+=======
+            UnlockCursor();
+            gameManager.inItemMenu = true;
+            tiger.TransitionToState(TigerState.Evacuating);
+            ItemCanvas.SetActive(true);
+>>>>>>> parent of f5f51a1 (Revert "Merge branch 'VignetteBasedOnMashing' into Lily_Branch_2")
         }
     }
 
     public void ReturnItemBTN()
     {
         itemMarker += 1;
+<<<<<<< HEAD
         gameManager.ChangeKarmaLevel(1);
+=======
+        gameManager.ChangeKarmaLevel(-1);
+>>>>>>> parent of f5f51a1 (Revert "Merge branch 'VignetteBasedOnMashing' into Lily_Branch_2")
         tiger.navMeshAgent.ResetPath();
         tiger.TransitionToState(TigerState.HuntingSearching);
         ItemCanvas.SetActive(false);
@@ -119,7 +148,11 @@ public class ItemCollectionScript : MonoBehaviour
     public void KeepItemBTN()
     {
         itemMarker += 1;
+<<<<<<< HEAD
         gameManager.ChangeKarmaLevel(-1);
+=======
+        gameManager.ChangeKarmaLevel(1);
+>>>>>>> parent of f5f51a1 (Revert "Merge branch 'VignetteBasedOnMashing' into Lily_Branch_2")
         tiger.navMeshAgent.ResetPath();
         tiger.TransitionToState(TigerState.HuntingSearching);
         ItemCanvas.SetActive(false);
