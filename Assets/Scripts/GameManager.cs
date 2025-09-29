@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [Range(0,7)] public int currentDay = 0;
+    [Range(0, 7)] public int currentDay = 0;
     public int bodyCount = 0;
     public int Karma = 10;
     public int MaxKarma = 20; // 8 - 12 Neutral, Starts at 10, <= 8 Negative, >= 12 Positive.
@@ -34,18 +34,16 @@ public class GameManager : MonoBehaviour
     static Night NightFive = new Night(4, FogDensity.HEAVY);
     static Night NightSix = new Night(4, FogDensity.VERYHEAVY);
 
-<<<<<<< HEAD
     static Night DemoNight = new Night(1, FogDensity.NONE);
-=======
-    static Night DemoNight = new Night(1, FogDensity.NORMAL);
->>>>>>> parent of f5f51a1 (Revert "Merge branch 'VignetteBasedOnMashing' into Lily_Branch_2")
     public bool DemoNightOnly = false;
 
     // Manager Setup
     public SceneLoadingManager sceneLoadingManager { get; set; }
 
-    void Awake() {
-        if (instance != null) {
+    void Awake()
+    {
+        if (instance != null)
+        {
             Destroy(gameObject);
             return;
         }
@@ -60,9 +58,10 @@ public class GameManager : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        switch (level) {
+        switch (level)
+        {
             case (int)SceneID.MAINMENU:
-                break; 
+                break;
             case (int)SceneID.HOUSE:
                 break;
             case (int)SceneID.MAINLEVEL:
@@ -70,7 +69,7 @@ public class GameManager : MonoBehaviour
                 break;
             case (int)SceneID.FINALLEVEL:
                 break;
-        
+
         }
     }
 
@@ -131,7 +130,8 @@ public class GameManager : MonoBehaviour
         {
             Karma = MaxKarma;
         }
-        if (Karma < 0) {
+        if (Karma < 0)
+        {
             Karma = 0;
         }
     }

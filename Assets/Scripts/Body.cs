@@ -4,27 +4,15 @@ using UnityEngine;
 
 public class Body : MonoBehaviour
 {
-<<<<<<< HEAD
     public bool TEST = false;
     public bool withinRange = false;
-=======
->>>>>>> parent of f5f51a1 (Revert "Merge branch 'VignetteBasedOnMashing' into Lily_Branch_2")
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-<<<<<<< HEAD
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (withinRange) { CollectBody(); }
-=======
-        if (other.gameObject.tag == "Player")
-        {
-            if (Input.GetKeyDown(GameManager.instance.PlayerInteractButton))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                CollectBody();
+                if (withinRange) { CollectBody(); }
             }
->>>>>>> parent of f5f51a1 (Revert "Merge branch 'VignetteBasedOnMashing' into Lily_Branch_2")
-        }
     }
 
     void CollectBody()
@@ -35,7 +23,7 @@ public class Body : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             withinRange = true;
         }
