@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: HandDrawnMap
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 1452248858720287329, guid: 347a487de168b2d41aff35edb18852d3, type: 3}
+  Item3D: {fileID: 0}
   ItemDescription: A map!
   ItemThoughts: Wow a map
   ItemPositiveThoughts: I love maps :)
