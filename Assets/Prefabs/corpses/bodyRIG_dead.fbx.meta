@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 358fc74915669114fbc1ff451fbce751
+guid: 2081283aeb3348042bf6b05ddc784a8e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 8eafa641d28d97f43ac430572d1b52f6, type: 2}
+      name: Body_Flow
+    second: {fileID: 2100000, guid: faed0d221cb2ed949a439052bd2242ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 5b6139258c74e87489ba02bae8f5d710, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -83,7 +88,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []

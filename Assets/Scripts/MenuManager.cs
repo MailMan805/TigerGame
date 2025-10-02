@@ -25,7 +25,17 @@ public class MenuManager : MonoBehaviour
 
     public void PlayGame()
     {
+<<<<<<< Updated upstream
         SceneManager.LoadScene("JadenTigerTest");
+=======
+        //Update later when saves and scenes are established
+        SceneManager.LoadScene("Main Level");
+    }
+
+    public void LoadGame()
+    {
+        //load save file
+>>>>>>> Stashed changes
     }
 
     public void QuitGame()
