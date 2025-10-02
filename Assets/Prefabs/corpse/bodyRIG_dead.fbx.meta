@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 21bde3f8c6e3e2f40974cb882e5e6013
+guid: 7b50874a6fadd49458467fff408dfed6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: fluffyWeeds
-    second: {fileID: 2100000, guid: 83c6bab7d19a79448905d87dbf432583, type: 2}
+      name: Body_Flow
+    second: {fileID: 2100000, guid: 0610552e086644046bf902bc43870d73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: f059e1af4f254ba4e8d036e9985cd083, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -40,9 +45,9 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.8
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
@@ -95,7 +100,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.8
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
