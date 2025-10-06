@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Movement Variables")]
     public float movementSpeed;
-    public float jumpForce = 300f;
+    public float jumpForce = 0.5f;
     public float mouseSensitivity = 2.0f;
     private float gravity = -9.81f;
     private float verticalRotation;
@@ -120,6 +120,5 @@ public class PlayerMovement : MonoBehaviour
         else if ((moveNS == 0) && (moveEW == 0) && isCrouching) { tiger.awareness = 0.0f; } // Player standing still with no movement at all
         else if (((moveNS == 0) && (moveEW == 0)) || (isCrouching && (moveNS != 0) || (moveEW != 0))) { tiger.awareness = 1.0f; } // Player standing still or crouching
         else if ((moveNS != 0) || (moveEW != 0) && !isCrouching) { tiger.awareness = 2.0f; } // Player is walking
-        
     }
 }

@@ -216,6 +216,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8910533472070587491, guid: 16aefe9cebfd0504884e20d12087b807,
+        type: 3}
+      propertyPath: jumpForce
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8910533472070587491, guid: 16aefe9cebfd0504884e20d12087b807,
+        type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 255347541}
+    - target: {fileID: 8910533472070587491, guid: 16aefe9cebfd0504884e20d12087b807,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -360,6 +375,12 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!4 &255347541 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1215767826840899084, guid: 16aefe9cebfd0504884e20d12087b807,
+    type: 3}
+  m_PrefabInstance: {fileID: 255347538}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &449640426
 PrefabInstance:
   m_ObjectHideFlags: 0
