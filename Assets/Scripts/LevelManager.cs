@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        directionalLight.transform.rotation = Quaternion.Lerp(directionalLight.transform.rotation, NewLightRotation, Time.deltaTime);
+        //directionalLight.transform.rotation = Quaternion.Lerp(directionalLight.transform.rotation, NewLightRotation, Time.deltaTime);
     }
 
     void SetupLevel(Night night)

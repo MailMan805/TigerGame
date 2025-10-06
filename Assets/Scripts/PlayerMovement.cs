@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         tiger = FindAnyObjectByType<TigerAI>();
         gameManager = GameManager.instance;
+
+        gameManager.OnDeath.AddListener(DemoDeath);
     }
 
     void Update()
@@ -49,12 +51,12 @@ public class PlayerMovement : MonoBehaviour
     {
         // Looking Around
         float horizontalRotation = Input.GetAxis("Mouse X") * mouseSensitivity;
-        
+
 
         verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
         verticalRotation = Mathf.Clamp(verticalRotation, -90, 90);
 
-        if(!gameManager.inItemMenu)
+        if (!gameManager.inItemMenu)
         {
             transform.Rotate(0, horizontalRotation, 0);
             playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
@@ -116,10 +118,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void AwarenessStates()
     {
+        if (tiger == null) { return; }
+
         if (isRunning && !isCrouching) { tiger.awareness = 3.0f; } // Player is running
         else if ((moveNS == 0) && (moveEW == 0) && isCrouching) { tiger.awareness = 0.0f; } // Player standing still with no movement at all
         else if (((moveNS == 0) && (moveEW == 0)) || (isCrouching && (moveNS != 0) || (moveEW != 0))) { tiger.awareness = 1.0f; } // Player standing still or crouching
         else if ((moveNS != 0) || (moveEW != 0) && !isCrouching) { tiger.awareness = 2.0f; } // Player is walking
-        
+
+    }
+
+    void DemoDeath()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        this.enabled = false;
     }
 }

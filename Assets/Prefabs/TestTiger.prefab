@@ -810,12 +810,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   aggressiveness: 0
+  fullAgressiveness: 0
   awareness: 0
   playerDistance: 0
+  isPlayerLooking: 0
+  isCheckingLook: 0
+  isCheckingAware: 0
+  navMeshAgent: {fileID: 0}
   maxAggressiveness: 20
   idleToActiveDelay: 3
   lowAwarenessThreshold: 1
   lowAwarenessDurationForIdle: 10
+  teleportDistanceThreshold: 200
+  teleportMinDistance: 80
+  teleportMaxDistance: 120
 --- !u!195 &777285485148827488
 NavMeshAgent:
   m_ObjectHideFlags: 0
