@@ -11,20 +11,24 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [Header("VARIABLES")]
     [Range(0,7)] public int currentDay = 0;
     public int bodyCount = 0;
+    public KeyCode PlayerInteractButton = KeyCode.E;
+
+    [Header("KARMA")]
     public int Karma = 10;
     public int MaxKarma = 20; // 8 - 12 Neutral, Starts at 10, <= 8 Negative, >= 12 Positive.
 
-    public bool inItemMenu = false;
+    [HideInInspector] public bool inItemMenu = false;
 
-
-    public KeyCode PlayerInteractButton = KeyCode.E;
-
+    [Header("EVENTS")]
     public UnityEvent BodyCollected;
     public UnityEvent<Night> OnMainLevelLoaded;
     public UnityEvent OnHouseLevelLoaded;
     public UnityEvent LeaveHouse;
+    public UnityEvent ResetGame;
+    public UnityEvent OnDeath;
 
     // NIGHT SETUP
     static Night NightOne = new Night(2, FogDensity.NONE);
@@ -34,7 +38,10 @@ public class GameManager : MonoBehaviour
     static Night NightFive = new Night(4, FogDensity.HEAVY);
     static Night NightSix = new Night(4, FogDensity.VERYHEAVY);
 
-    static Night DemoNight = new Night(1, FogDensity.NORMAL);
+    
+    static Night DemoNight = new Night(1, FogDensity.NONE);
+
+    [Header("DEMO")]
     public bool DemoNightOnly = false;
 
     // Manager Setup
@@ -51,6 +58,9 @@ public class GameManager : MonoBehaviour
 
         sceneLoadingManager = gameObject.AddComponent<SceneLoadingManager>();
 
+        ResetGame.AddListener(ResetGameData);
+        LeaveHouse.AddListener(LeavingHouse);
+
         DontDestroyOnLoad(gameObject);
     }
 
@@ -60,6 +70,7 @@ public class GameManager : MonoBehaviour
             case (int)SceneID.MAINMENU:
                 break; 
             case (int)SceneID.HOUSE:
+                OnHouseLevelLoaded.Invoke();
                 break;
             case (int)SceneID.MAINLEVEL:
                 StartCoroutine(MainLevelSetup());
@@ -137,6 +148,11 @@ public class GameManager : MonoBehaviour
         currentDay++;
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     void TestLoading()
     {
         if (Input.GetKeyDown(KeyCode.Z))
@@ -151,5 +167,18 @@ public class GameManager : MonoBehaviour
         {
             sceneLoadingManager.LoadNextLevel();
         }
+    }
+
+    void ResetGameData()
+    {
+        currentDay = 0;
+        inItemMenu = false;
+
+    }
+
+    void LeavingHouse()
+    {
+        IncrementDay();
+        sceneLoadingManager.LoadNextLevel();
     }
 }

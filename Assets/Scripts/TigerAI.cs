@@ -622,7 +622,12 @@ public class TigerAI : MonoBehaviour
     private void AttackPlayer()
     {
         // Implement attack logic
-        Debug.Log("Tiger attacks player!");
+        // Debug.Log("Tiger attacks player!");
+
+        gameManager.OnDeath.Invoke();
+
+        // DEMO VERSION
+        gameObject.SetActive(false);
     }
     #endregion
 
@@ -632,4 +637,6 @@ public class TigerAI : MonoBehaviour
         aggressiveness += 1f;
         aggressiveness = Mathf.Clamp(aggressiveness, 0, maxAggressiveness);
     }
+
+    
 }
