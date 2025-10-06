@@ -1846,6 +1846,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3134137841738718545, guid: 0bb711dbaa12edf4fab59f765330324a,
+        type: 3}
+      propertyPath: musicTrackClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3134137841738718545, guid: 0bb711dbaa12edf4fab59f765330324a,
+        type: 3}
+      propertyPath: soundEffectClips.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3134137841738718545, guid: 0bb711dbaa12edf4fab59f765330324a,
+        type: 3}
+      propertyPath: musicTrackClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 37806c00c9f6da84fa50d9ada5bb5341, type: 3}
+    - target: {fileID: 3134137841738718545, guid: 0bb711dbaa12edf4fab59f765330324a,
+        type: 3}
+      propertyPath: musicTrackClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a551e947bda627429ea591a3f4416b8, type: 3}
     - target: {fileID: 6857598438820569858, guid: 0bb711dbaa12edf4fab59f765330324a,
         type: 3}
       propertyPath: m_Name
