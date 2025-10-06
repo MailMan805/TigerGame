@@ -622,9 +622,7 @@ public class TigerAI : MonoBehaviour
     private void AttackPlayer()
     {
         // Implement attack logic
-        // Debug.Log("Tiger attacks player!");
-
-        gameManager.OnDeath.Invoke();
+        GameManager.instance.OnDeath.Invoke();
 
         // DEMO VERSION
         gameObject.SetActive(false);
