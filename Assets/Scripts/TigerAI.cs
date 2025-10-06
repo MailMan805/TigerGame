@@ -507,7 +507,7 @@ public class TigerAI : MonoBehaviour
                 // Check if the ray hit the tiger or its collider
                 if (hit.collider.transform == transform || hit.collider.transform.IsChildOf(transform))
                 {
-                    Debug.Log("TIGER SPOTTED");
+                    //Debug.Log("TIGER SPOTTED");
                     return true;
                 }
             }
@@ -622,7 +622,10 @@ public class TigerAI : MonoBehaviour
     private void AttackPlayer()
     {
         // Implement attack logic
-        Debug.Log("Tiger attacks player!");
+        GameManager.instance.OnDeath.Invoke();
+
+        // DEMO VERSION
+        gameObject.SetActive(false);
     }
     #endregion
 
@@ -632,4 +635,6 @@ public class TigerAI : MonoBehaviour
         aggressiveness += 1f;
         aggressiveness = Mathf.Clamp(aggressiveness, 0, maxAggressiveness);
     }
+
+    
 }

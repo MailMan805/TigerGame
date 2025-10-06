@@ -46,6 +46,7 @@ public class ItemCollectionScript : MonoBehaviour
         gameManager = GameManager.instance;
         ItemCanvas.SetActive(false);
         gameManager.OnMainLevelLoaded.AddListener(setTiger);
+        gameManager.ResetGame.AddListener(ResetGameData);
     }
 
     // Update is called once per frame
@@ -138,5 +139,10 @@ public class ItemCollectionScript : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked; // Releases the cursor from any locking
         Cursor.visible = false;                  // Makes the cursor visible
+    }
+
+    void ResetGameData()
+    {
+        itemMarker = 0;
     }
 }
