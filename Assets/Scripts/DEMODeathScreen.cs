@@ -11,12 +11,12 @@ public class DEMODeathScreen : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         canvas.enabled = false;
-
         GameManager.instance.OnDeath.AddListener(ShowDeathScreen);
     }
 
     void ShowDeathScreen()
     {
+        Debug.Log("SENT");
         canvas.enabled = true;
     }
 
