@@ -507,7 +507,7 @@ public class TigerAI : MonoBehaviour
                 // Check if the ray hit the tiger or its collider
                 if (hit.collider.transform == transform || hit.collider.transform.IsChildOf(transform))
                 {
-                    Debug.Log("TIGER SPOTTED");
+                    // Debug.Log("TIGER SPOTTED");
                     return true;
                 }
             }

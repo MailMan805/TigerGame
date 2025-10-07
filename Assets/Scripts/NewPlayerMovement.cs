@@ -10,7 +10,7 @@ public class NewPlayerMovement : MonoBehaviour
     [Header("Player Movement Variables")]
     public float movementSpeed;
     public float jumpForce = 300f;
-    public float mouseSensitivity = 100f;
+    public float mouseSensitivity = 50f;
     private float gravity = -9.81f;
     private float verticalRotation;
     private float verticalVelocity;
@@ -26,14 +26,14 @@ public class NewPlayerMovement : MonoBehaviour
 
     [Header("Player Parts")]
     public Transform playerCamera;
-    // private CharacterController characterController;
     private TigerAI tiger;
     CapsuleCollider playerCollider;
 
     [Header("Player Movement Status")]
+    private bool isMoving = false;
     private bool isGrounded = true;
-    private bool isRunning;
-    private bool isCrouching;
+    private bool isRunning = false;
+    private bool isCrouching = false;
 
     public GameManager gameManager;
 
@@ -93,7 +93,7 @@ public class NewPlayerMovement : MonoBehaviour
     void Update()
     {
         PlayerInput();
-        // AwarenessStates();
+        AwarenessStates();
     }
 
     public void PlayerInput()
@@ -104,20 +104,24 @@ public class NewPlayerMovement : MonoBehaviour
         // Movement
         moveDirection = move.ReadValue<Vector2>();
 
-        if (isGrounded && Input.GetKey(KeyCode.LeftShift) && !isCrouching)
+        if (moveDirection != Vector2.zero)
         {
-            isRunning = true;
-            movementSpeed = 7.0f;
+            isMoving = true;
         }
-        else if (!isCrouching)
-        {
-            isRunning = false;
-            movementSpeed = 5f;
-        }
-    }
+        else { isMoving  = false; }
 
-    private void FixedUpdate()
-    {
+        if (isRunning)
+        {
+            movementSpeed = 7f;
+        }
+
+        if (isCrouching)
+        {
+            movementSpeed = 2f;
+        }
+
+        #region player camera
+
         // Mouse input
         float mouseX = cameraVelocity.x * mouseSensitivity * Time.fixedDeltaTime;
         float mouseY = cameraVelocity.y * mouseSensitivity * Time.fixedDeltaTime;
@@ -128,7 +132,7 @@ public class NewPlayerMovement : MonoBehaviour
 
         // Vertical rotation for the camera
         verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
+        verticalRotation = Mathf.Clamp(verticalRotation, -80f, 80f);
         playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
 
         Vector3 forward = playerCamera.forward;
@@ -145,6 +149,8 @@ public class NewPlayerMovement : MonoBehaviour
         Vector3 movement = desiredMoveDirection * movementSpeed;
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
+        #endregion
+
         // Jumping
         if (verticalVelocity > 0)
         {
@@ -152,7 +158,6 @@ public class NewPlayerMovement : MonoBehaviour
             verticalVelocity = 0f;
         }
     }
-
 
     private void Jump(InputAction.CallbackContext context)
     {
@@ -172,8 +177,8 @@ public class NewPlayerMovement : MonoBehaviour
     {
         print("Start Crouch");
         isCrouching = true;
-        movementSpeed = 3f;
-        playerCamera.localPosition = new Vector3(0f, 0.2f, 0f);
+        movementSpeed = 2f;
+        playerCamera.localPosition = new Vector3(0f, 0.35f, 0f);
     }
 
     private void StopCrouch(InputAction.CallbackContext context)
@@ -194,15 +199,43 @@ public class NewPlayerMovement : MonoBehaviour
     {
         print("Stop Run");
         isRunning = false;
+        movementSpeed = 5f;
     }
 
-    /*
+    
     public void AwarenessStates()
     {
-        if (isRunning && !isCrouching) { tiger.awareness = 3.0f; } // Player is running
-        else if ((moveNS == 0) && (moveEW == 0) && isCrouching) { tiger.awareness = 0.0f; } // Player standing still with no movement at all
-        else if (((moveNS == 0) && (moveEW == 0)) || (isCrouching && (moveNS != 0) || (moveEW != 0))) { tiger.awareness = 1.0f; } // Player standing still or crouching
-        else if ((moveNS != 0) || (moveEW != 0) && !isCrouching) { tiger.awareness = 2.0f; } // Player is walking
+        // Check for different movement and crouching states to adjust tiger's awareness
+        if (isCrouching)
+        {
+            // Player is crouching, check if moving or not
+            if (!isMoving)
+            {
+                tiger.awareness = 0.0f; // Crouching and not moving, low awareness
+            }
+            else
+            {
+                tiger.awareness = 1.0f; // Crouching and moving, moderate awareness
+            }
+        }
+        else
+        {
+            // Player is not crouching, check movement speed
+            if (isRunning)
+            {
+                tiger.awareness = 3.0f; // Player is running, high awareness
+            }
+            else if (isMoving)
+            {
+                tiger.awareness = 2.0f; // Player is walking, moderate-high awareness
+            }
+            else
+            {
+                tiger.awareness = 1.0f; // Player is standing still
+            }
+        }
+
+
     }
-    */
+
 }
