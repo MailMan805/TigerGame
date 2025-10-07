@@ -32,12 +32,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4427394890821101257}
+  - {fileID: 6387204575614679227}
   - {fileID: 7522334821066468507}
   - {fileID: 7503160647508587570}
   - {fileID: 4475783728441372484}
   - {fileID: 3697941880730429448}
   - {fileID: 2754647975556714545}
-  - {fileID: 6387204575614679227}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -883,7 +883,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 120
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: 10
   m_CullingMask:

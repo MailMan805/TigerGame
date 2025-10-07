@@ -3948,6 +3948,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2804849791416280807, guid: 38dd82260d8d34a479053d88f17fda0a,
+        type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2936911939066583398, guid: 38dd82260d8d34a479053d88f17fda0a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4012,6 +4017,11 @@ PrefabInstance:
         type: 3}
       propertyPath: PlayerInteractButton
       value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273492103012267368, guid: 38dd82260d8d34a479053d88f17fda0a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

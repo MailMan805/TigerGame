@@ -251,6 +251,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1738556092858023828, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
+      propertyPath: clearColorMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738556092858023828, guid: 8bcfe3377b336724b9faca4fab8792a3,
+        type: 3}
+      propertyPath: backgroundColorHDR.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738556092858023828, guid: 8bcfe3377b336724b9faca4fab8792a3,
+        type: 3}
+      propertyPath: backgroundColorHDR.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738556092858023828, guid: 8bcfe3377b336724b9faca4fab8792a3,
+        type: 3}
+      propertyPath: backgroundColorHDR.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738556092858023828, guid: 8bcfe3377b336724b9faca4fab8792a3,
+        type: 3}
       propertyPath: volumeLayerMask.m_Bits
       value: 128
       objectReference: {fileID: 0}
@@ -263,6 +283,16 @@ PrefabInstance:
         type: 3}
       propertyPath: renderingPathCustomFrameSettingsOverrideMask.mask.data1
       value: 134217728
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092865888824405909, guid: 8bcfe3377b336724b9faca4fab8792a3,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.4745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092865888824405909, guid: 8bcfe3377b336724b9faca4fab8792a3,
+        type: 3}
+      propertyPath: m_Maskable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2754647975556714545, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
@@ -402,7 +432,7 @@ PrefabInstance:
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
       propertyPath: orthographic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
@@ -418,7 +448,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 8400000, guid: ca394cb546c6fc34d880990a04368ec2, type: 2}
+      objectReference: {fileID: 8400000, guid: 3f066708d3a0a0e4388c192af45304ca, type: 2}
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
       propertyPath: orthographic size
