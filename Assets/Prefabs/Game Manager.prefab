@@ -252,7 +252,7 @@ PrefabInstance:
     - target: {fileID: 1738556092858023828, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
       propertyPath: volumeLayerMask.m_Bits
-      value: 160
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 1738556092858023828, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
@@ -397,7 +397,7 @@ PrefabInstance:
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
       propertyPath: m_Depth
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
@@ -407,12 +407,12 @@ PrefabInstance:
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
       propertyPath: far clip plane
-      value: 1386.2
+      value: 1015.85
       objectReference: {fileID: 0}
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
       propertyPath: m_TargetDisplay
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
