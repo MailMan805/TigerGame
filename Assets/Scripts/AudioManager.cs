@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -26,6 +27,14 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "MAIN MENU")
+        {
+            PlayMusic("Menu Theme");
+        }
+    }
+
     public void PlayMusic(string clipName)
     {
         AudioClip clip = musicTrackClips.Find(c => c.name == clipName);
@@ -48,6 +57,7 @@ public class AudioManager : MonoBehaviour
     {
         float originalVolume = musicSource.volume;
 
+        //If a track is playing, fade it out
         if (musicSource.isPlaying && musicSource.clip != null)
         {
             for (float t = 0; t < musicFadeDuration; t += Time.unscaledDeltaTime)
@@ -62,6 +72,7 @@ public class AudioManager : MonoBehaviour
         musicSource.clip = newClip;
         musicSource.Play();
 
+        //Fade in new track
         for (float t = 0; t < musicFadeDuration; t += Time.unscaledDeltaTime)
         {
             musicSource.volume = Mathf.Lerp(0f, originalVolume, t / musicFadeDuration);
@@ -73,6 +84,11 @@ public class AudioManager : MonoBehaviour
 
     public void StopMusic()
     {
+        for (float t = 0; t < musicFadeDuration; t += Time.unscaledDeltaTime)
+        {
+            musicSource.volume = Mathf.Lerp(musicSource.volume, 0f, t / musicFadeDuration);
+        }
+        
         musicSource.Stop();
     }
 
@@ -80,6 +96,7 @@ public class AudioManager : MonoBehaviour
     {
         AudioClip clip = soundEffectClips.Find(c => c.name == clipName);
 
+        //If sound is a tiger sound, teleport it to the tiger's location and then play it
         if (target != null)
         {
             AudioSource.PlayClipAtPoint(clip, target.transform.position);

@@ -44,7 +44,8 @@ public class MenuManager : MonoBehaviour
     public void StartNewGame()
     {
         //Update later when saves and scenes are established
-        SceneManager.LoadScene("House");
+        AudioManager.Instance.StopMusic();
+        SceneManager.LoadScene((int)SceneID.HOUSE);
     }
 
     public void LoadGame()
@@ -75,7 +76,8 @@ public class MenuManager : MonoBehaviour
     public void OpenMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene((int)SceneID.MAINMENU);
+        AudioManager.Instance.PlayMusic("Menu Theme");
     }
 
     public void AdjustMusicVolume()

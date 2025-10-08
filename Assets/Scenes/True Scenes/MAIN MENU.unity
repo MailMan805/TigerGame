@@ -604,10 +604,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2030499598}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 144, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276398399
 MonoBehaviour:
@@ -1175,7 +1175,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 115, y: 86.1}
+  m_SizeDelta: {x: 115, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &630651523
 MonoBehaviour:
@@ -1260,7 +1260,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 0, y: 30, z: 0, w: 30}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1273,7 +1273,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &630651525
 CanvasRenderer:
@@ -1351,10 +1351,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1832950478}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 140, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &783514925
 MonoBehaviour:
@@ -1680,7 +1680,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 0, y: 27, z: 0, w: 27}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1735,10 +1735,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 630651522}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 116, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &888215949
 MonoBehaviour:
@@ -1846,6 +1846,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3134137841738718545, guid: 0bb711dbaa12edf4fab59f765330324a,
+        type: 3}
+      propertyPath: musicFadeDuration
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3134137841738718545, guid: 0bb711dbaa12edf4fab59f765330324a,
         type: 3}
       propertyPath: musicTrackClips.Array.size
@@ -2475,10 +2480,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1473723445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 136, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1158120681
 MonoBehaviour:
@@ -3237,7 +3242,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 70}
-  m_SizeDelta: {x: 135, y: 86.1}
+  m_SizeDelta: {x: 135, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1473723446
 MonoBehaviour:
@@ -3310,7 +3315,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 0, y: 30, z: 0, w: 30}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3322,8 +3327,8 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_FillOrigin: 2
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1473723448
 CanvasRenderer:
@@ -3505,7 +3510,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -35}
-  m_SizeDelta: {x: 140, y: 86.1}
+  m_SizeDelta: {x: 140, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1832950479
 MonoBehaviour:
@@ -3578,7 +3583,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 0, y: 30, z: 0, w: 30}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3591,7 +3596,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1832950481
 CanvasRenderer:
@@ -3713,7 +3718,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 35}
-  m_SizeDelta: {x: 145, y: 86.1}
+  m_SizeDelta: {x: 145, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2030499599
 MonoBehaviour:
@@ -3761,7 +3766,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2033829083}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3786,7 +3791,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 0, y: 30, z: 0, w: 30}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3799,7 +3804,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &2030499601
 CanvasRenderer:
@@ -3867,6 +3872,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4316037777330071573, guid: 093b399d36f4dab44bd2cf832b89acec,
+        type: 3}
+      propertyPath: sfxVolume
+      value: 
+      objectReference: {fileID: 296152020}
+    - target: {fileID: 4316037777330071573, guid: 093b399d36f4dab44bd2cf832b89acec,
+        type: 3}
+      propertyPath: musicVolume
+      value: 
+      objectReference: {fileID: 497654746}
     - target: {fileID: 4316037777330071573, guid: 093b399d36f4dab44bd2cf832b89acec,
         type: 3}
       propertyPath: pauseMenuPrefab
@@ -3947,6 +3962,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455066525341771601, guid: 38dd82260d8d34a479053d88f17fda0a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2936911939066583398, guid: 38dd82260d8d34a479053d88f17fda0a,
         type: 3}
