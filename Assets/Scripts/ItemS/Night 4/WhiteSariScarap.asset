@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: WhiteSariScarap
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
+  ItemDescription: Part of what used to be a white sari, now stained with blood,
+    shredded from the owners body.
   ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemPositiveThoughts: This poor woman was shunned just like I have been. I'm sorry,
+    I don't know your name to pay my respects. May death treat you better than life.
+  ItemNegativeThoughts: Shunned, just like I am. Societal rules are cruel to women
+    like us.

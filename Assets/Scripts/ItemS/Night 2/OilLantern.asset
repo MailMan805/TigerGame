@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: OilLantern
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
-  ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemDescription: An oil lantern with spots of rust and a couple of dents.
+  ItemThoughts: cough
+  ItemPositiveThoughts: This will guide me through the darkness. I'm grateful to
+    have found it.
+  ItemNegativeThoughts: What a filthy piece of junk. I guess I'll keep it until I
+    find something better.

@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: FamilyPhoto
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
+  ItemDescription: A grainy photo of a happy family.
   ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemPositiveThoughts: These smiling faces remind me of my own family. I wonder,
+    if I show my face, would they be happy to see me?
+  ItemNegativeThoughts: This photo reminds me of my own family. This is what could've
+    been if they didn't leave me to rot.

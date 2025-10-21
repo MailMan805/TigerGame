@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: WovenBasket
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
-  ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemDescription: A beaten up basket used to collect foragables.
+  ItemThoughts: RAAAHHHH
+  ItemPositiveThoughts: Alma, jujube, fig... this has a good variety. Terrible that
+    it has to go to waste... Then again, I could use what was foraged for something.
+  ItemNegativeThoughts: Why not just buy from the market? There's lots of dangerous
+    plants out here.

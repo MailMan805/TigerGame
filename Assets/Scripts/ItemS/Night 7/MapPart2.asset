@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: MapPart2
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
+  ItemDescription: The missing piece of the map.
   ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemPositiveThoughts: I've been looking for this for days. I hope I find him in
+    this area.
+  ItemNegativeThoughts: If I don't find my husband, this tiger will feel my wrath.

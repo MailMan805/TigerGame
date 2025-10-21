@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: ReligiousIcon
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
+  ItemDescription: An abstract representation of the divine creative energy of the
+    universe.
   ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemPositiveThoughts: Many people turn to Shiva for spiritual balance. Hopefully
+    this one found peace within their prayers.
+  ItemNegativeThoughts: The will of a God or not, these people shouldn't be dying
+    like this. Much less my poor husband.

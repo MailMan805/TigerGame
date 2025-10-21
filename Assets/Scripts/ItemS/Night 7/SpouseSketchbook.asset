@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpouseSketchbook
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
+  ItemDescription: A well-loved sketchbook filled with his drawings.
   ItemThoughts: 
-  ItemPositiveThoughts: 
+  ItemPositiveThoughts: I wonder if he still has the drawing of my mehndi.
   ItemNegativeThoughts: 

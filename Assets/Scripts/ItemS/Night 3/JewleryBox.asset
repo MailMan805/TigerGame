@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: JewleryBox
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
-  ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemDescription: A teak, hexagon shaped jewelry box, ordained with floral pattern
+    of green and red. There's nothing inside.
+  ItemThoughts: this aint my dad, this is a cell phone
+  ItemPositiveThoughts: This must've been used for some kind of proposal. Even if
+    the jewelry is not inside, this still holds memories.
+  ItemNegativeThoughts: Only using something so beautiful for just what you need,
+    then leaving it behind once it's served it's purpose. Seems like it won't be
+    missed.

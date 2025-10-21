@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: WoodenAnimals
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
+  ItemDescription: Small wooden carvings of an elephant, a monkey, and a tiger.
   ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemPositiveThoughts: I wanted to make some of these one day, for a baby we will
+    never have.
+  ItemNegativeThoughts: A child should be playing with these at home, not dead on
+    the forest floor.

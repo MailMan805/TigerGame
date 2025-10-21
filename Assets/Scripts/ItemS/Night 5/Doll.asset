@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Doll
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
+  ItemDescription: A doll made from rough cloth and straw resembling a little girl
+    that is now stained in blood.
   ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemPositiveThoughts: I had a doll like this when I was a girl; her name was Saanvi.
+    She wore a pink sari made from scraps.
+  ItemNegativeThoughts: The only reminder of her innocence; she was too young. This
+    doll is all that's left of her memory.
