@@ -25,6 +25,8 @@ public class NewPlayerMovement : MonoBehaviour
     private InputAction interact;
 
     [Header("Player Parts")]
+    public LayerMask groundLayer;
+    public Transform groundCheck;
     public Transform playerCamera;
     private TigerAI tiger;
     CapsuleCollider playerCollider;
@@ -35,6 +37,7 @@ public class NewPlayerMovement : MonoBehaviour
     private bool isRunning = false;
     private bool isCrouching = false;
 
+    [Header("Game Manager")]
     public GameManager gameManager;
 
     public PlayerInputActions playerControls;
@@ -157,11 +160,24 @@ public class NewPlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, verticalVelocity, rb.velocity.z);
             verticalVelocity = 0f;
         }
+        // Ground Check
+        RaycastHit hit;
+        float groundCheckDistance = 1.1f;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, groundCheckDistance, groundLayer))
+        {
+            isGrounded = true;
+            verticalVelocity = 0f;
+        }
+        else
+        {
+            isGrounded = false;
+        }
     }
 
     private void Jump(InputAction.CallbackContext context)
     {
-        if (!isCrouching)
+        if (!isCrouching && isGrounded)
         {
             print("Jump");
             verticalVelocity = Mathf.Sqrt(jumpForce * -1.2f * gravity);
