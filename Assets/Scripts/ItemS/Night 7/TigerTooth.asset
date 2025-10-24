@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: TigerTooth
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
+  ItemDescription: A sharp, broken canine tooth as big as your palm, covered in blood.
   ItemThoughts: 
   ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemNegativeThoughts: His sketchbook isn't even with him. I have nothing to remember
+    my husband by.

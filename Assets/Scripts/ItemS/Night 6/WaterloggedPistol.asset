@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: WaterloggedPistol
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
+  ItemDescription: An empty gun that won't fire.
   ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemPositiveThoughts: Good thing it's broken, keeps it from falling into the wrong
+    hands.
+  ItemNegativeThoughts: Useless! I needed this, I needed something to make that beast
+    hurt.

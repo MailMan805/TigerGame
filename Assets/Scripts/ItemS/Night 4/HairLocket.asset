@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: HairLocket
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
+  ItemDescription: A circular gold locket with a strip of hair tied with a simple
+    string.
   ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemPositiveThoughts: This looks as though taken care of. I hope she finds peace
+    in death, I'm sure her family will want this to remember her by.
+  ItemNegativeThoughts: How could you lose something that one should hold so close
+    to their heart?

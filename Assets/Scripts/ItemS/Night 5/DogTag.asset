@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: DogTag
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
+  ItemDescription: Circular pieces of steel connected witha leather strip. Something
+    illegible is written on one.
   ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemPositiveThoughts: Even if he wasn't here for our sake, this still belongs to
+    someone's son. One last thing to commemorate him.
+  ItemNegativeThoughts: What difference does it make where these end up? The owner
+    didn't belong here anyways.

@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Journal
   m_EditorClassIdentifier: 
   Item3D: {fileID: 0}
-  ItemDescription: 
-  ItemThoughts: 
-  ItemPositiveThoughts: 
-  ItemNegativeThoughts: 
+  ItemDescription: A worn, paperback journal stuffed with additional pages of data
+    in another language you cannot decipher.
+  ItemThoughts: i threw it on the GROUND
+  ItemPositiveThoughts: This must've been used to take notes about their findings
+    here, or personal thoughts. Regardless of his mission, it's a shame it had to
+    end like this.
+  ItemNegativeThoughts: Left to rot by your associates, like me. Lucky for you, someone
+    knows what happened to you.
