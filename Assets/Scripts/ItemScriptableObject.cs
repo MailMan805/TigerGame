@@ -13,4 +13,5 @@ public class ItemScriptableObject : ScriptableObject
     public string ItemThoughts;
     public string ItemPositiveThoughts;
     public string ItemNegativeThoughts;
+    public bool IsItemReturnable;
 }
