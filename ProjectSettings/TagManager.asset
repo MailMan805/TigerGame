@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Body Spawn Marker
-  - Item
   layers:
   - Default
   - TransparentFX
@@ -14,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Fog
-  - Item
+  - Ground
   - 
   - 
   - 
