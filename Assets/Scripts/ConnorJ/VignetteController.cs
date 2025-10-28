@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 
@@ -9,13 +10,15 @@ public class VignetteController : MonoBehaviour
 {
     public static VignetteController instance;
 
+    public UnityEvent FlashVignette;
+
     [Header("Intensity")]
-    [Range(0.0f, 1.0f)][Tooltip("What the intensity of the vignette is during normal gameplay")] public float normalIntensity = 0.0f;
-    [Range(0.0f, 1.0f)] public float maxIntensity = 0.5f;
+    [Range(0.0f, 1.0f)][Tooltip("What the intensity of the vignette is during normal gameplay")][SerializeField] float normalIntensity = 0.0f;
+    [Range(0.0f, 1.0f)][SerializeField] float maxIntensity = 0.5f;
 
     [Header("Time")]
-    public float vignetteTransitionSpeed = 0.2f;
-    public float flashEffectDuration = 2f;
+    [SerializeField] float vignetteTransitionSpeed = 0.2f;
+    [SerializeField] float flashEffectDuration = 2f;
 
     Volume volume;
     Vignette vignette;
@@ -38,6 +41,8 @@ public class VignetteController : MonoBehaviour
         {
             vignette.intensity.value = normalIntensity;
         }
+
+        FlashVignette.AddListener(CommitFlash);
     }
 
     private void Update()
@@ -66,7 +71,13 @@ public class VignetteController : MonoBehaviour
         if (intensity > maxIntensity) { intensity = maxIntensity; }
     }
 
-    public IEnumerator FlashEffect()
+    void CommitFlash()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FlashEffect());
+    }
+
+    IEnumerator FlashEffect()
     {
         SetNewIntensity(maxIntensity);
         yield return new WaitForSeconds(flashEffectDuration);

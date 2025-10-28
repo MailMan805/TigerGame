@@ -7,12 +7,15 @@ public enum SceneID
 {
     MAINMENU,
     HOUSE,
-    MAINLEVEL,
+    LEVELONE,
+    LEVELTWO,
+    LEVELTHREE,
+    LEVELFOUR,
+    LEVELFIVE,
     FINALLEVEL
 }
 public class SceneLoadingManager : MonoBehaviour
 {
-    const int FINAL_LEVEL_NUMBER = 7;
 
     private void Awake()
     {
@@ -22,7 +25,7 @@ public class SceneLoadingManager : MonoBehaviour
     public void LoadNextLevel()
     {
         GameManager.instance.IncrementDay();
-        if (GameManager.instance.currentDay >= FINAL_LEVEL_NUMBER)
+        if (GameManager.instance.currentDay >= (int)SceneID.FINALLEVEL)
         {
             print("Loading Final Night");
             SceneManager.LoadScene((int)SceneID.FINALLEVEL);
@@ -30,7 +33,25 @@ public class SceneLoadingManager : MonoBehaviour
         }
 
         print("Loading Night " + GameManager.instance.currentDay);
-        SceneManager.LoadScene((int)SceneID.MAINLEVEL);
+        switch (GameManager.instance.currentDay)
+        {
+            case 1:
+                SceneManager.LoadScene((int)SceneID.LEVELONE);
+                break;
+            case 2:
+                SceneManager.LoadScene((int)SceneID.LEVELTWO);
+                break;
+            case 3:
+                SceneManager.LoadScene((int)SceneID.LEVELTHREE);
+                break;
+            case 4:
+                SceneManager.LoadScene((int)SceneID.LEVELFOUR);
+                break;
+            case 5:
+                SceneManager.LoadScene((int)SceneID.LEVELFIVE);
+                break;
+        }
+        
     }
 
     public void LoadHouse()
