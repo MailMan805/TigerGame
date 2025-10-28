@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class NewPlayerMovement : MonoBehaviour
 {
@@ -24,11 +25,18 @@ public class NewPlayerMovement : MonoBehaviour
     private InputAction jump;
     private InputAction interact;
 
+    [Header("UI Stuff")]
+    public RawImage crouchingUI;
+    public RawImage standingUI;
+    public RawImage grabbingUI;
+    public RawImage lookingUI;
+
     [Header("Player Parts")]
     public LayerMask groundLayer;
     public Transform groundCheck;
     public Transform playerCamera;
     private TigerAI tiger;
+    private Body body;
     CapsuleCollider playerCollider;
 
     [Header("Player Movement Status")]
@@ -90,6 +98,7 @@ public class NewPlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         playerCollider = GetComponent<CapsuleCollider>();
         tiger = FindAnyObjectByType<TigerAI>();
+        body = FindAnyObjectByType<Body>();
         gameManager = GameManager.instance;
     }
 
@@ -121,6 +130,37 @@ public class NewPlayerMovement : MonoBehaviour
         if (isCrouching)
         {
             movementSpeed = 2f;
+            standingUI.enabled = false;
+            crouchingUI.enabled = true;
+        }
+        else
+        {
+            standingUI.enabled = true;
+            crouchingUI.enabled = false;
+        }
+
+        // Player looking at tiger UI
+        if (tiger.isPlayerLooking && tiger.playerDistance < 50f)
+        {
+            lookingUI.enabled = true;
+            standingUI.enabled = false;
+            crouchingUI.enabled = false;
+        }
+        else
+        {
+            lookingUI.enabled = false;
+        }
+
+        if (body.withinRange)
+        {
+            grabbingUI.enabled = true;
+            standingUI.enabled = false;
+            crouchingUI.enabled = false;
+            lookingUI.enabled = false;
+        }
+        else
+        {
+            grabbingUI.enabled = false;
         }
 
         #region player camera
