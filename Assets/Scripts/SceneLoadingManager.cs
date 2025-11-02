@@ -16,19 +16,14 @@ public enum SceneID
 }
 public class SceneLoadingManager : MonoBehaviour
 {
-
-    private void Awake()
-    {
-        GameManager.instance.LeaveHouse.AddListener(LoadNextLevel);
-    }
+    float SecondsBeforeLoading = 1f;
 
     public void LoadNextLevel()
     {
-        GameManager.instance.IncrementDay();
         if (GameManager.instance.currentDay >= (int)SceneID.FINALLEVEL)
         {
             print("Loading Final Night");
-            SceneManager.LoadScene((int)SceneID.FINALLEVEL);
+            StartCoroutine(LoadNewScene((int)SceneID.FINALLEVEL));
             return;
         }
 
@@ -36,19 +31,19 @@ public class SceneLoadingManager : MonoBehaviour
         switch (GameManager.instance.currentDay)
         {
             case 1:
-                SceneManager.LoadScene((int)SceneID.LEVELONE);
+                StartCoroutine(LoadNewScene((int)SceneID.LEVELONE));
                 break;
             case 2:
-                SceneManager.LoadScene((int)SceneID.LEVELTWO);
+                StartCoroutine(LoadNewScene((int)SceneID.LEVELTWO));
                 break;
             case 3:
-                SceneManager.LoadScene((int)SceneID.LEVELTHREE);
+                StartCoroutine(LoadNewScene((int)SceneID.LEVELTHREE));
                 break;
             case 4:
-                SceneManager.LoadScene((int)SceneID.LEVELFOUR);
+                StartCoroutine(LoadNewScene((int)SceneID.LEVELFOUR));
                 break;
             case 5:
-                SceneManager.LoadScene((int)SceneID.LEVELFIVE);
+                StartCoroutine(LoadNewScene((int)SceneID.LEVELFIVE));
                 break;
         }
         
@@ -57,13 +52,24 @@ public class SceneLoadingManager : MonoBehaviour
     public void LoadHouse()
     {
         print("Loading House...");
-        SceneManager.LoadScene((int)SceneID.HOUSE);
+        StartCoroutine(LoadNewScene((int)SceneID.HOUSE));
     }
 
     public void LoadMainMenu()
     {
         print("Loading Main Menu...");
-        SceneManager.LoadScene((int)SceneID.MAINMENU);
+        StartCoroutine(LoadNewScene((int)SceneID.MAINMENU));
+    }
+
+    IEnumerator LoadNewScene(int Scene)
+    {
+        yield return new WaitForSeconds(SecondsBeforeLoading);
+        SceneManager.LoadScene(Scene);
+    }
+
+    public void SetNewSecondDelay(float newSeconds)
+    {
+        SecondsBeforeLoading = newSeconds;
     }
 
     

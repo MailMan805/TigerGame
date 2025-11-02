@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("VARIABLES")]
+    public float SecondsBeforeLoadingSceneDelay = 3f;
     [Range(0,7)] public int currentDay = 0;
     public int bodyCount = 0;
     public KeyCode PlayerInteractButton = KeyCode.E;
@@ -44,8 +45,12 @@ public class GameManager : MonoBehaviour
 
         sceneLoadingManager = gameObject.AddComponent<SceneLoadingManager>();
 
+        sceneLoadingManager.SetNewSecondDelay(SecondsBeforeLoadingSceneDelay);
+
         ResetGame.AddListener(ResetGameData);
         LeaveHouse.AddListener(LeavingHouse);
+
+        OnDeath.AddListener(DeathData);
 
         DontDestroyOnLoad(gameObject);
     }
@@ -113,5 +118,11 @@ public class GameManager : MonoBehaviour
     {
         IncrementDay();
         sceneLoadingManager.LoadNextLevel();
+    }
+
+    void DeathData()
+    {
+        currentDay--;
+        sceneLoadingManager.LoadHouse();
     }
 }
