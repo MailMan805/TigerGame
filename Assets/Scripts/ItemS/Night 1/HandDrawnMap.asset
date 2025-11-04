@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item3D: {fileID: 1452248858720287329, guid: 347a487de168b2d41aff35edb18852d3, type: 3}
   ItemDescription: A dirtied, crumpled, and partially torn map of the forest.
-  ItemThoughts: This will help keep me from getting lost looking for him.
+  ItemThoughts: His signature is in the river, did he make this? Is this a map of
+    the forest?
   ItemPositiveThoughts: I love maps :)
   ItemNegativeThoughts: I hate maps >:(
+  IsItemReturnable: 0

@@ -15,7 +15,8 @@ MonoBehaviour:
   Item3D: {fileID: 4948243644234478104, guid: f12b11f9db12e2b438aabdac651c687f, type: 3}
   ItemDescription: A thin strip of muddled fabric with clumsy embroidered flowers
     on the end.
-  ItemThoughts: Looks like a scarf from a woman in town. Did her daughter embroider
-    these flowers?
+  ItemThoughts: Looks like a scarf from a woman in town. A child must have made this
+    for her.
   ItemPositiveThoughts: GULP
   ItemNegativeThoughts: nope...
+  IsItemReturnable: 0
