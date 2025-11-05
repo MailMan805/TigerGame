@@ -15,6 +15,7 @@ MonoBehaviour:
   Item3D: {fileID: 0}
   ItemDescription: The missing piece of the map.
   ItemThoughts: 
-  ItemPositiveThoughts: I've been looking for this for days. I hope I find him in
-    this area.
-  ItemNegativeThoughts: If I don't find my husband, this tiger will feel my wrath.
+  ItemPositiveThoughts: I've been looking for this for days. I hope I find him here.
+  ItemNegativeThoughts: If he isn't here, if I can't find some kind of closure, I
+    will make this world feel my rage. That tiger will learn what wrath feels like.
+  IsItemReturnable: 0

@@ -18,5 +18,6 @@ MonoBehaviour:
   ItemThoughts: 
   ItemPositiveThoughts: I had a doll like this when I was a girl; her name was Saanvi.
     She wore a pink sari made from scraps.
-  ItemNegativeThoughts: The only reminder of her innocence; she was too young. This
-    doll is all that's left of her memory.
+  ItemNegativeThoughts: The only reminder of her innocence; she was too young. She
+    should have been protected from a death like this.
+  IsItemReturnable: 0

@@ -17,5 +17,6 @@ MonoBehaviour:
   ItemThoughts: cough
   ItemPositiveThoughts: This will guide me through the darkness. I'm grateful to
     have found it.
-  ItemNegativeThoughts: What a filthy piece of junk. I guess I'll keep it until I
-    find something better.
+  ItemNegativeThoughts: This could be helpful I guess, might as well take it with
+    me.
+  IsItemReturnable: 0

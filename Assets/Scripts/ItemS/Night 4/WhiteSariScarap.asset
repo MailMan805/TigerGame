@@ -19,4 +19,5 @@ MonoBehaviour:
   ItemPositiveThoughts: This poor woman was shunned just like I have been. I'm sorry,
     I don't know your name to pay my respects. May death treat you better than life.
   ItemNegativeThoughts: Shunned, just like I am. Societal rules are cruel to women
-    like us.
+    like us. These rules are ruthless and barbaric.
+  IsItemReturnable: 0
