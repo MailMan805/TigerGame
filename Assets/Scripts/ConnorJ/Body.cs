@@ -9,10 +9,10 @@ public class Body : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (withinRange) { CollectBody(); }
-        }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (withinRange) { CollectBody(); }
+            }
     }
 
     void CollectBody()
@@ -23,7 +23,7 @@ public class Body : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             withinRange = true;
         }
