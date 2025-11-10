@@ -24,12 +24,18 @@ public class NewPlayerMovement : MonoBehaviour
     private InputAction crouch;
     private InputAction jump;
     private InputAction interact;
+    private InputAction map;
 
     [Header("UI Stuff")]
     public RawImage crouchingUI;
     public RawImage standingUI;
     public RawImage grabbingUI;
     public RawImage lookingUI;
+    public RawImage mapUI;
+    private Vector2 mapStartPosition = new Vector2(0f,-500f);
+    private Vector2 mapEndPosition = new Vector2(0f,0f);
+    private float mapLerpDuration = 1.0f;
+    private float mapLerpSpeed = 8f;
 
     [Header("Player Parts")]
     public LayerMask groundLayer;
@@ -44,6 +50,7 @@ public class NewPlayerMovement : MonoBehaviour
     private bool isGrounded = true;
     private bool isRunning = false;
     private bool isCrouching = false;
+    private bool isLookingAtMap = false;
 
     [Header("Game Manager")]
     public GameManager gameManager;
@@ -77,6 +84,11 @@ public class NewPlayerMovement : MonoBehaviour
         interact = playerControls.Player.Interact;
         interact.Enable();
         interact.performed += Interact;
+
+        map = playerControls.Player.Map;
+        map.Enable();
+        map.performed += StartMap;
+        map.canceled += StopMap;
     }
 
     private void OnDisable()
@@ -100,6 +112,8 @@ public class NewPlayerMovement : MonoBehaviour
         tiger = FindAnyObjectByType<TigerAI>();
         body = FindAnyObjectByType<Body>();
         gameManager = GameManager.instance;
+
+        mapUI.rectTransform.anchoredPosition = mapStartPosition;
     }
 
     void Update()
@@ -126,6 +140,8 @@ public class NewPlayerMovement : MonoBehaviour
         {
             movementSpeed = 7f;
         }
+
+        #region ui handler
 
         if (isCrouching)
         {
@@ -162,6 +178,7 @@ public class NewPlayerMovement : MonoBehaviour
         {
             grabbingUI.enabled = false;
         }
+        #endregion
 
         #region player camera
 
@@ -213,13 +230,27 @@ public class NewPlayerMovement : MonoBehaviour
         {
             isGrounded = false;
         }
+
+        // Map UI
+        if (isLookingAtMap)
+        {
+            mapLerpDuration += Time.deltaTime * mapLerpSpeed;
+        }
+        else
+        {
+            mapLerpDuration -= Time.deltaTime * mapLerpSpeed;
+        }
+
+        mapLerpDuration = Mathf.Clamp01(mapLerpDuration);
+
+        mapUI.rectTransform.anchoredPosition = Vector2.Lerp(mapStartPosition, mapEndPosition, mapLerpDuration);
     }
 
+    #region player input action
     private void Jump(InputAction.CallbackContext context)
     {
         if (!isCrouching && isGrounded)
         {
-            print("Jump");
             verticalVelocity = Mathf.Sqrt(jumpForce * -1.2f * gravity);
         }
     }
@@ -231,7 +262,6 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void StartCrouch(InputAction.CallbackContext context)
     {
-        print("Start Crouch");
         isCrouching = true;
         movementSpeed = 2f;
         playerCamera.localPosition = new Vector3(0f, 0.35f, 0f);
@@ -239,7 +269,6 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void StopCrouch(InputAction.CallbackContext context)
     {
-        print("Stop Crouch");
         isCrouching = false;
         movementSpeed = 5f;
         playerCamera.localPosition = new Vector3(0f, 0.5f, 0f);
@@ -247,18 +276,27 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void StartRun(InputAction.CallbackContext context)
     {
-        print("Start Run");
         isRunning = true;
     }
 
     private void StopRun(InputAction.CallbackContext context)
     {
-        print("Stop Run");
         isRunning = false;
         movementSpeed = 5f;
     }
 
-    
+    private void StartMap(InputAction.CallbackContext context)
+    {
+        isLookingAtMap = true;
+    }
+
+    private void StopMap(InputAction.CallbackContext context)
+    {
+        isLookingAtMap = false;
+    }
+
+    #endregion
+
     public void AwarenessStates()
     {
         // Check for different movement and crouching states to adjust tiger's awareness
