@@ -433,6 +433,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 196727020089829695}
   soundEffectsSource: {fileID: 6581611409493258883}
-  musicTrackClips: []
-  soundEffectClips: []
+  musicTrackClips:
+  - {fileID: 8300000, guid: 37806c00c9f6da84fa50d9ada5bb5341, type: 3}
+  - {fileID: 8300000, guid: 7a551e947bda627429ea591a3f4416b8, type: 3}
+  soundEffectClips:
+  - {fileID: 8300000, guid: 61a9839b4e4c2b44a9cd967d8918b0fe, type: 3}
+  - {fileID: 8300000, guid: 09c485c0c72ddae4aa641cf8e5d3b117, type: 3}
+  - {fileID: 8300000, guid: 934c2ba975540e54f9781c42f115e527, type: 3}
+  - {fileID: 8300000, guid: a6e4c0a6f848c4b4bb02dfe563803c9c, type: 3}
   musicFadeDuration: 1.5
