@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [Range(0,7)] public int currentDay = 0;
     public int bodyCount = 0;
     public KeyCode PlayerInteractButton = KeyCode.E;
+    public static bool DiedInLevel { get; set; } = false; // Persists only in House segments.
 
     [Header("KARMA")]
     public int Karma = 10;
@@ -72,13 +73,7 @@ public class GameManager : MonoBehaviour
     {
         Karma += amountOfChange;
 
-        if (Karma > MaxKarma)
-        {
-            Karma = MaxKarma;
-        }
-        if (Karma < 0) {
-            Karma = 0;
-        }
+        Karma = Mathf.Clamp(Karma, 0, MaxKarma);
     }
 
     public void IncrementDay()
@@ -117,12 +112,15 @@ public class GameManager : MonoBehaviour
     void LeavingHouse()
     {
         IncrementDay();
+        DiedInLevel = false;
         sceneLoadingManager.LoadNextLevel();
     }
 
     void DeathData()
     {
+        DiedInLevel = true;
         currentDay--;
         sceneLoadingManager.LoadHouse();
     }
+
 }

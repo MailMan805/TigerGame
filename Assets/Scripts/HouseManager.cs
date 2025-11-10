@@ -14,6 +14,12 @@ public class HouseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(InvokeHouse());
+    }
+
+    IEnumerator InvokeHouse()
+    {
+        yield return null;
         GameManager.instance.OnHouseLevelLoaded.Invoke();
     }
 }

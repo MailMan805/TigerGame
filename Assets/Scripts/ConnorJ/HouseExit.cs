@@ -13,6 +13,7 @@ public class HouseExit : MonoBehaviour
             touched = true;
             GameManager.instance.LeaveHouse.Invoke();
             gameObject.SetActive(false);
+            other.gameObject.GetComponent<NewPlayerMovement>().enabled = false;
         }
     }
 }
