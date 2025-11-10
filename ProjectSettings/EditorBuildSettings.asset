@@ -6,27 +6,36 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/True Scenes/MAIN MENU.unity
+    path: Assets/Scenes/True Scenes/TRUE LEVELS/MAIN MENU.unity
     guid: a24afb055e08657439783a344971fb84
   - enabled: 1
-    path: Assets/Scenes/True Scenes/House.unity
+    path: Assets/Scenes/True Scenes/TRUE LEVELS/House.unity
     guid: f9714cc60fa13db40b276dfa54050a90
   - enabled: 1
-    path: Assets/Scenes/True Scenes/Level 1.unity
+    path: Assets/Scenes/True Scenes/TRUE LEVELS/Main Level.unity
     guid: 76282bc7b77bd524c95be09cc93e8943
-  - enabled: 1
-    path: Assets/Scenes/True Scenes/Level 2.unity
-    guid: f5453a68520a02549b407d94b2797a0b
-  - enabled: 1
-    path: Assets/Scenes/True Scenes/Level 3.unity
-    guid: 51906e21034a7de45b53b6c9253e09b2
-  - enabled: 1
-    path: Assets/Scenes/True Scenes/Level 4.unity
-    guid: 469ff5382e066e4438ec751e0e7baf7d
-  - enabled: 1
-    path: Assets/Scenes/True Scenes/Level 5.unity
-    guid: b68ec4687967b5245993c3f810fb1f4d
   - enabled: 1
     path: Assets/Scenes/True Scenes/Final Level.unity
     guid: e1399e76a682bca4d9af84cea06cb26d
+  - enabled: 1
+    path: Assets/Scenes/True Scenes/TRUE LEVELS/Tutorial/Tutorial.unity
+    guid: a62733f61b1c0984fb593c4781911b18
+  - enabled: 1
+    path: Assets/Scenes/True Scenes/TRUE LEVELS/Day6House/Day6House.unity
+    guid: d3131eaffc0234643a5580dcd2d0eedc
+  - enabled: 1
+    path: Assets/Scenes/True Scenes/TRUE LEVELS/Day5House/Day5House.unity
+    guid: 1b3914889ea20ed4a8bc7ff0275f0080
+  - enabled: 1
+    path: Assets/Scenes/True Scenes/TRUE LEVELS/Day4House/Day4House.unity
+    guid: 9e0c133383ebea64389baaf9562131e7
+  - enabled: 1
+    path: Assets/Scenes/True Scenes/TRUE LEVELS/Day3House/Day3House.unity
+    guid: 6a522f6becbeffc47936322dccc08c03
+  - enabled: 1
+    path: Assets/Scenes/True Scenes/TRUE LEVELS/Day2House/Day2House.unity
+    guid: 64700c1916da523468158af60343387f
+  - enabled: 1
+    path: Assets/Scenes/True Scenes/TRUE LEVELS/Day1House/Day1House.unity
+    guid: 74bdc2b0ba37298479dce8f98bbb48d9
   m_configObjects: {}

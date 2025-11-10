@@ -19,4 +19,5 @@ MonoBehaviour:
   ItemPositiveThoughts: This looks as though taken care of. I hope she finds peace
     in death, I'm sure her family will want this to remember her by.
   ItemNegativeThoughts: How could you lose something that one should hold so close
-    to their heart?
+    to their heart? You were a mother. You deserved better.
+  IsItemReturnable: 0

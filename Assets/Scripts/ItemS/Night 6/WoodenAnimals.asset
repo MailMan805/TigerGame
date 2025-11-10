@@ -18,4 +18,5 @@ MonoBehaviour:
   ItemPositiveThoughts: I wanted to make some of these one day, for a baby we will
     never have.
   ItemNegativeThoughts: A child should be playing with these at home, not dead on
-    the forest floor.
+    the forest floor. May the world that didn't protect you burn.
+  IsItemReturnable: 0
