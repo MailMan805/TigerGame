@@ -445,9 +445,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 0
-  jumpForce: 300
+  jumpForce: 5
   mouseSensitivity: 2
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 1215767826840899084}
   gameManager: {fileID: 0}
 --- !u!1 &3529266578412857326
 GameObject:

@@ -9,17 +9,23 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
 
-    int initalBodiesInLevel = 3;
+    [Header("Starting Variables")]
+    public int initalBodiesInLevel = 3;
+    public FogDensity startingFogDensity = FogDensity.NONE;
+    public bool isMainLevel = true;
     [HideInInspector] public int bodiesCollected = 0;
 
+    [Header("Prefab")]
     public GameObject bodyToSpawn;
     GameObject directionalLight;
     GameObject UIcanvas;
 
     public float ShowBodyCountInSeconds = 3f;
 
+    [Header("Light Variables")]
     public float StartingLightRotation = 211f;
     public float EndingLightRoation = 330f;
+    float LightRotationSpeed = 1f;
     Single RotateStep;
     Quaternion NewLightRotation; 
 
@@ -32,31 +38,44 @@ public class LevelManager : MonoBehaviour
     const string BODY_COUNT_TEXT = " left.";
     const string BODY_ALL_FOUND_TEXT = "All found. Leave.";
 
+    const float LIGHT_DIVIDER = 50f;
+
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        } else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
     private void Start()
     {
-        GameManager.instance.OnMainLevelLoaded.AddListener(SetupLevel);
+        if (isMainLevel) { GameManager.instance.OnMainLevelLoaded.Invoke(); }
+        
         GameManager.instance.BodyCollected.AddListener(IncrementBodyAmount);
+
         UIcanvas = GetComponentInChildren<Canvas>().gameObject;
         directionalLight = GetComponentInChildren<Light>().gameObject;
 
         BodyCountText = UIcanvas.gameObject.transform.Find(BODY_COUNT_TEXT_NAME).GetComponent<TextMeshProUGUI>();
 
         BodyCountText.enabled = false;
+
+        SetupLevel();
     }
 
     private void Update()
     {
-        directionalLight.transform.rotation = Quaternion.Lerp(directionalLight.transform.rotation, NewLightRotation, Time.deltaTime);
+        directionalLight.transform.rotation = Quaternion.Lerp(directionalLight.transform.rotation, NewLightRotation, Time.deltaTime * LightRotationSpeed);
     }
 
-    void SetupLevel(Night night)
+    void SetupLevel()
     {
-        SpawnBodies(night.BodyCount);
+        SpawnBodies(initalBodiesInLevel);
         LightSplitSetup();
     }
 
@@ -71,17 +90,9 @@ public class LevelManager : MonoBehaviour
             initalBodiesInLevel = SpawnMarkers.Length;
         }
 
-        // Randomizes Spawn Points
-        for (int i = 0; i < SpawnMarkers.Length; i++)
-        {
-            GameObject tmp = SpawnMarkers[i];
-            int newSpot = UnityEngine.Random.Range(i, SpawnMarkers.Length);
-            SpawnMarkers[i] = SpawnMarkers[newSpot];
-            SpawnMarkers[newSpot] = tmp;
-        }
-
         for (int i = 0; i < initalBodiesInLevel; i++) {
             var body = Instantiate(bodyToSpawn);
+            Debug.Log(SpawnMarkers[i].name);
 
             body.transform.position = SpawnMarkers[i].transform.position;
             body.transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0,365),0);
@@ -128,11 +139,14 @@ public class LevelManager : MonoBehaviour
 
         RotateStep = (EndingLightRoation - StartingLightRotation) / initalBodiesInLevel;
 
+        LightRotationSpeed = initalBodiesInLevel / LIGHT_DIVIDER;
+
         SetLightRotation();
     }
 
     void SetLightRotation()
     {
+        Debug.Log("New Light rotation being setup...");
         NewLightRotation = Quaternion.Euler(StartingLightRotation + (RotateStep * bodiesCollected), -30, 0);
     }
 }
