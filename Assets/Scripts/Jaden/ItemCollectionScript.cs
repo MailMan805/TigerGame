@@ -67,6 +67,10 @@ public class ItemCollectionScript : MonoBehaviour
     public void setTiger(Night night)
     {
         tiger = FindAnyObjectByType<TigerAI>();
+        if (tiger == null)
+        {
+            Debug.LogWarning("TigerAI not found in scene");
+        }
     }
 
     public void CollectItem()

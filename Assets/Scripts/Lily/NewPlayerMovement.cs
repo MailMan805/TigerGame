@@ -218,40 +218,43 @@ public class NewPlayerMovement : MonoBehaviour
         movementSpeed = 5f;
     }
 
-    
+
     public void AwarenessStates()
     {
-        // Check for different movement and crouching states to adjust tiger's awareness
-        if (isCrouching)
+        if (tiger != null)
         {
-            // Player is crouching, check if moving or not
-            if (!isMoving)
+            // Check for different movement and crouching states to adjust tiger's awareness
+            if (isCrouching)
             {
-                tiger.awareness = 0.0f; // Crouching and not moving, low awareness
+                // Player is crouching, check if moving or not
+                if (!isMoving)
+                {
+                    tiger.awareness = 0.0f; // Crouching and not moving, low awareness
+                }
+                else
+                {
+                    tiger.awareness = 1.0f; // Crouching and moving, moderate awareness
+                }
             }
             else
             {
-                tiger.awareness = 1.0f; // Crouching and moving, moderate awareness
+                // Player is not crouching, check movement speed
+                if (isRunning)
+                {
+                    tiger.awareness = 3.0f; // Player is running, high awareness
+                }
+                else if (isMoving)
+                {
+                    tiger.awareness = 2.0f; // Player is walking, moderate-high awareness
+                }
+                else
+                {
+                    tiger.awareness = 1.0f; // Player is standing still
+                }
             }
-        }
-        else
-        {
-            // Player is not crouching, check movement speed
-            if (isRunning)
-            {
-                tiger.awareness = 3.0f; // Player is running, high awareness
-            }
-            else if (isMoving)
-            {
-                tiger.awareness = 2.0f; // Player is walking, moderate-high awareness
-            }
-            else
-            {
-                tiger.awareness = 1.0f; // Player is standing still
-            }
-        }
 
 
+        }
     }
 
 }

@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     [Header("EVENTS")]
     public UnityEvent BodyCollected;
-    public UnityEvent OnMainLevelLoaded;
+    public UnityEvent<Night> OnMainLevelLoaded;
     public UnityEvent OnHouseLevelLoaded;
     public UnityEvent LeaveHouse;
     public UnityEvent ResetGame;
