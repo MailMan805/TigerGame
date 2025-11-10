@@ -10,7 +10,7 @@ public class ItemCollectionScript : MonoBehaviour
     public static ItemCollectionScript instance;
     [Header("Managers")]
     public GameManager gameManager;
-    private TigerAI tiger;
+    [SerializeField] private TigerAI tiger;
 
     [Header("ItemCanvas")]
     public GameObject ItemCanvas;
@@ -28,6 +28,7 @@ public class ItemCollectionScript : MonoBehaviour
     [Header("Item Information")]
     public ItemScriptableObject[] items; //List of items in order
     private int itemMarker = 0; //Tracks which item it's on
+    private int prevDayItemCount = 0; //Tracks previous amount of items collected on the last day. For OnDeath checks.
 
     [Header("Varibles")]
     public int NegativeThreashHold = 8;
@@ -50,8 +51,11 @@ public class ItemCollectionScript : MonoBehaviour
         gameManager = GameManager.instance;
         ItemCanvas.SetActive(false);
         ReturnableItemCanvas.SetActive(false);
-        gameManager.OnMainLevelLoaded.AddListener(setTiger);
         gameManager.ResetGame.AddListener(ResetGameData);
+        gameManager.OnMainLevelLoaded.AddListener(setTiger);
+        gameManager.OnDeath.AddListener(ResetDay);
+        gameManager.OnHouseLevelLoaded.AddListener(TrackItems);
+        setTiger(); // Checks on start in case starting from level scene
     }
 
     // Update is called once per frame
@@ -64,7 +68,7 @@ public class ItemCollectionScript : MonoBehaviour
     }
 
 
-    public void setTiger(Night night)
+    public void setTiger()
     {
         tiger = FindAnyObjectByType<TigerAI>();
         if (tiger == null)
@@ -165,6 +169,7 @@ public class ItemCollectionScript : MonoBehaviour
         ItemCanvas.SetActive(false);
         LockCursor();
         gameManager.inItemMenu = false;
+        gameManager.BodyCollected.Invoke();
         //Change Item State
     }
 
@@ -177,6 +182,7 @@ public class ItemCollectionScript : MonoBehaviour
         ItemCanvas.SetActive(false);
         LockCursor();
         gameManager.inItemMenu = false;
+        gameManager.BodyCollected.Invoke();
         //Change Item State
     }
 
@@ -188,6 +194,7 @@ public class ItemCollectionScript : MonoBehaviour
         ItemCanvas.SetActive(false);
         LockCursor();
         gameManager.inItemMenu = false;
+        gameManager.BodyCollected.Invoke();
         //Change Item State
     }
 
@@ -206,5 +213,15 @@ public class ItemCollectionScript : MonoBehaviour
     void ResetGameData()
     {
         itemMarker = 0;
+    }
+
+    void ResetDay()
+    {
+        itemMarker = prevDayItemCount;
+    }
+
+    void TrackItems()
+    {
+        prevDayItemCount = itemMarker;
     }
 }
