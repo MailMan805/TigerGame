@@ -14,7 +14,7 @@ public class SeenBodyMarker : MonoBehaviour
 
         if (VignetteController.instance != null)
         {
-            StartCoroutine(VignetteController.instance.FlashEffect());
+            VignetteController.instance.FlashVignette.Invoke();
         }
         
     }
