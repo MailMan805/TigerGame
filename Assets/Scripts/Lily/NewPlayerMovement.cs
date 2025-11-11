@@ -221,6 +221,8 @@ public class NewPlayerMovement : MonoBehaviour
     
     public void AwarenessStates()
     {
+        if (tiger == null) return;
+
         // Check for different movement and crouching states to adjust tiger's awareness
         if (isCrouching)
         {
