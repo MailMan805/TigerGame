@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 28807d0fc00763f4da4b269ccb0102db
+guid: 5d84e64a0b10d6244bf9474aa69d6185
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - DeathRattle BB
+  - Colorfiction Messy
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

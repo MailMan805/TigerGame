@@ -266,7 +266,7 @@ public class TigerAI : MonoBehaviour
             hasSetProwlingDestination = true;
 
             // Play distinct sound cue
-            // PlaySoundCue(prowlingSound);
+            AudioManager.Instance.PlaySound("TigerProwl", gameObject);
         }
 
         // Check if tiger is close enough to the player to attack outright.
@@ -320,7 +320,7 @@ public class TigerAI : MonoBehaviour
             hasSetStalkingDestination = true;
 
             // Play distinct sound cue
-            // PlaySoundCue(stalkingSound);
+            AudioManager.Instance.PlaySound("TigerStalking", gameObject);
         }
 
 
@@ -387,7 +387,7 @@ public class TigerAI : MonoBehaviour
             hasSetEvacuatingDestination = true;
 
             // Play evacuation sound cue
-            // PlaySoundCue(evacuateSound);
+            AudioManager.Instance.PlaySound("TigerEvacuate", gameObject);
         }
 
         // Check if reached destination
@@ -621,6 +621,9 @@ public class TigerAI : MonoBehaviour
 
     private void AttackPlayer()
     {
+        //Putting this here for your use when you implement - Conner
+        AudioManager.Instance.PlaySound("TigerAttack", gameObject);
+
         // Implement attack logic
         GameManager.instance.OnDeath.Invoke();
 
