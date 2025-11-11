@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class HouseExit : MonoBehaviour
 {
-    bool touched = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !touched)
+        if (other.CompareTag("Player"))
         {
-            print("Leaving lol");
-            touched = true;
             GameManager.instance.LeaveHouse.Invoke();
-            gameObject.SetActive(false);
         }
     }
 }

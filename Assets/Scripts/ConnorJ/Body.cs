@@ -1,41 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Body : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> bodyMeshObjects = new List<GameObject>();
-    
+    public bool TEST = false;
     public bool withinRange = false;
 
-    const int ONE_BODY = 1;
-    const int MULTIPLE_BODIES = 2;
-
-    const string PLAYER_TAG = "Player";
-
-    private void Start()
+    private void Update()
     {
-        SetInitalRandomBodyMesh();
-    }
-
-    void SetInitalRandomBodyMesh()
-    {
-        if (bodyMeshObjects.Count < ONE_BODY || bodyMeshObjects == null) return;
-
-        if (bodyMeshObjects.Count < MULTIPLE_BODIES)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            bodyMeshObjects.First().SetActive(true);
+            if (withinRange) { CollectBody(); }
         }
-
-        foreach (GameObject body in bodyMeshObjects)
-        {
-            body.SetActive(false);
-        }
-
-        int chosenBodyMesh = Random.Range(0, bodyMeshObjects.Count);
-
-        bodyMeshObjects[chosenBodyMesh].SetActive(true);
     }
 
     void CollectBody()
@@ -46,7 +23,7 @@ public class Body : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(PLAYER_TAG))
+        if(other.CompareTag("Player"))
         {
             withinRange = true;
         }
@@ -54,7 +31,7 @@ public class Body : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(PLAYER_TAG))
+        if (other.CompareTag("Player"))
         {
             withinRange = false;
         }
