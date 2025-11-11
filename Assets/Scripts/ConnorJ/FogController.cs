@@ -144,7 +144,7 @@ public class FogController : MonoBehaviour
         }
     }
 
-    void StartFogSetup(Night night)
+    void StartFogSetup()
     {
         print("Fog is being set up!");
         SetEvilFogColorAmount(GameManager.instance.GetKarmaLevel());

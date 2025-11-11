@@ -12,37 +12,25 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("VARIABLES")]
+    public float SecondsBeforeLoadingSceneDelay = 3f;
     [Range(0,7)] public int currentDay = 0;
     public int bodyCount = 0;
     public KeyCode PlayerInteractButton = KeyCode.E;
+    public static bool DiedInLevel { get; set; } = false; // Persists only in House segments.
 
     [Header("KARMA")]
     public int Karma = 10;
-    public int MaxKarma = 20; // 8 - 12 Neutral, Starts at 10, <= 8 Negative, >= 12 Positive.
+    [SerializeField] private int MaxKarma = 20; // 8 - 12 Neutral, Starts at 10, <= 8 Negative, >= 12 Positive.
 
     [HideInInspector] public bool inItemMenu = false;
 
     [Header("EVENTS")]
     public UnityEvent BodyCollected;
-    public UnityEvent<Night> OnMainLevelLoaded;
+    public UnityEvent OnMainLevelLoaded;
     public UnityEvent OnHouseLevelLoaded;
     public UnityEvent LeaveHouse;
     public UnityEvent ResetGame;
     public UnityEvent OnDeath;
-
-    // NIGHT SETUP
-    static Night NightOne = new Night(2, FogDensity.NONE);
-    static Night NightTwo = new Night(2, FogDensity.VERYLIGHT);
-    static Night NightThree = new Night(3, FogDensity.LIGHT);
-    static Night NightFour = new Night(3, FogDensity.NORMAL);
-    static Night NightFive = new Night(4, FogDensity.HEAVY);
-    static Night NightSix = new Night(4, FogDensity.VERYHEAVY);
-
-    
-    static Night DemoNight = new Night(1, FogDensity.NONE);
-
-    [Header("DEMO")]
-    public bool DemoNightOnly = false;
 
     // Manager Setup
     public SceneLoadingManager sceneLoadingManager { get; set; }
@@ -58,63 +46,14 @@ public class GameManager : MonoBehaviour
 
         sceneLoadingManager = gameObject.AddComponent<SceneLoadingManager>();
 
+        sceneLoadingManager.SetNewSecondDelay(SecondsBeforeLoadingSceneDelay);
+
         ResetGame.AddListener(ResetGameData);
         LeaveHouse.AddListener(LeavingHouse);
 
+        OnDeath.AddListener(DeathData);
+
         DontDestroyOnLoad(gameObject);
-    }
-
-    private void OnLevelWasLoaded(int level)
-    {
-        switch (level) {
-            case (int)SceneID.MAINMENU:
-                break; 
-            case (int)SceneID.HOUSE:
-                OnHouseLevelLoaded.Invoke();
-                break;
-            case (int)SceneID.MAINLEVEL:
-                StartCoroutine(MainLevelSetup());
-                break;
-            case (int)SceneID.FINALLEVEL:
-                break;
-        
-        }
-    }
-
-    IEnumerator MainLevelSetup()
-    {
-        print("Setting Up Level!!");
-
-        yield return null; // Wait a frame
-
-        if (DemoNightOnly)
-        {
-            OnMainLevelLoaded.Invoke(DemoNight);
-            yield break;
-        }
-
-        // Invoke the main level event with the responding night
-        switch (currentDay)
-        {
-            case 1:
-                OnMainLevelLoaded.Invoke(NightOne);
-                break;
-            case 2:
-                OnMainLevelLoaded.Invoke(NightTwo);
-                break;
-            case 3:
-                OnMainLevelLoaded.Invoke(NightThree);
-                break;
-            case 4:
-                OnMainLevelLoaded.Invoke(NightFour);
-                break;
-            case 5:
-                OnMainLevelLoaded.Invoke(NightFive);
-                break;
-            case 6:
-                OnMainLevelLoaded.Invoke(NightSix);
-                break;
-        }
     }
 
     /// <summary>
@@ -134,13 +73,7 @@ public class GameManager : MonoBehaviour
     {
         Karma += amountOfChange;
 
-        if (Karma > MaxKarma)
-        {
-            Karma = MaxKarma;
-        }
-        if (Karma < 0) {
-            Karma = 0;
-        }
+        Karma = Mathf.Clamp(Karma, 0, MaxKarma);
     }
 
     public void IncrementDay()
@@ -179,6 +112,15 @@ public class GameManager : MonoBehaviour
     void LeavingHouse()
     {
         IncrementDay();
+        DiedInLevel = false;
         sceneLoadingManager.LoadNextLevel();
     }
+
+    void DeathData()
+    {
+        DiedInLevel = true;
+        currentDay--;
+        sceneLoadingManager.LoadHouse();
+    }
+
 }
