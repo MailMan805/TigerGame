@@ -7,7 +7,7 @@ public class Body : MonoBehaviour
 {
     [SerializeField] private List<GameObject> bodyMeshObjects = new List<GameObject>();
     
-    private bool withinRange = false;
+    public bool withinRange = false;
 
     const int ONE_BODY = 1;
     const int MULTIPLE_BODIES = 2;
