@@ -17,8 +17,6 @@ public class DEMODeathScreen : MonoBehaviour
     void ShowDeathScreen()
     {
         Debug.Log("SENT");
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         canvas.enabled = true;
     }
 
