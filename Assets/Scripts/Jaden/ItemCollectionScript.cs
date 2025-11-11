@@ -64,7 +64,7 @@ public class ItemCollectionScript : MonoBehaviour
     }
 
 
-    public void setTiger(Night night)
+    public void setTiger()
     {
         tiger = FindAnyObjectByType<TigerAI>();
     }
