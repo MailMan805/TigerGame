@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1c8a2c0cb3acd488a3f347ae28fd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SecondsBeforeLoadingSceneDelay: 1
-  currentDay: 1
+  SecondsBeforeLoadingSceneDelay: 3
+  currentDay: 0
   bodyCount: 0
   PlayerInteractButton: 13
   Karma: 10
