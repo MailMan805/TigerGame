@@ -3,17 +3,7 @@ guid: 28681540ef6d72c4f90d0c0bf4b7abbb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 09099366038b6aa4d925bb74f50b2a68, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: tentStake
-    second: {fileID: 2100000, guid: 45ceae52652663f4884e46bb449b18dc, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
