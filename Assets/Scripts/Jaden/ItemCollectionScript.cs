@@ -28,6 +28,7 @@ public class ItemCollectionScript : MonoBehaviour
     [Header("Item Information")]
     public ItemScriptableObject[] items; //List of items in order
     private int itemMarker = 0; //Tracks which item it's on
+    private int itemPreviousDayCount = 0; //Tracks previous item count before dying.
 
     [Header("Varibles")]
     public int NegativeThreashHold = 8;
@@ -50,8 +51,11 @@ public class ItemCollectionScript : MonoBehaviour
         gameManager = GameManager.instance;
         ItemCanvas.SetActive(false);
         ReturnableItemCanvas.SetActive(false);
+
         gameManager.OnMainLevelLoaded.AddListener(setTiger);
         gameManager.ResetGame.AddListener(ResetGameData);
+        gameManager.LeaveHouse.AddListener(UpdatePreviousCount);
+        gameManager.LeaveLevel.AddListener(RevertItemCountToPreviousDay);
     }
 
     // Update is called once per frame
@@ -202,5 +206,16 @@ public class ItemCollectionScript : MonoBehaviour
     void ResetGameData()
     {
         itemMarker = 0;
+        itemPreviousDayCount = 0;
+    }
+
+    void UpdatePreviousCount()
+    {
+        itemPreviousDayCount = itemMarker;
+    }
+
+    void RevertItemCountToPreviousDay()
+    {
+        itemMarker = itemPreviousDayCount;
     }
 }

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     [Header("VARIABLES")]
     public float SecondsBeforeLoadingSceneDelay = 3f;
-    [Range(0, 7)] public int currentDay = 0;
+    [Range(1, 7)] public int currentDay = 1;
     public int bodyCount = 0;
     public KeyCode PlayerInteractButton = KeyCode.E;
     public static bool DiedInLevel { get; set; } = false; // Persists only in House segments.
@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnMainLevelLoaded;
     public UnityEvent OnHouseLevelLoaded;
     public UnityEvent LeaveHouse;
+    public UnityEvent LeaveLevel;
     public UnityEvent ResetGame;
     public UnityEvent OnDeath;
 
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
 
         ResetGame.AddListener(ResetGameData);
         LeaveHouse.AddListener(LeavingHouse);
+        LeaveLevel.AddListener(LeavingLevel);
 
         OnDeath.AddListener(DeathData);
 
@@ -113,15 +115,20 @@ public class GameManager : MonoBehaviour
 
     void LeavingHouse()
     {
-        IncrementDay();
+        
         DiedInLevel = false;
         sceneLoadingManager.LoadNextLevel();
+    }
+
+    void LeavingLevel()
+    {
+        IncrementDay();
+        sceneLoadingManager.LoadHouse();
     }
 
     void DeathData()
     {
         DiedInLevel = true;
-        currentDay--;
         sceneLoadingManager.LoadHouse();
     }
 

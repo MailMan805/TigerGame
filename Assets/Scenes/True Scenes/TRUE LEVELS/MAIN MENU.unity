@@ -5791,7 +5791,7 @@ PrefabInstance:
     - target: {fileID: 4575271359115587038, guid: 38dd82260d8d34a479053d88f17fda0a,
         type: 3}
       propertyPath: currentDay
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4575271359115587038, guid: 38dd82260d8d34a479053d88f17fda0a,
         type: 3}
