@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
     public FogDensity startingFogDensity = FogDensity.NONE;
     public bool isMainLevel = true;
     [HideInInspector] public int bodiesCollected = 0;
+    [HideInInspector] public bool collectedAllBodies = false;
 
     [Header("Prefab")]
     public GameObject bodyToSpawn;
@@ -65,6 +66,8 @@ public class LevelManager : MonoBehaviour
 
         BodyCountText.enabled = false;
 
+        collectedAllBodies = false;
+
         SetupLevel();
     }
 
@@ -104,6 +107,11 @@ public class LevelManager : MonoBehaviour
         bodiesCollected++;
         print("Bodies Collected: " + bodiesCollected);
 
+        if (bodiesCollected >= initalBodiesInLevel)
+        {
+            collectedAllBodies = true;
+        }
+
         SetLightRotation();
 
         UpdateBodyCountText();
@@ -117,7 +125,7 @@ public class LevelManager : MonoBehaviour
 
         BodyCountText.text = (initalBodiesInLevel - bodiesCollected) + BODY_COUNT_TEXT;
 
-        if (bodiesCollected >= initalBodiesInLevel)
+        if (collectedAllBodies)
         {
             print("Yay you robbed all the bodies!!");
             BodyCountText.text = BODY_ALL_FOUND_TEXT;
@@ -149,4 +157,6 @@ public class LevelManager : MonoBehaviour
         Debug.Log("New Light rotation being setup...");
         NewLightRotation = Quaternion.Euler(StartingLightRotation + (RotateStep * bodiesCollected), -30, 0);
     }
+
+    
 }

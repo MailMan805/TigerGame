@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SecondsBeforeLoadingSceneDelay: 3
-  currentDay: 0
+  currentDay: 1
   bodyCount: 0
   PlayerInteractButton: 13
   Karma: 10
@@ -65,6 +65,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   LeaveHouse:
+    m_PersistentCalls:
+      m_Calls: []
+  LeaveLevel:
     m_PersistentCalls:
       m_Calls: []
   ResetGame:
@@ -86,7 +89,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  tiger: {fileID: 0}
   ItemCanvas: {fileID: 5273492103012267368}
   ReturnableItemCanvas: {fileID: 334406817286009030}
   PlaceholderObject: {fileID: 302642675243030913}
