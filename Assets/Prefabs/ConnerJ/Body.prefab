@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4873383046639567121}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,6 +122,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyMeshObjects:
   - {fileID: 3319718494621678108}
+  withinRange: 0
+  interact:
+    m_Name: Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ae8d2e52-6525-45eb-9859-e1405ccee602
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &8367372690498233438
 GameObject:
   m_ObjectHideFlags: 0

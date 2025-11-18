@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Body : MonoBehaviour
 {
@@ -14,10 +15,46 @@ public class Body : MonoBehaviour
 
     const string PLAYER_TAG = "Player";
 
+    NewPlayerMovement player;
+
+    public InputAction interact;
+
+    private void Awake()
+    {
+        player = FindObjectOfType<NewPlayerMovement>();        
+    }
+
+    private void OnEnable()
+    {
+        interact = player.playerControls.Player.Interact;
+        interact.Enable();
+        interact.performed += Interact;
+    }
+
     private void Start()
     {
         SetInitalRandomBodyMesh();
+        player.grabbingUI.enabled = false;
     }
+
+    private void Update()
+    {
+        if (withinRange)
+        {
+            player.bodyLook = true;
+            player.grabbingUI.enabled = true;
+            player.standingUI.enabled = false;
+            player.crouchingUI.enabled = false;
+            player.lookingUI.enabled = false;
+        }
+        else
+        {
+            player.bodyLook = false;
+            player.grabbingUI.enabled = false;
+        }
+    }
+
+
 
     void SetInitalRandomBodyMesh()
     {
@@ -38,10 +75,21 @@ public class Body : MonoBehaviour
         bodyMeshObjects[chosenBodyMesh].SetActive(true);
     }
 
-    void CollectBody()
+    public void CollectBody()
     {
         ItemCollectionScript.instance.CollectItem();
-        Destroy(gameObject);
+    }
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if(withinRange)
+        {
+            interact.Disable();
+            Destroy(gameObject);
+            CollectBody();
+            
+            
+        }
     }
 
     private void OnTriggerEnter(Collider other)
