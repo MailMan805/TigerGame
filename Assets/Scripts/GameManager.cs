@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    #region Karma
+
     /// <summary>
     /// Returns a float value between 0.0f~1.0f depending on Karma / MaxKarma
     /// </summary>
@@ -79,6 +81,8 @@ public class GameManager : MonoBehaviour
 
         Karma = Mathf.Clamp(Karma, 0, MaxKarma);
     }
+
+    #endregion
 
     public void IncrementDay()
     {
@@ -106,6 +110,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region Data Updating
     void ResetGameData()
     {
         currentDay = 0;
@@ -131,5 +136,23 @@ public class GameManager : MonoBehaviour
         DiedInLevel = true;
         sceneLoadingManager.LoadHouse();
     }
+
+    #endregion
+
+    #region Context Menu Functions
+
+    [ContextMenu("Decrease Karma")]
+    private void DecreaseKarma()
+    {
+        ChangeKarmaLevel(-1);
+    }
+
+    [ContextMenu("Increase Karma")]
+    private void IncreaseKarma()
+    {
+        ChangeKarmaLevel(1);
+    }
+
+    #endregion
 
 }
