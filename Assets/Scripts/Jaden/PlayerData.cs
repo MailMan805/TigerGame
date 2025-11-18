@@ -50,4 +50,37 @@ public class PlayerData
     public bool hasWoodenAnimals;
 
     #endregion
+
+    #region Returnable Item Functions
+    public bool ScarfInInventory()
+    {
+        return (hasScarf && !returnedScarf);
+    }
+
+    public bool AxeInInventory()
+    {
+        return (hasHeirloomAxe && !returnedHeirloomAxe);
+    }
+
+    public bool JeweleryInInventory()
+    {
+        return (hasJeweleryBox && !returnedJeweleryBox);
+    }
+
+    public bool LocketInInventory()
+    {
+        return (hasHairLocket && !returnedHairLocket);
+    }
+
+    public bool DollInInventory()
+    {
+        return (hasDoll && !returnedDoll);
+    }
+
+    public bool PhotoInInventory()
+    {
+        return (hasFamilyPhoto && !returnedFamilyPhoto);
+    }
+
+    #endregion
 }
