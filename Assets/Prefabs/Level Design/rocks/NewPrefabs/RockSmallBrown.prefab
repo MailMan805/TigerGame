@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8940520774122088860}
   - component: {fileID: 1704605705643542250}
   - component: {fileID: 4168099669684600963}
-  - component: {fileID: 5586878897110117462}
+  - component: {fileID: 3227588600593327654}
   m_Layer: 0
   m_Name: RockSmallBrown
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5586878897110117462
-MeshCollider:
+--- !u!65 &3227588600593327654
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7146410620938972975, guid: 6cb683993c9634a4d8a4d7186ed4a776, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 1.5019417, y: 0.6879879, z: 1.1223421}
+  m_Center: {x: 0.02256453, y: 0.21881914, z: 0.04897356}
