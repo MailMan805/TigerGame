@@ -10,7 +10,7 @@ public class SaveAndLoadManager : MonoBehaviour
     public static SaveAndLoadManager Instance { get { return _instance; } }
 
     private string savePath;
-    private PlayerData currentPlayerData;
+    public static PlayerData currentPlayerData;
 
     private void Awake()
     {
