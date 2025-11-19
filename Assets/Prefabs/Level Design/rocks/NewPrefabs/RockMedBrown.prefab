@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2564515281402948678}
   - component: {fileID: 8763096817351766471}
   - component: {fileID: 7019904890013425998}
-  - component: {fileID: 5052613937054271798}
+  - component: {fileID: 6480407969758065674}
   m_Layer: 0
   m_Name: RockMedBrown
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5052613937054271798
-MeshCollider:
+--- !u!65 &6480407969758065674
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1594453418429438411, guid: ff4f6de123b53ed4e850392a7f5346e5, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 3.8675508, y: 3.499645, z: 4.435195}
+  m_Center: {x: -0.022323132, y: 1.2854217, z: -0.19387159}
