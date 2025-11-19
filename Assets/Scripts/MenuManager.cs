@@ -44,7 +44,7 @@ public class MenuManager : MonoBehaviour
     public void StartNewGame()
     {
         //Update later when saves and scenes are established
-        SceneManager.LoadScene("House");
+        SceneManager.LoadScene("Day1House");
     }
 
     public void LoadGame()

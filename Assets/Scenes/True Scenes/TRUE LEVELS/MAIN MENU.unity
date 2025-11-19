@@ -5254,9 +5254,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2033829083}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 2107357828}
+        m_TargetAssemblyTypeName: SaveAndLoadManager, Assembly-CSharp
+        m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5818,6 +5818,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38dd82260d8d34a479053d88f17fda0a, type: 3}
+--- !u!114 &2107357828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 524435880326152282, guid: 38dd82260d8d34a479053d88f17fda0a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2107357827}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a67c1a85b44af4c89d63dfaade3413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2108289350
 GameObject:
   m_ObjectHideFlags: 0

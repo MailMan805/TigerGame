@@ -20,7 +20,7 @@ public enum SceneID
     HOUSE4,
     HOUSE5,
     HOUSE6,
-    TUTORIAL
+    TUTORIAL = 15
 }
 public class SceneLoadingManager : MonoBehaviour
 {
@@ -38,6 +38,10 @@ public class SceneLoadingManager : MonoBehaviour
         print("Loading Night " + GameManager.instance.currentDay);
         switch (GameManager.instance.currentDay)
         {
+            case 0:
+                Debug.Log("TUTORIAL - Is GameManager at right currentDay?");
+                StartCoroutine(LoadNewScene((int)SceneID.TUTORIAL));
+                break;
             case 1:
                 StartCoroutine(LoadNewScene((int)SceneID.LEVELONE));
                 break;
