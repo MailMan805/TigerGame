@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -23,7 +24,7 @@ public class NewPlayerMovement : MonoBehaviour
     private InputAction run;
     private InputAction crouch;
     private InputAction jump;
-    private InputAction interact;
+    // private InputAction interact;
     private InputAction map;
 
     [Header("UI Stuff")]
@@ -37,12 +38,13 @@ public class NewPlayerMovement : MonoBehaviour
     private float mapLerpDuration = 1.0f;
     private float mapLerpSpeed = 8f;
 
+    public bool bodyLook = false;
+
     [Header("Player Parts")]
     public LayerMask groundLayer;
     public Transform groundCheck;
     public Transform playerCamera;
     private TigerAI tiger;
-    private Body body;
     CapsuleCollider playerCollider;
 
     [Header("Player Movement Status")]
@@ -59,8 +61,17 @@ public class NewPlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
 
-    private void OnEnable()
+    public GameObject playerTouchingBody;
+
+    public void OnEnable()
     {
+
+
+        map = playerControls.Player.Map;
+        map.Enable();
+        map.performed += StartMap;
+        map.canceled += StopMap;
+
         move = playerControls.Player.Move;
         move.Enable();
 
@@ -80,15 +91,6 @@ public class NewPlayerMovement : MonoBehaviour
         jump = playerControls.Player.Jump;
         jump.Enable();
         jump.performed += Jump;
-
-        interact = playerControls.Player.Interact;
-        interact.Enable();
-        interact.performed += Interact;
-
-        map = playerControls.Player.Map;
-        map.Enable();
-        map.performed += StartMap;
-        map.canceled += StopMap;
     }
 
     private void OnDisable()
@@ -97,20 +99,20 @@ public class NewPlayerMovement : MonoBehaviour
         look.Disable();
         crouch.Disable();
         jump.Disable();
-        interact.Disable();
+        map.Disable();
     }
 
     private void Awake()
     {
         playerControls = new PlayerInputActions();
         rb = GetComponent<Rigidbody>();
+        playerCollider = GetComponent<CapsuleCollider>();
+        tiger = FindAnyObjectByType<TigerAI>();
     }
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        playerCollider = GetComponent<CapsuleCollider>();
-        tiger = FindAnyObjectByType<TigerAI>();
-        body = FindAnyObjectByType<Body>();
+        
         gameManager = GameManager.instance;
 
         mapUI.rectTransform.anchoredPosition = mapStartPosition;
@@ -143,41 +145,31 @@ public class NewPlayerMovement : MonoBehaviour
 
         #region ui handler
 
-        if (isCrouching)
+        if (isCrouching && !bodyLook)
         {
             movementSpeed = 2f;
             standingUI.enabled = false;
             crouchingUI.enabled = true;
         }
-        else
+        else if(!bodyLook)
         {
             standingUI.enabled = true;
             crouchingUI.enabled = false;
         }
 
         // Player looking at tiger UI
-        if (tiger != null && tiger.isPlayerLooking && tiger.playerDistance < 50f)
+        if (tiger != null && tiger.isPlayerLooking && tiger.playerDistance < 50f && !bodyLook)
         {
             lookingUI.enabled = true;
             standingUI.enabled = false;
             crouchingUI.enabled = false;
         }
-        else
+        else if (!bodyLook)
         {
             lookingUI.enabled = false;
         }
 
-        if (body != null && body.withinRange)
-        {
-            grabbingUI.enabled = true;
-            standingUI.enabled = false;
-            crouchingUI.enabled = false;
-            lookingUI.enabled = false;
-        }
-        else
-        {
-            grabbingUI.enabled = false;
-        }
+        
         #endregion
 
         #region player camera
@@ -255,10 +247,11 @@ public class NewPlayerMovement : MonoBehaviour
         }
     }
 
-    private void Interact(InputAction.CallbackContext context)
-    {
-        print("Interact");
-    }
+    //private void Interact(InputAction.CallbackContext context)
+    //{
+    //    print("Interact");
+    //    body.CollectBody();
+    //}
 
     private void StartCrouch(InputAction.CallbackContext context)
     {
@@ -334,6 +327,14 @@ public class NewPlayerMovement : MonoBehaviour
         
 
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Body"))
+        {
+
+        }
     }
 
 }
