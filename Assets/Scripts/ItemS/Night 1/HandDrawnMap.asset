@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: HandDrawnMap
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 4948243644234478104, guid: f12b11f9db12e2b438aabdac651c687f, type: 3}
   ItemDescription: A map!
   ItemThoughts: Wow a map
   ItemPositiveThoughts: I love maps :)
   ItemNegativeThoughts: I hate maps >:(
+  IsItemReturnable: 0

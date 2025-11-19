@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class NewPlayerMovement : MonoBehaviour
 {
+    public static NewPlayerMovement Instance;
+
     [Header("Player Movement Variables")]
     public float movementSpeed;
     public float jumpForce = 300f;
@@ -108,6 +110,8 @@ public class NewPlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
         tiger = FindAnyObjectByType<TigerAI>();
+
+        Instance = this;
     }
     void Start()
     {
@@ -337,6 +341,16 @@ public class NewPlayerMovement : MonoBehaviour
         {
 
         }
+    }
+
+    [ContextMenu("Teleport to a body")]
+    void TeleportToBody()
+    {
+        var body = FindFirstObjectByType<Body>();
+
+        if (body == null) return;
+
+        transform.position = body.transform.position;
     }
 
 }

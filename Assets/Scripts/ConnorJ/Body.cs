@@ -84,12 +84,18 @@ public class Body : MonoBehaviour
     {
         if(withinRange)
         {
+            interact.performed -= Interact;
             interact.Disable();
-            Destroy(gameObject);
             CollectBody();
-            
-            
+            Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        interact.performed -= Interact;
+        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -106,5 +112,11 @@ public class Body : MonoBehaviour
         {
             withinRange = false;
         }
+    }
+
+    [ContextMenu("Teleport to body")]
+    void TeleportToBody()
+    {
+        NewPlayerMovement.Instance.gameObject.transform.position = transform.position;
     }
 }

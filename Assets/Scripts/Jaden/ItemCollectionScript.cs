@@ -78,6 +78,7 @@ public class ItemCollectionScript : MonoBehaviour
         UnlockCursor();
         gameManager.inItemMenu = true;
         tiger.TransitionToState(TigerState.Evacuating);
+        NewPlayerMovement.Instance.enabled = false;
 
         if (items[itemMarker].IsItemReturnable)
         {
@@ -153,6 +154,8 @@ public class ItemCollectionScript : MonoBehaviour
                 Description.text = items[itemMarker].ItemDescription;
             }
         }
+
+        
       
     }
 
@@ -160,11 +163,7 @@ public class ItemCollectionScript : MonoBehaviour
     {
         itemMarker += 1;
         gameManager.ChangeKarmaLevel(1);
-        tiger.navMeshAgent.ResetPath();
-        tiger.TransitionToState(TigerState.HuntingSearching);
-        ItemCanvas.SetActive(false);
-        LockCursor();
-        gameManager.inItemMenu = false;
+        ContinueGameAfterItem();
         //Change Item State
     }
 
@@ -172,23 +171,29 @@ public class ItemCollectionScript : MonoBehaviour
     {
         itemMarker += 1;
         gameManager.ChangeKarmaLevel(-1);
-        tiger.navMeshAgent.ResetPath();
-        tiger.TransitionToState(TigerState.HuntingSearching);
-        ItemCanvas.SetActive(false);
-        LockCursor();
-        gameManager.inItemMenu = false;
+        ContinueGameAfterItem();
         //Change Item State
     }
 
     public void KeepItemNonReturnableBTN()
     {
         itemMarker += 1;
+        ContinueGameAfterItem();
+        //Change Item State
+    }
+
+    void ContinueGameAfterItem()
+    {
         tiger.navMeshAgent.ResetPath();
         tiger.TransitionToState(TigerState.HuntingSearching);
         ItemCanvas.SetActive(false);
         LockCursor();
+
+        NewPlayerMovement.Instance.enabled = true;
+        NewPlayerMovement.Instance.playerControls.Player.Interact.Enable();
+
         gameManager.inItemMenu = false;
-        //Change Item State
+        gameManager.BodyCollected.Invoke();
     }
 
     public void UnlockCursor()
