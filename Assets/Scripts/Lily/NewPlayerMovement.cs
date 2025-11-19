@@ -116,6 +116,8 @@ public class NewPlayerMovement : MonoBehaviour
         gameManager = GameManager.instance;
 
         mapUI.rectTransform.anchoredPosition = mapStartPosition;
+
+        grabbingUI.enabled = false;
     }
 
     void Update()
