@@ -2464,12 +2464,12 @@ PrefabInstance:
     - target: {fileID: 3134137841738718545, guid: 0bb711dbaa12edf4fab59f765330324a,
         type: 3}
       propertyPath: musicTrackClips.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3134137841738718545, guid: 0bb711dbaa12edf4fab59f765330324a,
         type: 3}
       propertyPath: soundEffectClips.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3134137841738718545, guid: 0bb711dbaa12edf4fab59f765330324a,
         type: 3}
@@ -2481,6 +2481,11 @@ PrefabInstance:
       propertyPath: musicTrackClips.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 7a551e947bda627429ea591a3f4416b8, type: 3}
+    - target: {fileID: 3134137841738718545, guid: 0bb711dbaa12edf4fab59f765330324a,
+        type: 3}
+      propertyPath: musicTrackClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f29f95d0b19a20428592f901686add9, type: 3}
     - target: {fileID: 3134137841738718545, guid: 0bb711dbaa12edf4fab59f765330324a,
         type: 3}
       propertyPath: soundEffectClips.Array.data[0]
@@ -2501,6 +2506,11 @@ PrefabInstance:
       propertyPath: soundEffectClips.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: a6e4c0a6f848c4b4bb02dfe563803c9c, type: 3}
+    - target: {fileID: 3134137841738718545, guid: 0bb711dbaa12edf4fab59f765330324a,
+        type: 3}
+      propertyPath: soundEffectClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 490349df5dca24e41bbbe3e744facb02, type: 3}
     - target: {fileID: 6857598438820569858, guid: 0bb711dbaa12edf4fab59f765330324a,
         type: 3}
       propertyPath: m_Name
