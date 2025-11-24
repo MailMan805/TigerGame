@@ -82,13 +82,12 @@ public class Body : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if(withinRange)
+        if (withinRange)
         {
-            interact.Disable();
+            interact.Disable();       
             Destroy(gameObject);
             CollectBody();
-            
-            
+
         }
     }
 

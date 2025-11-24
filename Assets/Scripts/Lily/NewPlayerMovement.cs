@@ -51,7 +51,7 @@ public class NewPlayerMovement : MonoBehaviour
     private bool isMoving = false;
     private bool isGrounded = true;
     private bool isRunning = false;
-    private bool isCrouching = false;
+    public bool isCrouching = false;
     private bool isLookingAtMap = false;
 
     [Header("Game Manager")]
