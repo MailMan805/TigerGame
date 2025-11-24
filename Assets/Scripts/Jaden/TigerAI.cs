@@ -379,6 +379,8 @@ public class TigerAI : MonoBehaviour
     {
         navMeshAgent.isStopped = false;
 
+        navMeshAgent.speed = 10f;
+
         // Only set destination once when entering this state
         if (!hasSetEvacuatingDestination)
         {
@@ -407,11 +409,11 @@ public class TigerAI : MonoBehaviour
 
         if (stalkChase)
         {
-            navMeshAgent.speed = 10f;
+            navMeshAgent.speed = 15f;
         }
         if (prowlChase)
         {
-            navMeshAgent.speed = 4f;
+            navMeshAgent.speed = 6f;
         }
 
         if (playerDistance < 3f)

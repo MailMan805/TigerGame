@@ -1701,26 +1701,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 392000781559305962, guid: 3fc1ce92268ace948a876f88072d0812,
-        type: 3}
-      propertyPath: m_Layer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 697063311785460857, guid: 3fc1ce92268ace948a876f88072d0812,
-        type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1695264772945217107, guid: 3fc1ce92268ace948a876f88072d0812,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1695264772945217107, guid: 3fc1ce92268ace948a876f88072d0812,
         type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 8040c5f3342897347a63471afb7814f7,
+      objectReference: {fileID: 23800000, guid: c3c61f0ec50ef6c439818373e1740b15,
         type: 2}
     - target: {fileID: 1730729228150245649, guid: 3fc1ce92268ace948a876f88072d0812,
         type: 3}
@@ -1772,28 +1757,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2542755859354188453, guid: 3fc1ce92268ace948a876f88072d0812,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3052646286749450832, guid: 3fc1ce92268ace948a876f88072d0812,
         type: 3}
       propertyPath: m_Name
       value: Alex Level
       objectReference: {fileID: 0}
-    - target: {fileID: 7870859013780482087, guid: 3fc1ce92268ace948a876f88072d0812,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7870859013780482087, guid: 3fc1ce92268ace948a876f88072d0812,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 697063311785460857, guid: 3fc1ce92268ace948a876f88072d0812, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

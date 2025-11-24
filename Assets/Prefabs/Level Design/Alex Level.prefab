@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 5380591561451241324}
   - component: {fileID: 7393980091771926787}
   - component: {fileID: 8773153739782105107}
-  - component: {fileID: 697063311785460857}
   - component: {fileID: 6328745194699397261}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: WaterPlaneTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.3
---- !u!114 &697063311785460857
+--- !u!114 &6328745194699397261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,38 +150,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.24666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 05df172225d7a0e489d571ba8d9f3c83, type: 2}
-  m_BuildHeightMesh: 0
---- !u!114 &6328745194699397261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392000781559305962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.24666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 9a4d8d6893779df429d5e26aed3b17d4, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1767719886476261869
 GameObject:
@@ -404,7 +372,7 @@ GameObject:
   - component: {fileID: 2542755859354188453}
   - component: {fileID: 1006259600528674291}
   - component: {fileID: 1695264772945217107}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +483,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.24666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 9ca994d350d39124880bbc6e644c53be, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 8040c5f3342897347a63471afb7814f7, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &318652684663013370
 PrefabInstance:
