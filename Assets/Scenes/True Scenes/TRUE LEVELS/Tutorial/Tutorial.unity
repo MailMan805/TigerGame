@@ -504,7 +504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 700, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &61684624
@@ -527,7 +527,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: This is my filler text, I love filler text. Don't you love filler text.
+    I saw three car accidents today. One of them involved a Toyota Prius and Jeep
+    Cherokee. Some crazy stuff haha. Anyways I'm running out of space.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1997,7 +1999,7 @@ PrefabInstance:
     - target: {fileID: 5376188001372477256, guid: 9cc51951a49f7344981243c5253d1af2,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6296893837510373186, guid: 9cc51951a49f7344981243c5253d1af2,
         type: 3}
@@ -2203,6 +2205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592f9b389ef6ec447b6bae45eb9e2c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitboxLocation: {x: 0, y: 0, z: 0}
   tutorialText: {fileID: 61684624}
 --- !u!65 &465458546
 BoxCollider:
@@ -7814,7 +7817,7 @@ PrefabInstance:
     - target: {fileID: 2936911939066583398, guid: 38dd82260d8d34a479053d88f17fda0a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 740
       objectReference: {fileID: 0}
     - target: {fileID: 2936911939066583398, guid: 38dd82260d8d34a479053d88f17fda0a,
         type: 3}

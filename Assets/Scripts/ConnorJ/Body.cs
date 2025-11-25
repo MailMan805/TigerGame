@@ -9,6 +9,7 @@ public class Body : MonoBehaviour
     [SerializeField] private List<GameObject> bodyMeshObjects = new List<GameObject>();
     
     public bool withinRange = false;
+    public bool isInteracting = false;
 
     const int ONE_BODY = 1;
     const int MULTIPLE_BODIES = 2;
@@ -45,7 +46,7 @@ public class Body : MonoBehaviour
             player.grabbingUI.enabled = true;
             player.standingUI.enabled = false;
             player.crouchingUI.enabled = false;
-            player.lookingUI.enabled = false;
+            player.lookingUI.enabled = true;
         }
         else
         {
@@ -82,12 +83,13 @@ public class Body : MonoBehaviour
 
     public void Interact(InputAction.CallbackContext context)
     {
+        StartCoroutine(InteractionCheckDelay());
+
         if (withinRange)
         {
             interact.Disable();       
             Destroy(gameObject);
             CollectBody();
-
         }
     }
 
@@ -105,5 +107,12 @@ public class Body : MonoBehaviour
         {
             withinRange = false;
         }
+    }
+
+    IEnumerator InteractionCheckDelay()
+    {
+        isInteracting = true;
+        yield return new WaitForSeconds(1f);
+        isInteracting = false;
     }
 }

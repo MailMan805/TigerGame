@@ -7,16 +7,20 @@ using UnityEngine.UI;
 
 public class MovementTutorial : MonoBehaviour
 {
+    public Vector3 hitboxLocation;
 
     private int playerTutorialStep = 1;
 
     NewPlayerMovement player;
+
+    Body body;
 
     public TextMeshProUGUI tutorialText;
 
     void Start()
     {
         player = FindObjectOfType<NewPlayerMovement>();
+        body = FindObjectOfType<Body>();
         tutorialText.SetText("Use your mouse or right joystick to look around the scene. Press WASD on your keyboard or use the left joystick to move. Please walk to your bed.");
     }
 
@@ -36,7 +40,7 @@ public class MovementTutorial : MonoBehaviour
             playerTutorialStep += 1;
             tutorialText.SetText("Press E on your keyboard or use the Right Trigger to pick up the journal from beneath your bed.");
         }
-        else if (playerTutorialStep == 4 && Input.GetKey(KeyCode.E)) // i'll figure out why the new player input system doesn't work for this >:(
+        else if (playerTutorialStep == 4 && body.isInteracting == true) // i'll figure out why the new player input system doesn't work for this >:(
         {
             playerTutorialStep += 1;
             tutorialText.SetText("Wow, way to collect that journal. You should be hired to collect journals for a living. just kidding the tiger is coming the tiger is coming the tiger");
