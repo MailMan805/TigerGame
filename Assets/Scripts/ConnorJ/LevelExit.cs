@@ -13,6 +13,7 @@ public class LevelExit : MonoBehaviour
         if (LevelManager.Instance.collectedAllBodies)
         {
             GameManager.instance.LeaveLevel.Invoke();
+            AudioManager.Instance.PlayMusic("Neutral Ambience");
             enabled = false; // Deactivate Level exit
         }
     }

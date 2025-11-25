@@ -26,6 +26,11 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        PlayMusic("Menu Theme");
+    }
+
     public void PlayMusic(string clipName)
     {
         AudioClip clip = musicTrackClips.Find(c => c.name == clipName);

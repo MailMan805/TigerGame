@@ -16,6 +16,7 @@ public class HouseExit : MonoBehaviour
             AudioManager.Instance.PlaySound("DoorOpen");
 
             GameManager.instance.LeaveHouse.Invoke();
+            AudioManager.Instance.PlayMusic("Neutral Ambience");
             gameObject.SetActive(false);
             other.gameObject.GetComponent<NewPlayerMovement>().enabled = false;
         }

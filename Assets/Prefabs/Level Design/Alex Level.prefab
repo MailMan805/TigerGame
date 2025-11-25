@@ -1145,7 +1145,7 @@ Transform:
   m_GameObject: {fileID: 4849895210194569140}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 356.37003, y: -152.92, z: -230.7}
+  m_LocalPosition: {x: 356.37003, y: -153.6, z: -230.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2749,6 +2749,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bridgePF
       objectReference: {fileID: 0}
+    - target: {fileID: 4240162204222775540, guid: f67f1cb0394731547bad93c9b4e22e4d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5987539420740671961, guid: f67f1cb0394731547bad93c9b4e22e4d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2905,7 +2910,7 @@ PrefabInstance:
     - target: {fileID: 6495729221968134926, guid: 4720c8b3c8ec5724d9be6f1b02251afc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -149.71298
+      value: -150.39299
       objectReference: {fileID: 0}
     - target: {fileID: 6495729221968134926, guid: 4720c8b3c8ec5724d9be6f1b02251afc,
         type: 3}
