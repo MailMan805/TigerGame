@@ -78,7 +78,7 @@ public class ItemCollectionScript : MonoBehaviour
         UnlockCursor();
         gameManager.inItemMenu = true;
         tiger.TransitionToState(TigerState.Evacuating);
-        NewPlayerMovement.Instance.enabled = false;
+        //NewPlayerMovement.Instance.enabled = false;
 
         if (items[itemMarker].IsItemReturnable)
         {
@@ -189,8 +189,8 @@ public class ItemCollectionScript : MonoBehaviour
         ItemCanvas.SetActive(false);
         LockCursor();
 
-        NewPlayerMovement.Instance.enabled = true;
-        NewPlayerMovement.Instance.playerControls.Player.Interact.Enable();
+        //NewPlayerMovement.Instance.enabled = true;
+        //NewPlayerMovement.Instance.playerControls.Player.Interact.Enable();
 
         gameManager.inItemMenu = false;
         gameManager.BodyCollected.Invoke();

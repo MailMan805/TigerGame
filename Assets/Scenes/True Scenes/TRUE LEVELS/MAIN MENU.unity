@@ -629,7 +629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TIGER GAME
+  m_text: BLASCHKO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 82a74712c08be66438653c51bc6e3da8, type: 2}
   m_sharedMaterial: {fileID: -5351698324425671406, guid: 82a74712c08be66438653c51bc6e3da8,
