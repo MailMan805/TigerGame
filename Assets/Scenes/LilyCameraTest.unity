@@ -501,6 +501,11 @@ PrefabInstance:
       propertyPath: m_BaseOffset
       value: 1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1200623048134679694, guid: f12b11f9db12e2b438aabdac651c687f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1443685834929940238, guid: f12b11f9db12e2b438aabdac651c687f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -551,6 +556,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4442460728907376083, guid: f12b11f9db12e2b438aabdac651c687f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4948243644234478104, guid: f12b11f9db12e2b438aabdac651c687f,
         type: 3}
       propertyPath: m_Name
@@ -559,7 +569,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4948243644234478104, guid: f12b11f9db12e2b438aabdac651c687f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1422197382}
   m_SourcePrefab: {fileID: 100100000, guid: f12b11f9db12e2b438aabdac651c687f, type: 3}
 --- !u!1001 &1032687055
 PrefabInstance:
@@ -739,6 +753,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1422197379 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4948243644234478104, guid: f12b11f9db12e2b438aabdac651c687f,
+    type: 3}
+  m_PrefabInstance: {fileID: 748738716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1422197382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422197379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a378bb60d22c2c2418bc5d14516b0b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2040435645}
 --- !u!1 &1825355146
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,6 +1015,12 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 2ab73729b14dab14e932139860dac67c, type: 2}
   m_BuildHeightMesh: 0
+--- !u!95 &2040435645 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8263519419944348661, guid: f12b11f9db12e2b438aabdac651c687f,
+    type: 3}
+  m_PrefabInstance: {fileID: 748738716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2052211033
 GameObject:
   m_ObjectHideFlags: 0
