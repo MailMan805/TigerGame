@@ -17,6 +17,8 @@ public class GameOverFade : MonoBehaviour
 
     const float MAX_TIME = 1f;
 
+    const float DOUBLE_SPEED = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,16 +29,18 @@ public class GameOverFade : MonoBehaviour
 
         GameManager.instance.OnMainLevelLoaded.AddListener(FadeInScreen);
         GameManager.instance.OnHouseLevelLoaded.AddListener(FadeInScreen);
+        
 
         GameManager.instance.OnDeath.AddListener(FadeOutScreen);
         GameManager.instance.LeaveHouse.AddListener(FadeOutScreen);
+        GameManager.instance.LeaveLevel.AddListener(FadeOutScreen);
     }
 
     void FadeOutScreen()
     {
         print("Fading out...");
         StopAllCoroutines();
-        StartCoroutine(Fader(TRANSPARENT, OPAQUE, 2f));
+        StartCoroutine(Fader(TRANSPARENT, OPAQUE, DOUBLE_SPEED));
     }
 
     void FadeInScreen()

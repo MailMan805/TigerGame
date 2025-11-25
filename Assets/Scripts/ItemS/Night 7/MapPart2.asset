@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: MapPart2
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 7847574611349322832, guid: 0c3c65231c10c0b4c81332cb9cf41ffb, type: 3}
   ItemDescription: The missing piece of the map.
   ItemThoughts: 
   ItemPositiveThoughts: I've been looking for this for days. I hope I find him here.

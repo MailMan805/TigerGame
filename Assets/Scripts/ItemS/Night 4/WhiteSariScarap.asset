@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: WhiteSariScarap
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 8099035287237239531, guid: c02d4c97a08c7be46a7d1e24746beb46, type: 3}
   ItemDescription: Part of what used to be a white sari, now stained with blood,
     shredded from the owners body.
   ItemThoughts: 

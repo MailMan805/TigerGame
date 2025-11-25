@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: Journal
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 919132149155446097, guid: 6990704a2d7274149966217773198942, type: 3}
   ItemDescription: A worn, paperback journal stuffed with additional pages of data
     in another language you cannot decipher.
   ItemThoughts: i threw it on the GROUND
@@ -21,3 +21,4 @@ MonoBehaviour:
     end like this.
   ItemNegativeThoughts: Left to rot by your associates, like me. Lucky for you, someone
     knows what happened to you.
+  IsItemReturnable: 0

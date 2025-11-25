@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: SpouseSketchbook
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 2410633443486746081, guid: 289d581a16f13de47805ee188f499191, type: 3}
   ItemDescription: A well-loved sketchbook filled with his drawings.
   ItemThoughts: 
   ItemPositiveThoughts: I wonder if he still has the drawing of my mehndi.
   ItemNegativeThoughts: 
+  IsItemReturnable: 0

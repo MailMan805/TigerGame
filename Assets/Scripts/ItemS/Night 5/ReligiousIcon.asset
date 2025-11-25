@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: ReligiousIcon
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 5209405649676916108, guid: 6aec0bfced16be8499c884e97f3883de, type: 3}
   ItemDescription: An abstract representation of the divine creative energy of the
     universe.
   ItemThoughts: 
@@ -20,3 +20,4 @@ MonoBehaviour:
     this one found peace within their prayers.
   ItemNegativeThoughts: The will of a God or not, these people shouldn't be dying
     like this. Much less my poor husband.
+  IsItemReturnable: 0

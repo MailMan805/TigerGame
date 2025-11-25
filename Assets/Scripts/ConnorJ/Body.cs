@@ -2,22 +2,60 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Body : MonoBehaviour
 {
     [SerializeField] private List<GameObject> bodyMeshObjects = new List<GameObject>();
     
     public bool withinRange = false;
+    public bool isInteracting = false;
 
     const int ONE_BODY = 1;
     const int MULTIPLE_BODIES = 2;
 
     const string PLAYER_TAG = "Player";
 
+    NewPlayerMovement player;
+
+    public InputAction interact;
+
+    private void Awake()
+    {
+        player = FindObjectOfType<NewPlayerMovement>();        
+    }
+
+    private void OnEnable()
+    {
+        interact = player.playerControls.Player.Interact;
+        interact.Enable();
+        interact.performed += Interact;
+    }
+
     private void Start()
     {
         SetInitalRandomBodyMesh();
+        player.grabbingUI.enabled = false;
     }
+
+    private void Update()
+    {
+        if (withinRange)
+        {
+            player.bodyLook = true;
+            player.grabbingUI.enabled = true;
+            player.standingUI.enabled = false;
+            player.crouchingUI.enabled = false;
+            player.lookingUI.enabled = true;
+        }
+        else
+        {
+            player.bodyLook = false;
+            player.grabbingUI.enabled = false;
+        }
+    }
+
+
 
     void SetInitalRandomBodyMesh()
     {
@@ -38,10 +76,21 @@ public class Body : MonoBehaviour
         bodyMeshObjects[chosenBodyMesh].SetActive(true);
     }
 
-    void CollectBody()
+    public void CollectBody()
     {
         ItemCollectionScript.instance.CollectItem();
-        Destroy(gameObject);
+    }
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        StartCoroutine(InteractionCheckDelay());
+
+        if (withinRange)
+        {
+            interact.Disable();       
+            Destroy(gameObject);
+            CollectBody();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -58,5 +107,12 @@ public class Body : MonoBehaviour
         {
             withinRange = false;
         }
+    }
+
+    IEnumerator InteractionCheckDelay()
+    {
+        isInteracting = true;
+        yield return new WaitForSeconds(1f);
+        isInteracting = false;
     }
 }

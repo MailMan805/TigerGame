@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     [Header("VARIABLES")]
     public float SecondsBeforeLoadingSceneDelay = 3f;
-    [Range(0, 7)] public int currentDay = 0;
+    [Range(0, 7)] public int currentDay = 1;
     public int bodyCount = 0;
     public KeyCode PlayerInteractButton = KeyCode.E;
     public static bool DiedInLevel { get; set; } = false; // Persists only in House segments.
@@ -29,8 +29,11 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnMainLevelLoaded;
     public UnityEvent OnHouseLevelLoaded;
     public UnityEvent LeaveHouse;
+    public UnityEvent LeaveLevel;
     public UnityEvent ResetGame;
     public UnityEvent OnDeath;
+
+    
 
     // Manager Setup
     public SceneLoadingManager sceneLoadingManager { get; set; }
@@ -44,7 +47,6 @@ public class GameManager : MonoBehaviour
         }
 
         instance = this;
-        currentDay = 0;
 
         sceneLoadingManager = gameObject.AddComponent<SceneLoadingManager>();
 
@@ -52,11 +54,14 @@ public class GameManager : MonoBehaviour
 
         ResetGame.AddListener(ResetGameData);
         LeaveHouse.AddListener(LeavingHouse);
+        LeaveLevel.AddListener(LeavingLevel);
 
         OnDeath.AddListener(DeathData);
 
         DontDestroyOnLoad(gameObject);
     }
+
+    #region Karma
 
     /// <summary>
     /// Returns a float value between 0.0f~1.0f depending on Karma / MaxKarma
@@ -77,6 +82,8 @@ public class GameManager : MonoBehaviour
 
         Karma = Mathf.Clamp(Karma, 0, MaxKarma);
     }
+
+    #endregion
 
     public void IncrementDay()
     {
@@ -104,6 +111,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region Data Updating
     void ResetGameData()
     {
         currentDay = 0;
@@ -113,16 +121,39 @@ public class GameManager : MonoBehaviour
 
     void LeavingHouse()
     {
-        IncrementDay();
+        
         DiedInLevel = false;
         sceneLoadingManager.LoadNextLevel();
+    }
+
+    void LeavingLevel()
+    {
+        IncrementDay();
+        sceneLoadingManager.LoadHouse();
     }
 
     void DeathData()
     {
         DiedInLevel = true;
-        currentDay--;
         sceneLoadingManager.LoadHouse();
     }
+
+    #endregion
+
+    #region Context Menu Functions
+
+    [ContextMenu("Decrease Karma")]
+    private void DecreaseKarma()
+    {
+        ChangeKarmaLevel(-1);
+    }
+
+    [ContextMenu("Increase Karma")]
+    private void IncreaseKarma()
+    {
+        ChangeKarmaLevel(1);
+    }
+
+    #endregion
 
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2936911939066583398}
   - component: {fileID: 4575271359115587038}
   - component: {fileID: 403501780894701635}
+  - component: {fileID: 524435880326152282}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SecondsBeforeLoadingSceneDelay: 3
-  currentDay: 0
+  currentDay: 1
   bodyCount: 0
   PlayerInteractButton: 13
   Karma: 10
@@ -65,6 +66,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   LeaveHouse:
+    m_PersistentCalls:
+      m_Calls: []
+  LeaveLevel:
     m_PersistentCalls:
       m_Calls: []
   ResetGame:
@@ -86,7 +90,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  tiger: {fileID: 0}
   ItemCanvas: {fileID: 5273492103012267368}
   ReturnableItemCanvas: {fileID: 334406817286009030}
   PlaceholderObject: {fileID: 302642675243030913}
@@ -118,6 +121,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d916975eb66e56d4d938e6022ccd7e34, type: 2}
   NegativeThreashHold: 8
   PositiveThreashHold: 12
+--- !u!114 &524435880326152282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455066525341771601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a67c1a85b44af4c89d63dfaade3413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &431956774705572880
 PrefabInstance:
   m_ObjectHideFlags: 0

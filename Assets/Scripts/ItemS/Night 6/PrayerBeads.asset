@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: PrayerBeads
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 5555371546729670042, guid: b0ac04b45d6ac2049a221e3f2432e3dd, type: 3}
   ItemDescription: Made out of red sandalwood. Still being clutched in the hands
     of the victim in front of you, it seems her last act of self-defense was desperate
     prayers.
@@ -20,3 +20,4 @@ MonoBehaviour:
   ItemPositiveThoughts: May her soul rest. These beads must've meant a lot to her
     if she trusted her life with them.
   ItemNegativeThoughts: What made you so sure these were going to save you?
+  IsItemReturnable: 0

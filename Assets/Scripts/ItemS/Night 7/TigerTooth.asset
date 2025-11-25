@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: TigerTooth
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 3328155032474127516, guid: d931574d91f3e1a47b4c756df11cf186, type: 3}
   ItemDescription: A sharp, broken canine tooth as big as your palm, covered in blood.
   ItemThoughts: 
   ItemPositiveThoughts: 

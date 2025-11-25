@@ -28,6 +28,7 @@ public class ItemCollectionScript : MonoBehaviour
     [Header("Item Information")]
     public ItemScriptableObject[] items; //List of items in order
     private int itemMarker = 0; //Tracks which item it's on
+    private int itemPreviousDayCount = 0; //Tracks previous item count before dying.
 
     [Header("Varibles")]
     public int NegativeThreashHold = 8;
@@ -50,8 +51,11 @@ public class ItemCollectionScript : MonoBehaviour
         gameManager = GameManager.instance;
         ItemCanvas.SetActive(false);
         ReturnableItemCanvas.SetActive(false);
+
         gameManager.OnMainLevelLoaded.AddListener(setTiger);
         gameManager.ResetGame.AddListener(ResetGameData);
+        gameManager.LeaveHouse.AddListener(UpdatePreviousCount);
+        gameManager.LeaveLevel.AddListener(RevertItemCountToPreviousDay);
     }
 
     // Update is called once per frame
@@ -74,6 +78,7 @@ public class ItemCollectionScript : MonoBehaviour
         UnlockCursor();
         gameManager.inItemMenu = true;
         tiger.TransitionToState(TigerState.Evacuating);
+        //NewPlayerMovement.Instance.enabled = false;
 
         if (items[itemMarker].IsItemReturnable)
         {
@@ -149,6 +154,8 @@ public class ItemCollectionScript : MonoBehaviour
                 Description.text = items[itemMarker].ItemDescription;
             }
         }
+
+        
       
     }
 
@@ -156,11 +163,7 @@ public class ItemCollectionScript : MonoBehaviour
     {
         itemMarker += 1;
         gameManager.ChangeKarmaLevel(1);
-        tiger.navMeshAgent.ResetPath();
-        tiger.TransitionToState(TigerState.HuntingSearching);
-        ItemCanvas.SetActive(false);
-        LockCursor();
-        gameManager.inItemMenu = false;
+        ContinueGameAfterItem();
         //Change Item State
     }
 
@@ -168,23 +171,29 @@ public class ItemCollectionScript : MonoBehaviour
     {
         itemMarker += 1;
         gameManager.ChangeKarmaLevel(-1);
-        tiger.navMeshAgent.ResetPath();
-        tiger.TransitionToState(TigerState.HuntingSearching);
-        ItemCanvas.SetActive(false);
-        LockCursor();
-        gameManager.inItemMenu = false;
+        ContinueGameAfterItem();
         //Change Item State
     }
 
     public void KeepItemNonReturnableBTN()
     {
         itemMarker += 1;
+        ContinueGameAfterItem();
+        //Change Item State
+    }
+
+    void ContinueGameAfterItem()
+    {
         tiger.navMeshAgent.ResetPath();
         tiger.TransitionToState(TigerState.HuntingSearching);
         ItemCanvas.SetActive(false);
         LockCursor();
+
+        //NewPlayerMovement.Instance.enabled = true;
+        //NewPlayerMovement.Instance.playerControls.Player.Interact.Enable();
+
         gameManager.inItemMenu = false;
-        //Change Item State
+        gameManager.BodyCollected.Invoke();
     }
 
     public void UnlockCursor()
@@ -202,5 +211,16 @@ public class ItemCollectionScript : MonoBehaviour
     void ResetGameData()
     {
         itemMarker = 0;
+        itemPreviousDayCount = 0;
+    }
+
+    void UpdatePreviousCount()
+    {
+        itemPreviousDayCount = itemMarker;
+    }
+
+    void RevertItemCountToPreviousDay()
+    {
+        itemMarker = itemPreviousDayCount;
     }
 }

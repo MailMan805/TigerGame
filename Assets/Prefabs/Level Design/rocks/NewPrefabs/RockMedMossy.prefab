@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 571332187381309937}
   - component: {fileID: 439221040637415794}
   - component: {fileID: 7497235468002241640}
-  - component: {fileID: 6915111000021742322}
+  - component: {fileID: 453614073022705230}
   m_Layer: 0
   m_Name: RockMedMossy
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6915111000021742322
-MeshCollider:
+--- !u!65 &453614073022705230
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2697158092964791495, guid: c701cda8825038146b623e1f4730f5a6, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 4.0928802, y: 2.6235342, z: 2.9199812}
+  m_Center: {x: 0.1720066, y: 1.1658311, z: -0.031586766}

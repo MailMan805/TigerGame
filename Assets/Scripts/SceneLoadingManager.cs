@@ -12,7 +12,15 @@ public enum SceneID
     LEVELTHREE,
     LEVELFOUR,
     LEVELFIVE,
-    FINALLEVEL
+    LEVELSIX,
+    FINALLEVEL,
+    HOUSE1,
+    HOUSE2,
+    HOUSE3,
+    HOUSE4,
+    HOUSE5,
+    HOUSE6,
+    TUTORIAL = 15
 }
 public class SceneLoadingManager : MonoBehaviour
 {
@@ -30,6 +38,10 @@ public class SceneLoadingManager : MonoBehaviour
         print("Loading Night " + GameManager.instance.currentDay);
         switch (GameManager.instance.currentDay)
         {
+            case 0:
+                Debug.Log("TUTORIAL - Is GameManager at right currentDay?");
+                StartCoroutine(LoadNewScene((int)SceneID.TUTORIAL));
+                break;
             case 1:
                 StartCoroutine(LoadNewScene((int)SceneID.LEVELONE));
                 break;
@@ -45,6 +57,9 @@ public class SceneLoadingManager : MonoBehaviour
             case 5:
                 StartCoroutine(LoadNewScene((int)SceneID.LEVELFIVE));
                 break;
+            case 6:
+                StartCoroutine(LoadNewScene((int)SceneID.LEVELSIX));
+                break;
         }
         
     }
@@ -52,7 +67,27 @@ public class SceneLoadingManager : MonoBehaviour
     public void LoadHouse()
     {
         print("Loading House...");
-        StartCoroutine(LoadNewScene((int)SceneID.HOUSE));
+        switch (GameManager.instance.currentDay)
+        {
+            case 1:
+                StartCoroutine(LoadNewScene((int)SceneID.HOUSE1));
+                break;
+            case 2:
+                StartCoroutine(LoadNewScene((int)SceneID.HOUSE2));
+                break;
+            case 3:
+                StartCoroutine(LoadNewScene((int)SceneID.HOUSE3));
+                break;
+            case 4:
+                StartCoroutine(LoadNewScene((int)SceneID.HOUSE4));
+                break;
+            case 5:
+                StartCoroutine(LoadNewScene((int)SceneID.HOUSE5));
+                break;
+            case 6:
+                StartCoroutine(LoadNewScene((int)SceneID.HOUSE6));
+                break;
+        }
     }
 
     public void LoadMainMenu()

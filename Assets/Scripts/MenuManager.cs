@@ -14,7 +14,7 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MainMenu")
+        if (Input.GetKeyDown(KeyCode.M) && SceneManager.GetActiveScene().name != "MainMenu")
         {
             if (gameIsPaused)
             {
@@ -44,11 +44,13 @@ public class MenuManager : MonoBehaviour
     public void StartNewGame()
     {
         //Update later when saves and scenes are established
-        SceneManager.LoadScene("House");
+        AudioManager.Instance.PlayMusic("Tutorial Music");
+        SceneManager.LoadScene("Day1House");
     }
 
     public void LoadGame()
     {
+        AudioManager.Instance.PlayMusic("Neutral Ambience");
         //load save file
     }
 
@@ -76,6 +78,7 @@ public class MenuManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+        AudioManager.Instance.PlayMusic("Menu Theme");
     }
 
     public void AdjustMusicVolume()

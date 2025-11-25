@@ -1905,12 +1905,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cc51951a49f7344981243c5253d1af2, type: 3}
---- !u!95 &401011357 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 377663702321373471, guid: 9cc51951a49f7344981243c5253d1af2,
-    type: 3}
-  m_PrefabInstance: {fileID: 401011356}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &401205476
 GameObject:
   m_ObjectHideFlags: 0
@@ -6559,84 +6553,6 @@ Transform:
   - {fileID: 734326957}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1492397620
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7432643376435863031, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7432643376435863031, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7432643376435863031, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7432643376435863031, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7432643376435863031, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7432643376435863031, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7432643376435863031, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7432643376435863031, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7432643376435863031, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7432643376435863031, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7876102715624423710, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_InitialState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7876102715624423710, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_SceneBindings.Array.data[0].value
-      value: 
-      objectReference: {fileID: 401011357}
-    - target: {fileID: 8754650577718933049, guid: 7bef3bd94293f794aa1fcbcff829479b,
-        type: 3}
-      propertyPath: m_Name
-      value: TIMELINE - Death Awaken
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7bef3bd94293f794aa1fcbcff829479b, type: 3}
 --- !u!1 &1502156928
 GameObject:
   m_ObjectHideFlags: 0
@@ -9336,4 +9252,3 @@ SceneRoots:
   - {fileID: 1674571280}
   - {fileID: 401011356}
   - {fileID: 1643154930}
-  - {fileID: 1492397620}
