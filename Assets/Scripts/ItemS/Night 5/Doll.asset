@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: Doll
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 672847939059559488, guid: 5f0e891c0553b0249b8cf7407b73e631, type: 3}
   ItemDescription: A doll made from rough cloth and straw resembling a little girl
     that is now stained in blood.
   ItemThoughts: 

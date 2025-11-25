@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: FamilyPhoto
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 84727877014715862, guid: b6d32a4ca45894847bba64728d8e8f37, type: 3}
   ItemDescription: A grainy photo of a happy family.
   ItemThoughts: 
   ItemPositiveThoughts: These smiling faces remind me of my own family. I wonder,
     if I show my face, would they be happy to see me?
   ItemNegativeThoughts: This photo reminds me of my own family. This is what could've
     been if they didn't leave me to rot.
+  IsItemReturnable: 0

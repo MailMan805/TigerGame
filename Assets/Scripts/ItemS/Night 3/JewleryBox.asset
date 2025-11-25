@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: JewleryBox
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 1550499852229845084, guid: 927a5c4cbb5c0704ab673b82dcc8698b, type: 3}
   ItemDescription: A teak, hexagon shaped jewelry box, ordained with floral pattern
     of green and red. There's nothing inside.
   ItemThoughts: this aint my dad, this is a cell phone
@@ -21,3 +21,4 @@ MonoBehaviour:
   ItemNegativeThoughts: Only using something so beautiful for just what you need,
     then leaving it behind once it's served it's purpose. Seems like it won't be
     missed.
+  IsItemReturnable: 0

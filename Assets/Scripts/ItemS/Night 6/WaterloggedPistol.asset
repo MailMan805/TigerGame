@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: WaterloggedPistol
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 9043704278144427413, guid: 61f51ede55ba76447ad3af2dfd46e6e7, type: 3}
   ItemDescription: An empty gun that won't fire.
   ItemThoughts: 
   ItemPositiveThoughts: Good thing it's broken, keeps it from falling into the wrong
     hands.
   ItemNegativeThoughts: Useless! I needed this, I needed something to make that beast
     hurt.
+  IsItemReturnable: 0

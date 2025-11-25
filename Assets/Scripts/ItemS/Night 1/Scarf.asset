@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: Scarf
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 4948243644234478104, guid: f12b11f9db12e2b438aabdac651c687f, type: 3}
+  Item3D: {fileID: 1205102001712489476, guid: eb6f39e31e31c6e46a5f203739d62b1b, type: 3}
   ItemDescription: A thin strip of muddled fabric with clumsy embroidered flowers
     on the end.
   ItemThoughts: Looks like a scarf from a woman in town. A child must have made this

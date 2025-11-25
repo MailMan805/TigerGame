@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: HairLocket
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 593637019831644668, guid: c433384f18335d74882b0decb9c018b6, type: 3}
   ItemDescription: A circular gold locket with a strip of hair tied with a simple
     string.
   ItemThoughts: 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: WarMedal
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 2636664371812470683, guid: 24403a34d05bb68428565640b3e0703a, type: 3}
   ItemDescription: A shiny metal token with a ribbon engraved in the same illegible
     language as the journal.
   ItemThoughts: 
@@ -20,3 +20,4 @@ MonoBehaviour:
     of a worker the soldier laying in front of me was.
   ItemNegativeThoughts: I'm sure every soldier has this. Ironically, there's nothing
     special about this medal.
+  IsItemReturnable: 0

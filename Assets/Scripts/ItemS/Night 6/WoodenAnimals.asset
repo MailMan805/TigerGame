@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: WoodenAnimals
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 5926452048199746330, guid: f551d3328ade2224b8976663865c58c0, type: 3}
   ItemDescription: Small wooden carvings of an elephant, a monkey, and a tiger.
   ItemThoughts: 
   ItemPositiveThoughts: I wanted to make some of these one day, for a baby we will
