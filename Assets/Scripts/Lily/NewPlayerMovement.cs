@@ -38,6 +38,14 @@ public class NewPlayerMovement : MonoBehaviour
     private float mapLerpDuration = 1.0f;
     private float mapLerpSpeed = 8f;
 
+    public RawImage SpawnMarker;
+    public RawImage DeadForestMarker;
+    public RawImage TowerMarker;
+    public RawImage StatueMarker;
+    public RawImage RockMarker;
+    public RawImage WellMarker;
+    public RawImage BushesMarker;
+
     public bool bodyLook = false;
 
     [Header("Player Parts")]

@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public UnityEvent ResetGame;
     public UnityEvent OnDeath;
 
+    
+
     // Manager Setup
     public SceneLoadingManager sceneLoadingManager { get; set; }
 
