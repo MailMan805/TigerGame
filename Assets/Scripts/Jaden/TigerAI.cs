@@ -596,29 +596,27 @@ public class TigerAI : MonoBehaviour
 
         while (attempts < maxAttempts)
         {
-            // Get a random direction on the XZ plane
+            // Get random direction on XZ plane
             Vector2 randomCircle = Random.insideUnitCircle.normalized;
             Vector3 randomDirection = new Vector3(randomCircle.x, 0f, randomCircle.y);
 
-            // Random distance between min and max
+            // Random distance
             float distance = Random.Range(teleportMinDistance, teleportMaxDistance);
             Vector3 targetPosition = player.position + randomDirection * distance;
 
-            // Find the nearest valid NavMesh position
+            // Sample only walkable positions
             NavMeshHit hit;
             if (NavMesh.SamplePosition(targetPosition, out hit, 100f, NavMesh.AllAreas))
             {
-                // Teleport the tiger to this position
                 navMeshAgent.Warp(hit.position);
-                Debug.Log("Tiger teleported to: " + hit.position);
+                Debug.Log("Tiger teleported to (walkable): " + hit.position);
                 return;
             }
 
             attempts++;
         }
 
-        // Fallback if all attempts fail
-        Debug.LogWarning("Failed to find valid teleport location after " + maxAttempts + " attempts");
+        Debug.LogWarning("Failed to find valid walkable teleport location after " + maxAttempts + " attempts");
     }
 
     private void AttackPlayer()
