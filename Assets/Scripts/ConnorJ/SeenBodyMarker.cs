@@ -12,9 +12,6 @@ public class SeenBodyMarker : MonoBehaviour
 
         PlayerSeenBody = true;
 
-        //Body found sting noise
-        AudioManager.Instance.PlaySound("BodyFoundSting");
-
         if (VignetteController.instance != null)
         {
             VignetteController.instance.FlashVignette.Invoke();
