@@ -29,6 +29,9 @@ public class FogController : MonoBehaviour
 
     public float fogTransitionSpeed = 0.2f;
 
+    public float minRandomFogSpeed = 10f;
+    public float maxRandomFogSpeed = 30f;
+
     float newDistance = 0;
     float previousDistance = 0;
 
@@ -40,6 +43,9 @@ public class FogController : MonoBehaviour
     float time = 0f;
 
     const float MAXREDCOLORAMOUNT = 0.4f; // How much R in RGB the fog color can be in float percentage. 0~255 == 0.0f~1.0f
+    const float LEFTGRADIENT = 0f;
+    const float RIGHTGRADIENT = 1f;
+    const float ALPHA = 1f;
 
     private void Awake()
     {
@@ -68,6 +74,8 @@ public class FogController : MonoBehaviour
 
         newDistance = fogDenseList[(int)FogDensity.NORMAL];
         previousDistance = fogDenseList[(int)FogDensity.NORMAL];
+
+        StartCoroutine(RandomFog());
     }
 
     // Divides the fog densities by the fogDensity enums. Spreads all densities evenly.
@@ -90,12 +98,12 @@ public class FogController : MonoBehaviour
     {
         // Blend color from white at 0% to red at 100%
         var colors = new GradientColorKey[2];
-        colors[0] = new GradientColorKey(Color.white, 0.0f);
-        colors[1] = new GradientColorKey(new Color(MAXREDCOLORAMOUNT,0,0), 1.0f);
+        colors[0] = new GradientColorKey(Color.white, LEFTGRADIENT);
+        colors[1] = new GradientColorKey(new Color(MAXREDCOLORAMOUNT,0,0), RIGHTGRADIENT);
 
         var alphas = new GradientAlphaKey[2];
-        alphas[0] = new GradientAlphaKey(1.0f, 0.0f);
-        alphas[1] = new GradientAlphaKey(1.0f, 1.0f);
+        alphas[0] = new GradientAlphaKey(ALPHA, LEFTGRADIENT);
+        alphas[1] = new GradientAlphaKey(ALPHA, RIGHTGRADIENT);
 
         fogColorGradient.SetKeys(colors, alphas);
     }
@@ -149,6 +157,24 @@ public class FogController : MonoBehaviour
         print("Fog is being set up!");
         SetEvilFogColorAmount(GameManager.instance.GetKarmaLevel());
         SetFogDensity(LevelManager.Instance.startingFogDensity);
+    }
+
+    /// <summary>
+    /// Every once in a while, change the fog distance randomly.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator RandomFog()
+    {
+        while (true)
+        {
+            var waitSeconds = Random.Range(minRandomFogSpeed, maxRandomFogSpeed);
+
+            yield return new WaitForSeconds(waitSeconds);
+
+            var newDensity = Random.Range((int)FogDensity.NONE, (int)FogDensity.MAX); // NONE and MAX are the first and last in the enum, so random between them.
+
+            SetFogDensity((FogDensity)newDensity);
+        }
     }
 
     void TestFog()

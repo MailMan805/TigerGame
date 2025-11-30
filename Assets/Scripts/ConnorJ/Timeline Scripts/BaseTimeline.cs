@@ -31,11 +31,24 @@ public class BaseTimeline : MonoBehaviour
     /// <summary>
     /// Plays the TimelineAsset variable _TimelineAsset.
     /// </summary>
-    protected void PlayTimeline()
+    /// <param name="otherTimeline">Param if using a timeline besides _TimelineAsset.</param>
+    protected void PlayTimeline(TimelineAsset otherTimeline=null)
     {
-        if (_TimelineAsset == null || _Director == null) return;
+        if (_Director == null) return;
 
-        print("Playing Timeline " + _TimelineAsset.name);
+        if (otherTimeline != null)
+        {
+            _Director.playableAsset = otherTimeline;
+        } else if (_TimelineAsset != null)
+        {
+            _Director.playableAsset = _TimelineAsset;
+        } else
+        {
+            return;
+        }
+        
+
+        print("Playing Timeline " + _Director.playableAsset.name);
 
         _Director.Play();
     }

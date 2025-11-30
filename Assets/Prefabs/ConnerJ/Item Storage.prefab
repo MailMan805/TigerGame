@@ -685,6 +685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4109633072191897159}
   - component: {fileID: 7257484372286461296}
+  - component: {fileID: 3449785051018391656}
   m_Layer: 0
   m_Name: Item Storage
   m_TagString: Untagged
@@ -756,6 +757,29 @@ MonoBehaviour:
   _BeadsObject: {fileID: 8613253597987346180}
   _AnimalObject: {fileID: 608757259796433553}
   itemMessageUI: {fileID: 6491207380948267508}
+--- !u!136 &3449785051018391656
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689475455807338906}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.13
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: -0.23, y: -2.2, z: -3.74}
 --- !u!1 &766100100363856647
 GameObject:
   m_ObjectHideFlags: 0
@@ -5835,8 +5859,25 @@ PrefabInstance:
     - target: {fileID: 2912694665857119866, guid: 941c8426e4a0feb479ae252670ffe26b,
         type: 3}
       propertyPath: m_fontSize
-      value: 27.85
+      value: 30.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2912694665857119866, guid: 941c8426e4a0feb479ae252670ffe26b,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0fa145b6c1191c641a848fc9001a065e,
+        type: 2}
+    - target: {fileID: 2912694665857119866, guid: 941c8426e4a0feb479ae252670ffe26b,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912694665857119866, guid: 941c8426e4a0feb479ae252670ffe26b,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -9161903780422870685, guid: 0fa145b6c1191c641a848fc9001a065e,
+        type: 2}
     - target: {fileID: 2912694665857119866, guid: 941c8426e4a0feb479ae252670ffe26b,
         type: 3}
       propertyPath: m_VerticalAlignment
@@ -5846,6 +5887,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912694665857119866, guid: 941c8426e4a0feb479ae252670ffe26b,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6129239801409065352, guid: 941c8426e4a0feb479ae252670ffe26b,
         type: 3}

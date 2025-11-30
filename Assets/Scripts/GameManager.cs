@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [Header("KARMA")]
     public int Karma = 10;
     [SerializeField] private int MaxKarma = 20; // 8 - 12 Neutral, Starts at 10, <= 8 Negative, >= 12 Positive.
+    public const float GOODENDINGKARMA = 0.4f;
 
     [HideInInspector] public bool inItemMenu = false;
 
@@ -32,6 +33,9 @@ public class GameManager : MonoBehaviour
     public UnityEvent LeaveLevel;
     public UnityEvent ResetGame;
     public UnityEvent OnDeath;
+
+    public UnityEvent GoodEnding;
+    public UnityEvent BadEnding;
 
     // Manager Setup
     public SceneLoadingManager sceneLoadingManager { get; set; }
@@ -67,7 +71,16 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public float GetKarmaLevel()
     {
-        return Karma / MaxKarma;
+        return (float)Karma / (float)MaxKarma;
+    }
+
+    /// <summary>
+    /// Returns true if Player's karma level is above good ending threshold.
+    /// </summary>
+    /// <returns></returns>
+    public bool OnGoodEndingPath()
+    {
+        return GetKarmaLevel() > GOODENDINGKARMA;
     }
 
     /// <summary>
@@ -91,6 +104,17 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void CommitEnding()
+    {
+        if (GetKarmaLevel() > GOODENDINGKARMA)
+        {
+            GoodEnding.Invoke();
+        } else
+        {
+            BadEnding.Invoke();
+        }
     }
 
     void TestLoading()
