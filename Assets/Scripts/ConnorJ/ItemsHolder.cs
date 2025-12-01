@@ -46,9 +46,20 @@ public class ItemsHolder : MonoBehaviour
         ShowItems();
     }
 
-    private void Update()
+    private void OnTriggerStay(Collider other)
     {
-        CheckRaycastHit();
+        if (other.tag == "Player")
+        {
+            CheckRaycastHit();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            itemMessageText.text = "";
+        }
     }
 
     #region Setup
@@ -182,8 +193,6 @@ public class ItemsHolder : MonoBehaviour
 
             Debug.DrawRay(hit.point, Camera.main.transform.forward);
 
-            Debug.Log(objectHit.name);
-
             if (AllItems.Contains(objectHit))
             {
                 ShowItemMessage(objectHit);
@@ -200,7 +209,7 @@ public class ItemsHolder : MonoBehaviour
 
         if (itemViewer != null && itemMessageText != null)
         {
-            if (itemMessageText.text == previousItemMessage) return;
+            if (itemMessageText.text == previousItemMessage && previousItemMessage != "") return;
 
             itemMessageText.text = itemViewer.SendItemMessage();
             previousItemMessage = itemMessageText.text;

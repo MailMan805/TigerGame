@@ -86,4 +86,11 @@ public class GameOverFade : MonoBehaviour
             time = 1f;
         }
     }
+
+    public void InstantBlackout() {
+        Color newAlpha = panelImage.color;
+        newAlpha.a = 1;
+
+        panelImage.color = newAlpha;
+    }
 }

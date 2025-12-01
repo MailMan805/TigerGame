@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using static TigerAI;
+using Unity.VisualScripting;
 
 public class ItemCollectionScript : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class ItemCollectionScript : MonoBehaviour
     [Header("Varibles")]
     public int NegativeThreashHold = 8;
     public int PositiveThreashHold = 12;
+    bool IsFinalItem = false;
 
     void Awake()
     {
@@ -78,7 +80,7 @@ public class ItemCollectionScript : MonoBehaviour
         UnlockCursor();
         gameManager.inItemMenu = true;
         tiger.TransitionToState(TigerState.Evacuating);
-        //NewPlayerMovement.Instance.enabled = false;
+        NewPlayerMovement.Instance.enabled = false;
 
         if (items[itemMarker].IsItemReturnable)
         {
@@ -184,16 +186,21 @@ public class ItemCollectionScript : MonoBehaviour
 
     void ContinueGameAfterItem()
     {
-        tiger.navMeshAgent.ResetPath();
-        tiger.TransitionToState(TigerState.HuntingSearching);
         ItemCanvas.SetActive(false);
         LockCursor();
-
-        //NewPlayerMovement.Instance.enabled = true;
-        //NewPlayerMovement.Instance.playerControls.Player.Interact.Enable();
-
         gameManager.inItemMenu = false;
-        gameManager.BodyCollected.Invoke();
+
+        if (IsFinalItem)
+        {
+            GameManager.instance.CommitEnding();
+        } else
+        {
+            tiger.navMeshAgent.ResetPath();
+            tiger.TransitionToState(TigerState.HuntingSearching);
+            NewPlayerMovement.Instance.enabled = true;
+            NewPlayerMovement.Instance.playerControls.Player.Interact.Enable();
+            gameManager.BodyCollected.Invoke();
+        }
     }
 
     public void UnlockCursor()
@@ -222,5 +229,19 @@ public class ItemCollectionScript : MonoBehaviour
     void RevertItemCountToPreviousDay()
     {
         itemMarker = itemPreviousDayCount;
+    }
+
+    public void CollectEndingItem()
+    {
+        IsFinalItem = true;
+
+        if (GameManager.instance.OnGoodEndingPath()) // Good Ending
+        {
+            itemMarker = items.Length - 2; // Sketchbook
+        } else // Bad Ending
+        {
+            itemMarker = items.Length - 1; // Tooth
+        }
+        CollectItem();
     }
 }

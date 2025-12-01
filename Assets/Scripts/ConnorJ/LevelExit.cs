@@ -12,8 +12,8 @@ public class LevelExit : MonoBehaviour
 
         if (LevelManager.Instance.collectedAllBodies)
         {
-            GameManager.instance.LeaveLevel.Invoke();
-            AudioManager.Instance.PlayMusic("Neutral Ambience");
+            GameManager.instance.LeaveLevel?.Invoke();
+            NewPlayerMovement.Instance.enabled = false;
             enabled = false; // Deactivate Level exit
         }
     }
