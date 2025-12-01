@@ -551,16 +551,47 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4699739497323224703, guid: f12b11f9db12e2b438aabdac651c687f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699739497323224703, guid: f12b11f9db12e2b438aabdac651c687f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699739497323224703, guid: f12b11f9db12e2b438aabdac651c687f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.57
+      objectReference: {fileID: 0}
     - target: {fileID: 4948243644234478104, guid: f12b11f9db12e2b438aabdac651c687f,
         type: 3}
       propertyPath: m_Name
       value: TestTiger
       objectReference: {fileID: 0}
+    - target: {fileID: 4960587266781871112, guid: f12b11f9db12e2b438aabdac651c687f,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 748738717}
+    - target: {fileID: 8098621240225344558, guid: f12b11f9db12e2b438aabdac651c687f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5dd1b382959297749bd0ec3288285270, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f12b11f9db12e2b438aabdac651c687f, type: 3}
+--- !u!95 &748738717 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8098621240225344558, guid: f12b11f9db12e2b438aabdac651c687f,
+    type: 3}
+  m_PrefabInstance: {fileID: 748738716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1032687055
 PrefabInstance:
   m_ObjectHideFlags: 0
