@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class NewPlayerMovement : MonoBehaviour
 {
+    public static NewPlayerMovement Instance;
     [Header("Player Movement Variables")]
     public float movementSpeed;
     public float jumpForce = 300f;
@@ -112,6 +113,13 @@ public class NewPlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
         playerControls = new PlayerInputActions();
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
