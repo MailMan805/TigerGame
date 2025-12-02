@@ -6,15 +6,29 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    public static MenuManager Instance;
     public GameObject pauseMenuPrefab;
 
     public Slider musicVolume;
     public Slider sfxVolume;
     public static bool gameIsPaused;
 
+    void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M) && SceneManager.GetActiveScene().name != "MainMenu")
+        if (Input.GetKeyDown(KeyCode.Tab) && SceneManager.GetActiveScene().name != "MAIN MENU")
         {
             if (gameIsPaused)
             {
@@ -24,20 +38,6 @@ public class MenuManager : MonoBehaviour
             {
                 PauseGame();
             }
-        }
-
-        //For testing, remove later
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            AudioManager.Instance.PlayMusic("Test_Music");
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            AudioManager.Instance.PlayMusic("Test_Music2");
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            AudioManager.Instance.PlaySound("Test_Bonk");
         }
     }
 
@@ -65,6 +65,9 @@ public class MenuManager : MonoBehaviour
         pauseMenuPrefab.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
+        Cursor.lockState = CursorLockMode.None;
+        NewPlayerMovement.Instance.GetComponentInChildren<Canvas>().enabled = false;
+        NewPlayerMovement.Instance.playerControls.Disable();
     }
 
     public void ResumeGame()
@@ -72,23 +75,15 @@ public class MenuManager : MonoBehaviour
         pauseMenuPrefab.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        NewPlayerMovement.Instance.GetComponentInChildren<Canvas>().enabled = true;
+        NewPlayerMovement.Instance.playerControls.Enable();
     }
 
     public void OpenMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MAIN MENU");
         AudioManager.Instance.PlayMusic("Menu Theme");
     }
-
-    public void AdjustMusicVolume()
-    {
-        AudioManager.Instance.musicSource.volume = musicVolume.value;
-    }
-
-    public void AdjustSFXVolume()
-    {
-        AudioManager.Instance.soundEffectsSource.volume = sfxVolume.value;
-    }
-
 }
