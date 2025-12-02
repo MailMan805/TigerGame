@@ -163,8 +163,11 @@ public class ItemCollectionScript : MonoBehaviour
 
     public void ReturnItemBTN()
     {
+        SaveItemState();
+        SaveReturnableStateTrue();
         itemMarker += 1;
         gameManager.ChangeKarmaLevel(1);
+        SaveAndLoadManager.Instance.SaveKarma(gameManager.Karma);
         SaveAndLoadManager.Instance.SaveCurrentItem(itemMarker);
         ContinueGameAfterItem();
         //Change Item State
@@ -172,8 +175,11 @@ public class ItemCollectionScript : MonoBehaviour
 
     public void KeepItemBTN()
     {
+        SaveItemState();
+        SaveReturnableStateFalse();
         itemMarker += 1;
         gameManager.ChangeKarmaLevel(-1);
+        SaveAndLoadManager.Instance.SaveKarma(gameManager.Karma);
         SaveAndLoadManager.Instance.SaveCurrentItem(itemMarker);
         ContinueGameAfterItem();
         //Change Item State
@@ -181,6 +187,7 @@ public class ItemCollectionScript : MonoBehaviour
 
     public void KeepItemNonReturnableBTN()
     {
+        SaveItemState();
         itemMarker += 1;
         SaveAndLoadManager.Instance.SaveCurrentItem(itemMarker);
         ContinueGameAfterItem();
@@ -206,11 +213,131 @@ public class ItemCollectionScript : MonoBehaviour
         }
     }
 
-    void SaveItemState()
+    public void SaveItemState()
     {
         if(itemMarker == 0)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasMap", true);
+        }
+        if (itemMarker == 1)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasScarf", true);
+        }
+        if (itemMarker == 2)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasOilLantern", true);
+        }
+        if (itemMarker == 3)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasHeirloomAxe", true);
+        }
+        if (itemMarker == 4)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasJournal", true);
+        }
+        if (itemMarker == 5)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasJeweleryBox", true);
+        }
+        if (itemMarker == 6)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasWovenBasket", true);
+        }
+        if (itemMarker == 7)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasWarMedal", true);
+        }
+        if (itemMarker == 8)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasHairLocket", true);
+        }
+        if (itemMarker == 9)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasWhiteSariScrap", true);
+        }
+        if (itemMarker == 10)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasDogTags", true);
+        }
+        if (itemMarker == 11)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasReligiousIcon", true);
+        }
+        if (itemMarker == 12)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasDoll", true);
+        }
+        if (itemMarker == 13)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasWaterloggedPistol", true);
+        }
+        if (itemMarker == 14)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasFamilyPhoto", true);
+        }
+        if (itemMarker == 15)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasPrayerBeads", true);
+        }
+        if (itemMarker == 16)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasWoodenAnimals", true);
+        }
+    }
+
+    public void SaveReturnableStateFalse()
+    {
+        if (itemMarker == 1)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("returnedScarf", false);
+        }
+        if (itemMarker == 3)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("returnedHeirloomAxe", false);
+        }
+        if (itemMarker == 5)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("returnedJeweleryBox", false);
+        }
+        if (itemMarker == 8)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("returnedHairLocket", false);
+        }
+        if (itemMarker == 12)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("returnedDoll", false);
+        }
+        if (itemMarker == 14)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("returnedFamilyPhoto", false);
+        }
+    }
+
+    public void SaveReturnableStateTrue()
+    {
+        if (itemMarker == 1)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("returnedScarf", true);
+        }
+        if (itemMarker == 3)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("returnedHeirloomAxe", true);
+        }
+        if (itemMarker == 5)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("returnedJeweleryBox", true);
+        }
+        if (itemMarker == 8)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("returnedHairLocket", true);
+        }
+        if (itemMarker == 12)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("returnedDoll", true);
+        }
+        if (itemMarker == 14)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("returnedFamilyPhoto", true);
         }
     }
 
