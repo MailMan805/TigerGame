@@ -11,32 +11,32 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 753d49422af56b846a9f8d142ddf6370,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 51.47264
+      value: 8808.124
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 753d49422af56b846a9f8d142ddf6370,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 53.931156
+      value: 9228.832
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 753d49422af56b846a9f8d142ddf6370,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 51.47264
+      value: 8808.124
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 753d49422af56b846a9f8d142ddf6370,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 610.1021
+      value: -188.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 753d49422af56b846a9f8d142ddf6370,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.33
+      value: 881.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 753d49422af56b846a9f8d142ddf6370,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 554.56
+      value: -1478.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 753d49422af56b846a9f8d142ddf6370,
         type: 3}
@@ -77,6 +77,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmallShivaLingam
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 753d49422af56b846a9f8d142ddf6370,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 753d49422af56b846a9f8d142ddf6370,
+        type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

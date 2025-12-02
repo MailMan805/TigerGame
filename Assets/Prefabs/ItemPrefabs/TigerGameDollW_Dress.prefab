@@ -11,32 +11,32 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 896ed05197ed39c4680853fd1d00b068,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 32.826
+      value: 10715.126
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 896ed05197ed39c4680853fd1d00b068,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 32.826
+      value: 10715.126
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 896ed05197ed39c4680853fd1d00b068,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 55.147682
+      value: 18001.412
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 896ed05197ed39c4680853fd1d00b068,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 612.18
+      value: 7194
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 896ed05197ed39c4680853fd1d00b068,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.14
+      value: 1057.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 896ed05197ed39c4680853fd1d00b068,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 560.04
+      value: -1219.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 896ed05197ed39c4680853fd1d00b068,
         type: 3}
@@ -77,6 +77,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TigerGameDollW_Dress
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 896ed05197ed39c4680853fd1d00b068,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 896ed05197ed39c4680853fd1d00b068,
+        type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

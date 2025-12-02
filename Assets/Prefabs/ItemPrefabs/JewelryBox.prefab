@@ -11,32 +11,32 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e5bc93b76b253104e97da726e14e09a1,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25791663
+      value: 54.773636
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5bc93b76b253104e97da726e14e09a1,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25791663
+      value: 54.773636
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5bc93b76b253104e97da726e14e09a1,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25791663
+      value: 54.773636
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5bc93b76b253104e97da726e14e09a1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 621.11
+      value: 1997.098
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5bc93b76b253104e97da726e14e09a1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.254
+      value: 940
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5bc93b76b253104e97da726e14e09a1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 549.57
+      value: -1545
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e5bc93b76b253104e97da726e14e09a1,
         type: 3}
@@ -73,10 +73,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: e5bc93b76b253104e97da726e14e09a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: e5bc93b76b253104e97da726e14e09a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: e5bc93b76b253104e97da726e14e09a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e5bc93b76b253104e97da726e14e09a1,
         type: 3}
       propertyPath: m_Name
       value: JewelryBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e5bc93b76b253104e97da726e14e09a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e5bc93b76b253104e97da726e14e09a1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: e5bc93b76b253104e97da726e14e09a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

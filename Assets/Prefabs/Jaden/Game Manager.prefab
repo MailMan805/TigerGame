@@ -35,6 +35,7 @@ Transform:
   - {fileID: 5665114326348286980}
   - {fileID: 222294230941682090}
   - {fileID: 9097690367142963020}
+  - {fileID: 5514500246763897288}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4575271359115587038
@@ -75,6 +76,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  GoodEnding:
+    m_PersistentCalls:
+      m_Calls: []
+  BadEnding:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &403501780894701635
@@ -269,7 +276,7 @@ PrefabInstance:
     - target: {fileID: 574484248054911150, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1738556092858023828, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
@@ -552,6 +559,85 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 431956774705572880}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3076253845711782359
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2936911939066583398}
+    m_Modifications:
+    - target: {fileID: 7365210936849596447, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 745.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365210936849596447, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 732.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365210936849596447, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -256.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365210936849596447, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365210936849596447, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365210936849596447, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365210936849596447, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365210936849596447, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365210936849596447, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365210936849596447, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889652335722257061, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+        type: 3}
+      propertyPath: m_Name
+      value: BritishOilLantern
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889652335722257061, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39c7d6cc73ca16249ab8268d205f5dda, type: 3}
+--- !u!4 &5514500246763897288 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7365210936849596447, guid: 39c7d6cc73ca16249ab8268d205f5dda,
+    type: 3}
+  m_PrefabInstance: {fileID: 3076253845711782359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5221262410713967038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -688,8 +774,13 @@ PrefabInstance:
     - target: {fileID: 574484248054911150, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 574484248054911150, guid: 8bcfe3377b336724b9faca4fab8792a3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d510a19f5c2603c4abadea38609d374c, type: 2}
     - target: {fileID: 1738556092858023828, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
       propertyPath: clearColorMode
@@ -794,6 +885,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5496244871461646399, guid: 8bcfe3377b336724b9faca4fab8792a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5496244871461646399, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}

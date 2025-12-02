@@ -100,7 +100,7 @@ public class ItemCollectionScript : MonoBehaviour
 
             // Optionally reset the position and rotation of the new model to match the PlaceholderObject
             newItem.transform.localPosition = Vector3.zero;
-            newItem.transform.localRotation = Quaternion.identity;
+            //newItem.transform.localRotation = Quaternion.identity;
 
             // Update thoughts and description based on Karma value
             if (gameManager.Karma <= NegativeThreashHold)
@@ -137,7 +137,7 @@ public class ItemCollectionScript : MonoBehaviour
 
             // Optionally reset the position and rotation of the new model to match the PlaceholderObject
             newItem.transform.localPosition = Vector3.zero;
-            newItem.transform.localRotation = Quaternion.identity;
+            //newItem.transform.localRotation = Quaternion.identity;
 
             // Update thoughts and description based on Karma value
             if (gameManager.Karma <= NegativeThreashHold)

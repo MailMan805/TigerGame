@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: HeirloomAxe
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 34449984345831688, guid: a35dc02729be8c345a7acf0dbd54b0d9, type: 3}
   ItemDescription: An iron axe with quite a bit of wear to it. It has the owner's
     name engraved on the hilt.
   ItemThoughts: ack
@@ -20,3 +20,4 @@ MonoBehaviour:
     is in really good shape. It's owners have taken great care of it.
   ItemNegativeThoughts: Taking such a prized posession into a place like this? Should
     this really belong to someone so careless?
+  IsItemReturnable: 0
