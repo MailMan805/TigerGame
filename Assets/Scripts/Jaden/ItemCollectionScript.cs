@@ -165,6 +165,7 @@ public class ItemCollectionScript : MonoBehaviour
     {
         itemMarker += 1;
         gameManager.ChangeKarmaLevel(1);
+        SaveAndLoadManager.Instance.SaveCurrentItem(itemMarker);
         ContinueGameAfterItem();
         //Change Item State
     }
@@ -173,6 +174,7 @@ public class ItemCollectionScript : MonoBehaviour
     {
         itemMarker += 1;
         gameManager.ChangeKarmaLevel(-1);
+        SaveAndLoadManager.Instance.SaveCurrentItem(itemMarker);
         ContinueGameAfterItem();
         //Change Item State
     }
@@ -180,6 +182,7 @@ public class ItemCollectionScript : MonoBehaviour
     public void KeepItemNonReturnableBTN()
     {
         itemMarker += 1;
+        SaveAndLoadManager.Instance.SaveCurrentItem(itemMarker);
         ContinueGameAfterItem();
         //Change Item State
     }
@@ -200,6 +203,14 @@ public class ItemCollectionScript : MonoBehaviour
             NewPlayerMovement.Instance.enabled = true;
             NewPlayerMovement.Instance.playerControls.Player.Interact.Enable();
             gameManager.BodyCollected.Invoke();
+        }
+    }
+
+    void SaveItemState()
+    {
+        if(itemMarker == 0)
+        {
+            SaveAndLoadManager.Instance.SaveItemStatus("hasMap", true);
         }
     }
 

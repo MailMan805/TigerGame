@@ -6,6 +6,7 @@ public class PlayerData
 {
     public int Karma;
     public int CurrentDay;
+    public int CurrentItem;
 
     #region Items 
 

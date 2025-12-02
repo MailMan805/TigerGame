@@ -656,7 +656,7 @@ PrefabInstance:
     - target: {fileID: 8876134180871829585, guid: c02d4c97a08c7be46a7d1e24746beb46,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5146.7
+      value: 4889
       objectReference: {fileID: 0}
     - target: {fileID: 8876134180871829585, guid: c02d4c97a08c7be46a7d1e24746beb46,
         type: 3}
@@ -3794,11 +3794,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4392635817954340387, guid: 5ca79716c97469b46a407e7b63d7d9a9,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4750895137300054487, guid: 5ca79716c97469b46a407e7b63d7d9a9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3853,26 +3848,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WovenBasket (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5378777176803302253, guid: 5ca79716c97469b46a407e7b63d7d9a9,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5378777176803302253, guid: 5ca79716c97469b46a407e7b63d7d9a9,
-        type: 3}
-      propertyPath: m_TagString
-      value: Item
-      objectReference: {fileID: 0}
-    - target: {fileID: 7588290845795382520, guid: 5ca79716c97469b46a407e7b63d7d9a9,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8420890248515479612, guid: 5ca79716c97469b46a407e7b63d7d9a9,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4105,7 +4080,7 @@ PrefabInstance:
     - target: {fileID: 2013866932500905662, guid: eb6f39e31e31c6e46a5f203739d62b1b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5495
+      value: 5364
       objectReference: {fileID: 0}
     - target: {fileID: 2013866932500905662, guid: eb6f39e31e31c6e46a5f203739d62b1b,
         type: 3}

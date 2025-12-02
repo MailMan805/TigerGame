@@ -78,6 +78,158 @@ public class SaveAndLoadManager : MonoBehaviour
         }
     }
 
+    public void SaveKarma(int karma)
+    {
+        if (currentPlayerData != null)
+        {
+            currentPlayerData.Karma = karma;
+            SaveGame(); // This actually writes to the file
+            Debug.Log($"Saved Karma: {karma}");
+        }
+    }
+
+    public void SaveCurrentItem(int item)
+    {
+        if (currentPlayerData != null)
+        {
+            currentPlayerData.CurrentItem = item;
+            SaveGame(); // This actually writes to the file
+            Debug.Log($"Saved CurrentItem: {item}");
+        }
+    }
+
+    public void SaveCurrentDay(int day)
+    {
+        if (currentPlayerData != null)
+        {
+            currentPlayerData.CurrentDay = day;
+            SaveGame(); // This actually writes to the file
+            Debug.Log($"Saved CurrentDay: {day}");
+        }
+    }
+
+    public void SaveItemStatus(string itemName, bool value)
+    {
+        if (currentPlayerData != null)
+        {
+            switch (itemName)
+            {
+                // Map
+                case "hasMap":
+                    currentPlayerData.hasMap = value;
+                    break;
+
+                // Scarf items
+                case "hasScarf":
+                    currentPlayerData.hasScarf = value;
+                    break;
+                case "returnedScarf":
+                    currentPlayerData.returnedScarf = value;
+                    break;
+
+                // Oil Lantern
+                case "hasOilLantern":
+                    currentPlayerData.hasOilLantern = value;
+                    break;
+
+                // Heirloom Axe items
+                case "hasHeirloomAxe":
+                    currentPlayerData.hasHeirloomAxe = value;
+                    break;
+                case "returnedHeirloomAxe":
+                    currentPlayerData.returnedHeirloomAxe = value;
+                    break;
+
+                // Journal
+                case "hasJournal":
+                    currentPlayerData.hasJournal = value;
+                    break;
+
+                // Jewelery Box items
+                case "hasJeweleryBox":
+                    currentPlayerData.hasJeweleryBox = value;
+                    break;
+                case "returnedJeweleryBox":
+                    currentPlayerData.returnedJeweleryBox = value;
+                    break;
+
+                // Woven Basket
+                case "hasWovenBasket":
+                    currentPlayerData.hasWovenBasket = value;
+                    break;
+
+                // War Medal
+                case "hasWarMedal":
+                    currentPlayerData.hasWarMedal = value;
+                    break;
+
+                // Hair Locket items
+                case "hasHairLocket":
+                    currentPlayerData.hasHairLocket = value;
+                    break;
+                case "returnedHairLocket":
+                    currentPlayerData.returnedHairLocket = value;
+                    break;
+
+                // White Sari Scrap
+                case "hasWhiteSariScrap":
+                    currentPlayerData.hasWhiteSariScrap = value;
+                    break;
+
+                // Dog Tags
+                case "hasDogTags":
+                    currentPlayerData.hasDogTags = value;
+                    break;
+
+                // Religious Icon
+                case "hasReligiousIcon":
+                    currentPlayerData.hasReligiousIcon = value;
+                    break;
+
+                // Doll items
+                case "hasDoll":
+                    currentPlayerData.hasDoll = value;
+                    break;
+                case "returnedDoll":
+                    currentPlayerData.returnedDoll = value;
+                    break;
+
+                // Waterlogged Pistol
+                case "hasWaterloggedPistol":
+                    currentPlayerData.hasWaterloggedPistol = value;
+                    break;
+
+                // Family Photo items
+                case "hasFamilyPhoto":
+                    currentPlayerData.hasFamilyPhoto = value;
+                    break;
+                case "returnedFamilyPhoto":
+                    currentPlayerData.returnedFamilyPhoto = value;
+                    break;
+
+                // Prayer Beads
+                case "hasPrayerBeads":
+                    currentPlayerData.hasPrayerBeads = value;
+                    break;
+
+                // Wooden Animals
+                case "hasWoodenAnimals":
+                    currentPlayerData.hasWoodenAnimals = value;
+                    break;
+
+                default:
+                    Debug.LogWarning($"Item name '{itemName}' not recognized!");
+                    return;
+            }
+            SaveGame(); // This actually writes to the file
+            Debug.Log($"Saved {itemName}: {value}");
+        }
+        else
+        {
+            Debug.LogWarning("Cannot save item status: currentPlayerData is null!");
+        }
+    }
+
     // Save game data to JSON file
     public void SaveGame()
     {
@@ -157,6 +309,7 @@ public class SaveAndLoadManager : MonoBehaviour
         {
             Karma = 10,
             CurrentDay = 0,
+            CurrentItem = 0,
             hasMap = false,
             hasScarf = false,
             returnedScarf = false,
