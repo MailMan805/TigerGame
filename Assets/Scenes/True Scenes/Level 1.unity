@@ -559,17 +559,17 @@ PrefabInstance:
     - target: {fileID: 6296893837510373186, guid: 9cc51951a49f7344981243c5253d1af2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 349.3
+      value: 346.9
       objectReference: {fileID: 0}
     - target: {fileID: 6296893837510373186, guid: 9cc51951a49f7344981243c5253d1af2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -151.8
+      value: -152.2
       objectReference: {fileID: 0}
     - target: {fileID: 6296893837510373186, guid: 9cc51951a49f7344981243c5253d1af2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -223.2
+      value: -218.2
       objectReference: {fileID: 0}
     - target: {fileID: 6296893837510373186, guid: 9cc51951a49f7344981243c5253d1af2,
         type: 3}
@@ -697,7 +697,7 @@ PrefabInstance:
     - target: {fileID: 5732804086052720866, guid: dee9958c8dce3e743a61665eea9cde9a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -875,6 +875,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestTiger
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948243644234478104, guid: f12b11f9db12e2b438aabdac651c687f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9000851643399220235, guid: f12b11f9db12e2b438aabdac651c687f,
         type: 3}

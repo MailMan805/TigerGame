@@ -38,7 +38,12 @@ public class AmbientAudioSource : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(transform.position, listener.position);
-        audioSource.enabled = distance <= maxDistance;
+
+        if (audioSource.isPlaying)
+        {
+            audioSource.enabled = distance <= maxDistance;
+            
+        }
     }
 
     public IEnumerator PlayAmbient()
