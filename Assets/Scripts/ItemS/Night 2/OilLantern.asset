@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item3D: {fileID: 7889652335722257061, guid: 39c7d6cc73ca16249ab8268d205f5dda, type: 3}
   ItemDescription: An oil lantern with spots of rust and a couple of dents.
-  ItemThoughts: cough
+  ItemThoughts: A good tool made by careless men but it ould prove useful.
   ItemPositiveThoughts: This will guide me through the darkness. I'm grateful to
     have found it.
   ItemNegativeThoughts: This could be helpful I guess, might as well take it with

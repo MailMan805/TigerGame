@@ -15,8 +15,10 @@ MonoBehaviour:
   Item3D: {fileID: 0}
   ItemDescription: An iron axe with quite a bit of wear to it. It has the owner's
     name engraved on the hilt.
-  ItemThoughts: ack
+  ItemThoughts: It's still sharp despite its age. Someone used to take good care
+    of it.
   ItemPositiveThoughts: For a tool that's been passed down several generations, this
     is in really good shape. It's owners have taken great care of it.
   ItemNegativeThoughts: Taking such a prized posession into a place like this? Should
     this really belong to someone so careless?
+  IsItemReturnable: 1

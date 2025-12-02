@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item3D: {fileID: 9043704278144427413, guid: 61f51ede55ba76447ad3af2dfd46e6e7, type: 3}
   ItemDescription: An empty gun that won't fire.
-  ItemThoughts: 
+  ItemThoughts: Did they try and shot that thing?! I think I figured out why it's
+    so mad...
   ItemPositiveThoughts: Good thing it's broken, keeps it from falling into the wrong
     hands.
   ItemNegativeThoughts: Useless! I needed this, I needed something to make that beast

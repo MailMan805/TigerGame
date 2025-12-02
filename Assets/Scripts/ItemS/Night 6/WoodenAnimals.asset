@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item3D: {fileID: 5926452048199746330, guid: f551d3328ade2224b8976663865c58c0, type: 3}
   ItemDescription: Small wooden carvings of an elephant, a monkey, and a tiger.
-  ItemThoughts: 
+  ItemThoughts: It's a bad omen to be carrying visages of a tiger and innocence into
+    these parts.
   ItemPositiveThoughts: I wanted to make some of these one day, for a baby we will
     never have.
   ItemNegativeThoughts: A child should be playing with these at home, not dead on

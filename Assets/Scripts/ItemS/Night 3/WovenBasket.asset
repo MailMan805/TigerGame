@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item3D: {fileID: 5378777176803302253, guid: 5ca79716c97469b46a407e7b63d7d9a9, type: 3}
   ItemDescription: A beaten up basket used to collect foragables.
-  ItemThoughts: RAAAHHHH
+  ItemThoughts: The best fruits grow in the wild, but it is far to dangerous right
+    now to risk it.
   ItemPositiveThoughts: Alma, jujube, fig... this has a good variety. Terrible that
     it has to go to waste... Then again, I could use what was foraged for something.
   ItemNegativeThoughts: Why not just buy from the market? There's lots of dangerous

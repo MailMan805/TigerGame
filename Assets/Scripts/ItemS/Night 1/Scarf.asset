@@ -17,6 +17,6 @@ MonoBehaviour:
     on the end.
   ItemThoughts: Looks like a scarf from a woman in town. A child must have made this
     for her.
-  ItemPositiveThoughts: GULP
-  ItemNegativeThoughts: nope...
-  IsItemReturnable: 0
+  ItemPositiveThoughts: 
+  ItemNegativeThoughts: 
+  IsItemReturnable: 1

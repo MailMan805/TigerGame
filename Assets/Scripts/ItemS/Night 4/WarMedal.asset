@@ -15,7 +15,8 @@ MonoBehaviour:
   Item3D: {fileID: 2636664371812470683, guid: 24403a34d05bb68428565640b3e0703a, type: 3}
   ItemDescription: A shiny metal token with a ribbon engraved in the same illegible
     language as the journal.
-  ItemThoughts: 
+  ItemThoughts: Medals are given out to commemorate hard word and courage. From what
+    I've seen soldiers do I wonder where the courage part comes from.
   ItemPositiveThoughts: Something to commemorate hard wonk. This shows what kind
     of a worker the soldier laying in front of me was.
   ItemNegativeThoughts: I'm sure every soldier has this. Ironically, there's nothing

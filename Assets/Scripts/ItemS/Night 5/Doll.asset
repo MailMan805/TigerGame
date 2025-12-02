@@ -15,9 +15,9 @@ MonoBehaviour:
   Item3D: {fileID: 672847939059559488, guid: 5f0e891c0553b0249b8cf7407b73e631, type: 3}
   ItemDescription: A doll made from rough cloth and straw resembling a little girl
     that is now stained in blood.
-  ItemThoughts: 
+  ItemThoughts: I'm sorry no one was here to save you tonight.
   ItemPositiveThoughts: I had a doll like this when I was a girl; her name was Saanvi.
     She wore a pink sari made from scraps.
   ItemNegativeThoughts: The only reminder of her innocence; she was too young. She
     should have been protected from a death like this.
-  IsItemReturnable: 0
+  IsItemReturnable: 1

@@ -15,9 +15,9 @@ MonoBehaviour:
   Item3D: {fileID: 593637019831644668, guid: c433384f18335d74882b0decb9c018b6, type: 3}
   ItemDescription: A circular gold locket with a strip of hair tied with a simple
     string.
-  ItemThoughts: 
+  ItemThoughts: I wanted something like this with my husbands hair a long time ago...
   ItemPositiveThoughts: This looks as though taken care of. I hope she finds peace
     in death, I'm sure her family will want this to remember her by.
   ItemNegativeThoughts: How could you lose something that one should hold so close
     to their heart? You were a mother. You deserved better.
-  IsItemReturnable: 0
+  IsItemReturnable: 1
