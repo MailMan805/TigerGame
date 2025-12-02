@@ -707,6 +707,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201015194}
   m_CullTransparentMesh: 1
+--- !u!82 &273563211 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 196727020089829695, guid: 0bb711dbaa12edf4fab59f765330324a,
+    type: 3}
+  m_PrefabInstance: {fileID: 942264421}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &276398397
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,10 +939,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2033829083}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: AdjustSFXVolume
-        m_Mode: 1
+      - m_Target: {fileID: 922843797}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_volume
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1173,16 +1179,16 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1908968074}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 0.5
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2033829083}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: AdjustMusicVolume
-        m_Mode: 1
+      - m_Target: {fileID: 273563211}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_volume
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2521,6 +2527,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888215947}
   m_CullTransparentMesh: 1
+--- !u!82 &922843797 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6581611409493258883, guid: 0bb711dbaa12edf4fab59f765330324a,
+    type: 3}
+  m_PrefabInstance: {fileID: 942264421}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &942264421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5458,6 +5470,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2285529491165723825, guid: 093b399d36f4dab44bd2cf832b89acec,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 273563211}
     - target: {fileID: 4068223194025472641, guid: 093b399d36f4dab44bd2cf832b89acec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5508,17 +5525,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4316037777330071573, guid: 093b399d36f4dab44bd2cf832b89acec,
-        type: 3}
-      propertyPath: pauseMenuPrefab
-      value: 
-      objectReference: {fileID: 5245223375490660546, guid: 515026bc63b99af4898b942d171f85c5,
-        type: 3}
     - target: {fileID: 4973819926136119878, guid: 093b399d36f4dab44bd2cf832b89acec,
         type: 3}
       propertyPath: m_Name
       value: MenuManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4994451714452861244, guid: 093b399d36f4dab44bd2cf832b89acec,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 922843797}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
