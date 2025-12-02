@@ -34,6 +34,10 @@ public class SaveAndLoadManager : MonoBehaviour
     {
         // Subscribe to scene loaded event
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+        ShouldAutoSave(sceneName);
     }
 
     private void OnDisable()
@@ -73,6 +77,10 @@ public class SaveAndLoadManager : MonoBehaviour
     {
         if (currentPlayerData != null)
         {
+            SaveCurrentDay(GameManager.instance.currentDay);
+            string jsonData = File.ReadAllText(savePath);
+            currentPlayerData = JsonUtility.FromJson<PlayerData>(jsonData);
+            ItemCollectionScript.instance.itemMarker = currentPlayerData.CurrentItem;
             SaveGame();
             Debug.Log("Game auto-saved!");
         }
@@ -83,7 +91,7 @@ public class SaveAndLoadManager : MonoBehaviour
         if (currentPlayerData != null)
         {
             currentPlayerData.Karma = karma;
-            SaveGame(); // This actually writes to the file
+            //SaveGame(); // This actually writes to the file
             Debug.Log($"Saved Karma: {karma}");
         }
     }
@@ -93,7 +101,7 @@ public class SaveAndLoadManager : MonoBehaviour
         if (currentPlayerData != null)
         {
             currentPlayerData.CurrentItem = item;
-            SaveGame(); // This actually writes to the file
+            //SaveGame(); // This actually writes to the file
             Debug.Log($"Saved CurrentItem: {item}");
         }
     }
@@ -103,7 +111,7 @@ public class SaveAndLoadManager : MonoBehaviour
         if (currentPlayerData != null)
         {
             currentPlayerData.CurrentDay = day;
-            SaveGame(); // This actually writes to the file
+            //SaveGame(); // This actually writes to the file
             Debug.Log($"Saved CurrentDay: {day}");
         }
     }
@@ -221,7 +229,7 @@ public class SaveAndLoadManager : MonoBehaviour
                     Debug.LogWarning($"Item name '{itemName}' not recognized!");
                     return;
             }
-            SaveGame(); // This actually writes to the file
+            //SaveGame(); // This actually writes to the file
             Debug.Log($"Saved {itemName}: {value}");
         }
         else
@@ -243,6 +251,13 @@ public class SaveAndLoadManager : MonoBehaviour
         {
             Debug.LogError("Error saving game: " + e.Message);
         }
+    }
+
+    public void LoadGameData()
+    {
+        string jsonData = File.ReadAllText(savePath);
+        currentPlayerData = JsonUtility.FromJson<PlayerData>(jsonData);
+        Debug.Log("Game loaded successfully!");
     }
 
     // Load game data from JSON file

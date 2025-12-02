@@ -19,4 +19,4 @@ MonoBehaviour:
     for her.
   ItemPositiveThoughts: GULP
   ItemNegativeThoughts: nope...
-  IsItemReturnable: 0
+  IsItemReturnable: 1

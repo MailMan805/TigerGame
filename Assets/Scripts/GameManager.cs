@@ -157,6 +157,7 @@ public class GameManager : MonoBehaviour
     void DeathData()
     {
         DiedInLevel = true;
+        SaveAndLoadManager.Instance.LoadGameData();
         sceneLoadingManager.LoadHouse();
     }
 

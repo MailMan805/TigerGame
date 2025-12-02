@@ -28,7 +28,7 @@ public class ItemCollectionScript : MonoBehaviour
 
     [Header("Item Information")]
     public ItemScriptableObject[] items; //List of items in order
-    private int itemMarker = 0; //Tracks which item it's on
+    public int itemMarker = 0; //Tracks which item it's on
     private int itemPreviousDayCount = 0; //Tracks previous item count before dying.
 
     [Header("Varibles")]
@@ -96,7 +96,7 @@ public class ItemCollectionScript : MonoBehaviour
             GameObject newItem = Instantiate(items[itemMarker].Item3D);
 
             // Set the new model as the child of the PlaceholderObject
-            newItem.transform.SetParent(PlaceholderObject.transform);
+            newItem.transform.SetParent(ReturnablePlaceholderObject.transform);
 
             // Optionally reset the position and rotation of the new model to match the PlaceholderObject
             newItem.transform.localPosition = Vector3.zero;
@@ -197,6 +197,7 @@ public class ItemCollectionScript : MonoBehaviour
     void ContinueGameAfterItem()
     {
         ItemCanvas.SetActive(false);
+        ReturnableItemCanvas.SetActive(false);
         LockCursor();
         gameManager.inItemMenu = false;
 
