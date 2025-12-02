@@ -669,21 +669,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 493897882955561222, guid: dee9958c8dce3e743a61665eea9cde9a,
-        type: 3}
-      propertyPath: density
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5034699788336014182, guid: dee9958c8dce3e743a61665eea9cde9a,
-        type: 3}
-      propertyPath: flashEffectDuration
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5034699788336014182, guid: dee9958c8dce3e743a61665eea9cde9a,
-        type: 3}
-      propertyPath: vignetteTransitionSpeed
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 5732804086052720866, guid: dee9958c8dce3e743a61665eea9cde9a,
         type: 3}
       propertyPath: m_Name
