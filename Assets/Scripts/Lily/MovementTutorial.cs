@@ -16,12 +16,14 @@ public class MovementTutorial : MonoBehaviour
     Body body;
 
     public TextMeshProUGUI tutorialText;
+    public HouseExit1 exit;
 
     void Start()
     {
+        exit = FindObjectOfType<HouseExit1>();
         player = FindObjectOfType<NewPlayerMovement>();
         body = FindObjectOfType<Body>();
-        tutorialText.SetText("Use your mouse or right joystick to look around the scene. Press WASD on your keyboard or use the left joystick to move. Please walk to your bed.");
+        tutorialText.SetText("Use your mouse or right joystick to look around the scene. Press WASD on your keyboard or use the left joystick to move.");
     }
 
     private void OnTriggerStay(Collider other)
@@ -43,7 +45,8 @@ public class MovementTutorial : MonoBehaviour
         else if (playerTutorialStep == 4 && body.isInteracting == true) // i'll figure out why the new player input system doesn't work for this >:(
         {
             playerTutorialStep += 1;
-            tutorialText.SetText("Wow, way to collect that journal. You should be hired to collect journals for a living. just kidding the tiger is coming the tiger is coming the tiger");
+            tutorialText.SetText("You collected the journal. Now open the door and hand it to your Husband.");
+            exit.tutorialFinished = true;
         }
     }
 }

@@ -23,9 +23,11 @@ public class DialogueManager : MonoBehaviour
     private bool isTyping = false;
     private bool dialogueActive = false;
     private Coroutine typingCoroutine;
+    private NewPlayerMovement player;
 
     void Awake()
     {
+        
         // Ensure dialogue is hidden at start
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
@@ -33,6 +35,7 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
+        player = FindAnyObjectByType<NewPlayerMovement>();
         if (startOnAwake && dialogueLines.Length > 0)
         {
             StartDialogue();
@@ -41,9 +44,13 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (dialogueActive && Input.GetKeyDown(KeyCode.E))
+        if (dialogueActive && Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
         {
             HandleDialogueInput();
+        }
+        if(dialogueActive)
+        {
+            player.movementSpeed = 0;
         }
     }
 
@@ -78,6 +85,7 @@ public class DialogueManager : MonoBehaviour
         if (dialogueActive || dialogueLines.Length == 0) return;
 
         currentLineIndex = 0;
+        player.canMove = false;
         dialogueActive = true;
 
         if (dialoguePanel != null)
@@ -122,6 +130,8 @@ public class DialogueManager : MonoBehaviour
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
         currentLineIndex = 0;
+        player.canMove = true;
+        player.movementSpeed = 5;
     }
 
     // Public method to check if dialogue is active

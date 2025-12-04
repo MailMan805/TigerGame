@@ -57,6 +57,7 @@ public class NewPlayerMovement : MonoBehaviour
     CapsuleCollider playerCollider;
 
     [Header("Player Movement Status")]
+    public bool canMove = true;
     private bool isMoving = false;
     private bool isGrounded = true;
     private bool isRunning = false;
@@ -154,14 +155,14 @@ public class NewPlayerMovement : MonoBehaviour
         }
         else { isMoving = false; }
 
-        if (isRunning)
+        if (isRunning && canMove)
         {
             movementSpeed = 7f;
         }
 
         #region ui handler
 
-        if (isCrouching && !bodyLook)
+        if (isCrouching && !bodyLook && canMove)
         {
             movementSpeed = 2f;
             standingUI.enabled = false;
