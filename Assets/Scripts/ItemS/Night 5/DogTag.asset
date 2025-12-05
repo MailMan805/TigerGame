@@ -15,8 +15,10 @@ MonoBehaviour:
   Item3D: {fileID: 0}
   ItemDescription: Circular pieces of steel connected witha leather strip. Something
     illegible is written on one.
-  ItemThoughts: 
+  ItemThoughts: This belonged to an invader in my home, while dead he will be mourned
+    but not missed.
   ItemPositiveThoughts: Even if he wasn't here for our sake, this still belongs to
     someone's son. One last thing to commemorate him.
   ItemNegativeThoughts: What difference does it make where these end up? The owner
     didn't belong here anyways.
+  IsItemReturnable: 0

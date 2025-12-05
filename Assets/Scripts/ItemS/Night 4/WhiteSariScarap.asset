@@ -15,7 +15,8 @@ MonoBehaviour:
   Item3D: {fileID: 8099035287237239531, guid: c02d4c97a08c7be46a7d1e24746beb46, type: 3}
   ItemDescription: Part of what used to be a white sari, now stained with blood,
     shredded from the owners body.
-  ItemThoughts: 
+  ItemThoughts: I have one just like this. I wish the both of us didn't have to live
+    shunned from our people.
   ItemPositiveThoughts: This poor woman was shunned just like I have been. I'm sorry,
     I don't know your name to pay my respects. May death treat you better than life.
   ItemNegativeThoughts: Shunned, just like I am. Societal rules are cruel to women

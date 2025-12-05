@@ -15,7 +15,8 @@ MonoBehaviour:
   Item3D: {fileID: 919132149155446097, guid: 6990704a2d7274149966217773198942, type: 3}
   ItemDescription: A worn, paperback journal stuffed with additional pages of data
     in another language you cannot decipher.
-  ItemThoughts: i threw it on the GROUND
+  ItemThoughts: I used to wish I could read this kind of stuff. I'm worried what
+    I'd find if I could, though.
   ItemPositiveThoughts: This must've been used to take notes about their findings
     here, or personal thoughts. Regardless of his mission, it's a shame it had to
     end like this.

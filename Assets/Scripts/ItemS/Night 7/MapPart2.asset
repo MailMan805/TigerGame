@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item3D: {fileID: 7847574611349322832, guid: 0c3c65231c10c0b4c81332cb9cf41ffb, type: 3}
   ItemDescription: The missing piece of the map.
-  ItemThoughts: 
+  ItemThoughts: The last piece.... I wonder if he's at the end of this after all.
   ItemPositiveThoughts: I've been looking for this for days. I hope I find him here.
   ItemNegativeThoughts: If he isn't here, if I can't find some kind of closure, I
     will make this world feel my rage. That tiger will learn what wrath feels like.
