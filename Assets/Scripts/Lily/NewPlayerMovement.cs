@@ -165,31 +165,34 @@ public class NewPlayerMovement : MonoBehaviour
 
         #region ui handler
 
-        if (isCrouching && !bodyLook && canMove)
-        {
-            movementSpeed = 2f;
-            standingUI.enabled = false;
-            crouchingUI.enabled = true;
-        }
-        else if(!bodyLook)
-        {
-            standingUI.enabled = true;
-            crouchingUI.enabled = false;
-        }
+        // Reset all UI first (optional, but helps with clarity)
+        standingUI.enabled = false;
+        crouchingUI.enabled = false;
+        grabbingUI.enabled = false;
+        lookingUI.enabled = false;
 
-        // Player looking at tiger UI
+        // Priority 1: Tiger looking (only if not in bodyLook mode)
         if (tiger != null && tiger.isPlayerLooking && tiger.playerDistance < 50f && !bodyLook)
         {
-            lookingUI.enabled = true;
-            standingUI.enabled = false;
-            crouchingUI.enabled = false;
+            lookingUI.enabled = true;;
         }
-        else if (!bodyLook)
+        // Priority 2: BodyLook mode
+        else if (bodyLook)
         {
-            lookingUI.enabled = false;
+            grabbingUI.enabled = true;
+        }
+        // Priority 3: Crouching (when not in bodyLook mode and can move)
+        else if (isCrouching && canMove)
+        {
+            crouchingUI.enabled = true;
+        }
+        // Priority 4: Default standing state
+        else
+        {
+            standingUI.enabled = true;
         }
 
-        
+
         #endregion
 
         #region player camera
@@ -243,20 +246,25 @@ public class NewPlayerMovement : MonoBehaviour
             isGrounded = false;
         }
 
-        // Map UI
-        if (isLookingAtMap)
+        if(SaveAndLoadManager.currentPlayerData.hasMap)
         {
-            mapLerpDuration -= Time.deltaTime * mapLerpSpeed;
-        }
-        else
-        {
-            mapLerpDuration += Time.deltaTime * mapLerpSpeed;
-        }
+            // Map UI
+            if (isLookingAtMap)
+            {
+                mapLerpDuration -= Time.deltaTime * mapLerpSpeed;
+            }
+            else
+            {
 
-        mapLerpDuration = Mathf.Clamp01(mapLerpDuration);
+                mapLerpDuration += Time.deltaTime * mapLerpSpeed;
+            }
 
-        mapUI.rectTransform.anchoredPosition = Vector2.Lerp(mapEndPosition, mapStartPosition, mapLerpDuration);
+            mapLerpDuration = Mathf.Clamp01(mapLerpDuration);
+
+            mapUI.rectTransform.anchoredPosition = Vector2.Lerp(mapEndPosition, mapStartPosition, mapLerpDuration);
+        }
     }
+        
 
     #region player input action
     private void Jump(InputAction.CallbackContext context)

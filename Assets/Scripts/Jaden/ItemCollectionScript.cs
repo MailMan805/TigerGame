@@ -28,8 +28,9 @@ public class ItemCollectionScript : MonoBehaviour
 
     [Header("Item Information")]
     public ItemScriptableObject[] items; //List of items in order
-    public int itemMarker = 0; //Tracks which item it's on
     private int itemPreviousDayCount = 0; //Tracks previous item count before dying.
+
+    private int currentItem;
 
     [Header("Varibles")]
     public int NegativeThreashHold = 8;
@@ -38,8 +39,9 @@ public class ItemCollectionScript : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
+            Debug.Log($"Destroying duplicate ItemCollectionScript. Original: {instance.GetInstanceID()}, New: {this.GetInstanceID()}");
             Destroy(gameObject);
             return;
         }
@@ -57,8 +59,8 @@ public class ItemCollectionScript : MonoBehaviour
         gameManager.OnMainLevelLoaded.AddListener(setTiger);
         gameManager.ResetGame.AddListener(ResetGameData);
         gameManager.LeaveHouse.AddListener(UpdatePreviousCount);
-        gameManager.LeaveLevel.AddListener(RevertItemCountToPreviousDay);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -82,7 +84,7 @@ public class ItemCollectionScript : MonoBehaviour
         tiger.TransitionToState(TigerState.Evacuating);
         NewPlayerMovement.Instance.enabled = false;
 
-        if (items[itemMarker].IsItemReturnable)
+        if (items[gameManager.currentItem].IsItemReturnable)
         {
             ReturnableItemCanvas.SetActive(true);
 
@@ -93,7 +95,7 @@ public class ItemCollectionScript : MonoBehaviour
             }
 
             // Instantiate the new 3D model from the selected item
-            GameObject newItem = Instantiate(items[itemMarker].Item3D);
+            GameObject newItem = Instantiate(items[gameManager.currentItem].Item3D);
 
             // Set the new model as the child of the PlaceholderObject
             newItem.transform.SetParent(ReturnablePlaceholderObject.transform);
@@ -105,18 +107,18 @@ public class ItemCollectionScript : MonoBehaviour
             // Update thoughts and description based on Karma value
             if (gameManager.Karma <= NegativeThreashHold)
             {
-                ReturnableThoughts.text = items[itemMarker].ItemNegativeThoughts;
-                ReturnableDescription.text = items[itemMarker].ItemDescription;
+                ReturnableThoughts.text = items[gameManager.currentItem].ItemNegativeThoughts;
+                ReturnableDescription.text = items[gameManager.currentItem].ItemDescription;
             }
             else if (gameManager.Karma >= PositiveThreashHold)
             {
-                ReturnableThoughts.text = items[itemMarker].ItemPositiveThoughts;
-                ReturnableDescription.text = items[itemMarker].ItemDescription;
+                ReturnableThoughts.text = items[gameManager.currentItem].ItemPositiveThoughts;
+                ReturnableDescription.text = items[gameManager.currentItem].ItemDescription;
             }
             else
             {
-                ReturnableThoughts.text = items[itemMarker].ItemThoughts;
-                ReturnableDescription.text = items[itemMarker].ItemDescription;
+                ReturnableThoughts.text = items[gameManager.currentItem].ItemThoughts;
+                ReturnableDescription.text = items[gameManager.currentItem].ItemDescription;
             }
         }
         else
@@ -130,7 +132,7 @@ public class ItemCollectionScript : MonoBehaviour
             }
 
             // Instantiate the new 3D model from the selected item
-            GameObject newItem = Instantiate(items[itemMarker].Item3D);
+            GameObject newItem = Instantiate(items[gameManager.currentItem].Item3D);
 
             // Set the new model as the child of the PlaceholderObject
             newItem.transform.SetParent(PlaceholderObject.transform);
@@ -142,18 +144,18 @@ public class ItemCollectionScript : MonoBehaviour
             // Update thoughts and description based on Karma value
             if (gameManager.Karma <= NegativeThreashHold)
             {
-                Thoughts.text = items[itemMarker].ItemNegativeThoughts;
-                Description.text = items[itemMarker].ItemDescription;
+                Thoughts.text = items[gameManager.currentItem].ItemNegativeThoughts;
+                Description.text = items[gameManager.currentItem].ItemDescription;
             }
             else if (gameManager.Karma >= PositiveThreashHold)
             {
-                Thoughts.text = items[itemMarker].ItemPositiveThoughts;
-                Description.text = items[itemMarker].ItemDescription;
+                Thoughts.text = items[gameManager.currentItem].ItemPositiveThoughts;
+                Description.text = items[gameManager.currentItem].ItemDescription;
             }
             else
             {
-                Thoughts.text = items[itemMarker].ItemThoughts;
-                Description.text = items[itemMarker].ItemDescription;
+                Thoughts.text = items[gameManager.currentItem].ItemThoughts;
+                Description.text = items[gameManager.currentItem].ItemDescription;
             }
         }
 
@@ -165,10 +167,10 @@ public class ItemCollectionScript : MonoBehaviour
     {
         SaveItemState();
         SaveReturnableStateTrue();
-        itemMarker += 1;
+        gameManager.currentItem += 1;
         gameManager.ChangeKarmaLevel(1);
         SaveAndLoadManager.Instance.SaveKarma(gameManager.Karma);
-        SaveAndLoadManager.Instance.SaveCurrentItem(itemMarker);
+        SaveAndLoadManager.Instance.SaveCurrentItem(gameManager.currentItem);
         ContinueGameAfterItem();
         //Change Item State
     }
@@ -177,10 +179,10 @@ public class ItemCollectionScript : MonoBehaviour
     {
         SaveItemState();
         SaveReturnableStateFalse();
-        itemMarker += 1;
+        gameManager.currentItem += 1;
         gameManager.ChangeKarmaLevel(-1);
         SaveAndLoadManager.Instance.SaveKarma(gameManager.Karma);
-        SaveAndLoadManager.Instance.SaveCurrentItem(itemMarker);
+        SaveAndLoadManager.Instance.SaveCurrentItem(gameManager.currentItem);
         ContinueGameAfterItem();
         //Change Item State
     }
@@ -188,8 +190,8 @@ public class ItemCollectionScript : MonoBehaviour
     public void KeepItemNonReturnableBTN()
     {
         SaveItemState();
-        itemMarker += 1;
-        SaveAndLoadManager.Instance.SaveCurrentItem(itemMarker);
+        gameManager.currentItem += 1;
+        SaveAndLoadManager.Instance.SaveCurrentItem(gameManager.currentItem);
         ContinueGameAfterItem();
         //Change Item State
     }
@@ -216,71 +218,71 @@ public class ItemCollectionScript : MonoBehaviour
 
     public void SaveItemState()
     {
-        if(itemMarker == 0)
+        if(gameManager.currentItem == 0)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasMap", true);
         }
-        if (itemMarker == 1)
+        if (gameManager.currentItem == 1)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasScarf", true);
         }
-        if (itemMarker == 2)
+        if (gameManager.currentItem == 2)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasOilLantern", true);
         }
-        if (itemMarker == 3)
+        if (gameManager.currentItem == 3)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasHeirloomAxe", true);
         }
-        if (itemMarker == 4)
+        if (gameManager.currentItem == 4)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasJournal", true);
         }
-        if (itemMarker == 5)
+        if (gameManager.currentItem == 5)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasJeweleryBox", true);
         }
-        if (itemMarker == 6)
+        if (gameManager.currentItem == 6)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasWovenBasket", true);
         }
-        if (itemMarker == 7)
+        if (gameManager.currentItem == 7)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasWarMedal", true);
         }
-        if (itemMarker == 8)
+        if (gameManager.currentItem == 8)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasHairLocket", true);
         }
-        if (itemMarker == 9)
+        if (gameManager.currentItem == 9)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasWhiteSariScrap", true);
         }
-        if (itemMarker == 10)
+        if (gameManager.currentItem == 10)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasDogTags", true);
         }
-        if (itemMarker == 11)
+        if (gameManager.currentItem == 11)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasReligiousIcon", true);
         }
-        if (itemMarker == 12)
+        if (gameManager.currentItem == 12)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasDoll", true);
         }
-        if (itemMarker == 13)
+        if (gameManager.currentItem == 13)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasWaterloggedPistol", true);
         }
-        if (itemMarker == 14)
+        if (gameManager.currentItem == 14)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasFamilyPhoto", true);
         }
-        if (itemMarker == 15)
+        if (gameManager.currentItem == 15)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasPrayerBeads", true);
         }
-        if (itemMarker == 16)
+        if (gameManager.currentItem == 16)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("hasWoodenAnimals", true);
         }
@@ -288,27 +290,27 @@ public class ItemCollectionScript : MonoBehaviour
 
     public void SaveReturnableStateFalse()
     {
-        if (itemMarker == 1)
+        if (gameManager.currentItem == 1)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("returnedScarf", false);
         }
-        if (itemMarker == 3)
+        if (gameManager.currentItem == 3)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("returnedHeirloomAxe", false);
         }
-        if (itemMarker == 5)
+        if (gameManager.currentItem == 5)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("returnedJeweleryBox", false);
         }
-        if (itemMarker == 8)
+        if (gameManager.currentItem == 8)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("returnedHairLocket", false);
         }
-        if (itemMarker == 12)
+        if (gameManager.currentItem == 12)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("returnedDoll", false);
         }
-        if (itemMarker == 14)
+        if (gameManager.currentItem == 14)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("returnedFamilyPhoto", false);
         }
@@ -316,27 +318,27 @@ public class ItemCollectionScript : MonoBehaviour
 
     public void SaveReturnableStateTrue()
     {
-        if (itemMarker == 1)
+        if (gameManager.currentItem == 1)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("returnedScarf", true);
         }
-        if (itemMarker == 3)
+        if (gameManager.currentItem == 3)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("returnedHeirloomAxe", true);
         }
-        if (itemMarker == 5)
+        if (gameManager.currentItem == 5)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("returnedJeweleryBox", true);
         }
-        if (itemMarker == 8)
+        if (gameManager.currentItem == 8)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("returnedHairLocket", true);
         }
-        if (itemMarker == 12)
+        if (gameManager.currentItem == 12)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("returnedDoll", true);
         }
-        if (itemMarker == 14)
+        if (gameManager.currentItem == 14)
         {
             SaveAndLoadManager.Instance.SaveItemStatus("returnedFamilyPhoto", true);
         }
@@ -356,18 +358,13 @@ public class ItemCollectionScript : MonoBehaviour
 
     void ResetGameData()
     {
-        itemMarker = 0;
+        gameManager.currentItem = 0;
         itemPreviousDayCount = 0;
     }
 
     void UpdatePreviousCount()
     {
-        itemPreviousDayCount = itemMarker;
-    }
-
-    void RevertItemCountToPreviousDay()
-    {
-        itemMarker = itemPreviousDayCount;
+        itemPreviousDayCount = gameManager.currentItem;
     }
 
     public void CollectEndingItem()
@@ -376,10 +373,10 @@ public class ItemCollectionScript : MonoBehaviour
 
         if (GameManager.instance.OnGoodEndingPath()) // Good Ending
         {
-            itemMarker = items.Length - 2; // Sketchbook
+            gameManager.currentItem = items.Length - 2; // Sketchbook
         } else // Bad Ending
         {
-            itemMarker = items.Length - 1; // Tooth
+            gameManager.currentItem = items.Length - 1; // Tooth
         }
         CollectItem();
     }

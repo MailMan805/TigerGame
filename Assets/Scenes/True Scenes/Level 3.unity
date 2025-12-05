@@ -694,6 +694,11 @@ PrefabInstance:
       propertyPath: awareness
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9000851643399220235, guid: f12b11f9db12e2b438aabdac651c687f,
+        type: 3}
+      propertyPath: aggressiveness
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

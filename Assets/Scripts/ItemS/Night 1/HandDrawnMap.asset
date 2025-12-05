@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item3D: {fileID: 8896159465058208642, guid: ffba322b86bcfe24fb4d9735704f6984, type: 3}
   ItemDescription: A dirtied, crumpled, and partially torn map of the forest.
-  ItemThoughts: 'His signature is in the river, did he make this? Is this a map of
-    the forest?. '
+  ItemThoughts: His signature is in the river, did he make this? Is this a map of
+    the forest?. (Q to open map)
   ItemPositiveThoughts: 
   ItemNegativeThoughts: 
   IsItemReturnable: 0

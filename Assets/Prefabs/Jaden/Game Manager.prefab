@@ -53,7 +53,7 @@ MonoBehaviour:
   SecondsBeforeLoadingSceneDelay: 3
   currentDay: 1
   bodyCount: 0
-  PlayerInteractButton: 13
+  PlayerInteractButton: 101
   Karma: 10
   MaxKarma: 20
   inItemMenu: 0
@@ -1429,7 +1429,7 @@ PrefabInstance:
     - target: {fileID: 7590334515619525974, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}

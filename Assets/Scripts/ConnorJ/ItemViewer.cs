@@ -14,9 +14,12 @@ public class ItemViewer : MonoBehaviour
     {
         if (itemScriptableObject == null) return "";
 
-        if (GameManager.instance.OnGoodEndingPath()) return itemScriptableObject.ItemPositiveThoughts;
 
-        else return itemScriptableObject.ItemNegativeThoughts;
+        if (GameManager.instance.Karma > 11) return itemScriptableObject.ItemPositiveThoughts;
+
+        else if (GameManager.instance.Karma < 9) return itemScriptableObject.ItemNegativeThoughts;
+
+        else return itemScriptableObject.ItemThoughts;
 
     }
 }

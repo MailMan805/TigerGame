@@ -18,6 +18,9 @@ public class DialogueManager : MonoBehaviour
     [TextArea(3, 10)]
     public string[] dialogueLines;
 
+    public string[] MILGood;
+    public string[] MILBad;
+
     [Header("Auto Start (Testing)")]
     public bool startOnAwake = false;
 
@@ -26,6 +29,9 @@ public class DialogueManager : MonoBehaviour
     private bool dialogueActive = false;
     private Coroutine typingCoroutine;
     private NewPlayerMovement player;
+
+    public bool IsMIL;
+    private string[] currentDialogueArray; // Store the currently active dialogue array
 
     void Awake()
     {
@@ -37,7 +43,6 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        
         player = FindAnyObjectByType<NewPlayerMovement>();
         if (startOnAwake && dialogueLines.Length > 0)
         {
@@ -47,11 +52,11 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (dialogueActive && Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
+        if (dialogueActive && (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)))
         {
             HandleDialogueInput();
         }
-        if(dialogueActive)
+        if (dialogueActive)
         {
             player.movementSpeed = 0;
         }
@@ -65,14 +70,14 @@ public class DialogueManager : MonoBehaviour
             if (typingCoroutine != null)
                 StopCoroutine(typingCoroutine);
 
-            dialogueText.text = dialogueLines[currentLineIndex];
+            dialogueText.text = currentDialogueArray[currentLineIndex];
             isTyping = false;
         }
         else
         {
             // Go to next line or end dialogue
             currentLineIndex++;
-            if (currentLineIndex < dialogueLines.Length)
+            if (currentLineIndex < currentDialogueArray.Length)
             {
                 StartTyping();
             }
@@ -85,7 +90,17 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
-        if (dialogueActive || dialogueLines.Length == 0) return;
+        if (IsMIL)
+        {
+            // Determine which MIL dialogue to use based on karma
+            currentDialogueArray = GameManager.instance.Karma >= 8 ? MILGood : MILBad;
+        }
+        else
+        {
+            currentDialogueArray = dialogueLines;
+        }
+
+        if (dialogueActive || currentDialogueArray.Length == 0) return;
 
         currentLineIndex = 0;
         player.canMove = false;
@@ -101,16 +116,30 @@ public class DialogueManager : MonoBehaviour
     {
         if (dialogueActive) return;
 
-        dialogueLines = customDialogueLines;
-        StartDialogue();
+        currentDialogueArray = customDialogueLines;
+        currentLineIndex = 0;
+        player.canMove = false;
+        dialogueActive = true;
+
+        if (dialoguePanel != null)
+            dialoguePanel.SetActive(true);
+
+        StartTyping();
     }
 
     private void StartTyping()
     {
+        if (currentDialogueArray == null || currentDialogueArray.Length == 0)
+        {
+            Debug.LogWarning("No dialogue lines to display!");
+            EndDialogue();
+            return;
+        }
+
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
-        typingCoroutine = StartCoroutine(TypeText(dialogueLines[currentLineIndex]));
+        typingCoroutine = StartCoroutine(TypeText(currentDialogueArray[currentLineIndex]));
     }
 
     private IEnumerator TypeText(string text)
@@ -135,6 +164,7 @@ public class DialogueManager : MonoBehaviour
         currentLineIndex = 0;
         player.canMove = true;
         player.movementSpeed = 5;
+        currentDialogueArray = null; // Clear current dialogue array
     }
 
     // Public method to check if dialogue is active
@@ -146,7 +176,7 @@ public class DialogueManager : MonoBehaviour
     // Method to manually set dialogue lines and start
     public void SetAndStartDialogue(string[] newDialogueLines)
     {
-        dialogueLines = newDialogueLines;
+        currentDialogueArray = newDialogueLines;
         StartDialogue();
     }
 }

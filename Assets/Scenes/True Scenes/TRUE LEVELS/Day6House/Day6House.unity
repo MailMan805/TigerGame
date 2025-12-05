@@ -1072,6 +1072,247 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522657453}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &533854968
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3304419387839418809, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_Name
+      value: DialogueCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450712602397598440, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984358801926131377, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: IsMIL
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: startOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILBad.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: dialogueLabelText
+      value: Mother In Law
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILGood.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILBad.Array.data[0]
+      value: 'Finally. I was wondering when you were going to answer. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILBad.Array.data[1]
+      value: "You haven\u2019t any clue what you\u2019re doing, do you? These poor
+        souls have already suffered enough."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILBad.Array.data[2]
+      value: "How dare you frolic around where you don\u2019t belong, especially
+        where my poor son has gone! "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILBad.Array.data[3]
+      value: 'You need to leave immediately. You are tampering with the resting grounds
+        of the victims here. They have passed within reason of greater beings. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILBad.Array.data[4]
+      value: "\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILBad.Array.data[5]
+      value: 'I was mistaken. You clearly know the amount of damage you are doing. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILBad.Array.data[6]
+      value: Truly formidable. May the Gods give you exactly what you deserve.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILGood.Array.data[0]
+      value: "Hello, it\u2019s been a while. I hope you don\u2019t think ill of me. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILGood.Array.data[1]
+      value: "Word is that you\u2019ve been helping those dealing with grief. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILGood.Array.data[2]
+      value: "Even though they shunned you, you\u2019ve risen above it to offer them
+        closure. That is very admirable. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILGood.Array.data[3]
+      value: " I\u2019ve come here to invite you to our home. I know it won\u2019t
+        be the same without my son, but we will make sure you\u2019re taken care
+        of. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILGood.Array.data[4]
+      value: "\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILGood.Array.data[5]
+      value: "You\u2019ve always been stubborn, but this is something else. As much
+        as I\u2019d like to know what happened, this is a death sentence. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: MILGood.Array.data[6]
+      value: "I\u2019ll give you the night to think about what I\u2019ve said. Reconsider,
+        for my sake, if not your own."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: dialogueLines.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: dialogueLines.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
+      propertyPath: dialogueLines.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 13344c94e60b4704bac3f8203a3f4c06, type: 3}
 --- !u!1 &596250399
 GameObject:
   m_ObjectHideFlags: 0
@@ -5664,3 +5905,4 @@ SceneRoots:
   - {fileID: 401011356}
   - {fileID: 1278561453}
   - {fileID: 1180679099}
+  - {fileID: 533854968}

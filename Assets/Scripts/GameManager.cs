@@ -16,12 +16,14 @@ public class GameManager : MonoBehaviour
     [Range(0, 7)] public int currentDay = 1;
     public int bodyCount = 0;
     public KeyCode PlayerInteractButton = KeyCode.E;
+
+    public int currentItem;
     public static bool DiedInLevel { get; set; } = false; // Persists only in House segments.
 
     [Header("KARMA")]
     public int Karma = 10;
     [SerializeField] private int MaxKarma = 20; // 8 - 12 Neutral, Starts at 10, <= 8 Negative, >= 12 Positive.
-    public const float GOODENDINGKARMA = 0.4f;
+    public const float GOODENDINGKARMA = 0.6f;
 
     [HideInInspector] public bool inItemMenu = false;
 

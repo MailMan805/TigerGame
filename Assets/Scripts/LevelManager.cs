@@ -82,52 +82,80 @@ public class LevelManager : MonoBehaviour
         LightSplitSetup();
     }
 
-    void SpawnBodies(int numOfBodiesToSpawn=3)
+    void SpawnBodies(int numOfBodiesToSpawn = 3)
     {
         initalBodiesInLevel = numOfBodiesToSpawn;
 
-        GameObject[] SpawnMarkers = GameObject.FindGameObjectsWithTag(BODY_SPAWN_MARKER_TAG);
+        // Get all spawn markers
+        GameObject[] allSpawnMarkers = GameObject.FindGameObjectsWithTag(BODY_SPAWN_MARKER_TAG);
 
-        if (initalBodiesInLevel > SpawnMarkers.Length) {
-            Debug.LogWarning("There are less spawn points than bodies to collect. initalBodiesInLevel decreased to " + SpawnMarkers.Length);
-            initalBodiesInLevel = SpawnMarkers.Length;
+        if (initalBodiesInLevel > allSpawnMarkers.Length)
+        {
+            Debug.LogWarning("There are less spawn points than bodies to collect. initalBodiesInLevel decreased to " + allSpawnMarkers.Length);
+            initalBodiesInLevel = allSpawnMarkers.Length;
         }
 
-        bool hasFirstBody = false;
+        // Create a list for available spawn points that we can modify
+        List<GameObject> availableSpawnMarkers = new List<GameObject>(allSpawnMarkers);
 
-        for(int i = 0; i < SpawnMarkers.Length; i++)
+        // Find if there's a first body spawn point
+        GameObject firstBodySpawner = null;
+        for (int i = 0; i < availableSpawnMarkers.Count; i++)
         {
-            if (SpawnMarkers[i].GetComponent<BodySpwnFirstLevel>().isFirstBody)
+            var spawner = availableSpawnMarkers[i].GetComponent<BodySpwnFirstLevel>();
+            if (spawner != null && spawner.isFirstBody)
             {
-                var body = Instantiate(bodyToSpawn);
-                Debug.Log(SpawnMarkers[i].name);
-
-                body.transform.position = SpawnMarkers[i].transform.position;
-                body.transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 365), 0);
-
-                hasFirstBody = true;
-
-                for (int x = 0; i < initalBodiesInLevel - 1; i++)
-                {
-                    var bodys = Instantiate(bodyToSpawn);
-                    Debug.Log(SpawnMarkers[x].name);
-
-                    body.transform.position = SpawnMarkers[x].transform.position;
-                    body.transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 365), 0);
-                }
-                
+                firstBodySpawner = availableSpawnMarkers[i];
+                break;
             }
         }
 
-        if(!hasFirstBody)
+        // Spawn the first body if exists
+        if (firstBodySpawner != null)
         {
-            for (int i = 0; i < initalBodiesInLevel; i++)
-            {
-                var body = Instantiate(bodyToSpawn);
-                Debug.Log(SpawnMarkers[i].name);
+            var body = Instantiate(bodyToSpawn);
+            Debug.Log("First body at: " + firstBodySpawner.name);
 
-                body.transform.position = SpawnMarkers[i].transform.position;
+            body.transform.position = firstBodySpawner.transform.position;
+            body.transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 365), 0);
+
+            // Remove the first body spawn point from available list
+            availableSpawnMarkers.Remove(firstBodySpawner);
+
+            // Spawn remaining bodies at random positions
+            for (int i = 0; i < initalBodiesInLevel - 1 && availableSpawnMarkers.Count > 0; i++)
+            {
+                // Get random index from remaining spawn points
+                int randomIndex = UnityEngine.Random.Range(0, availableSpawnMarkers.Count);
+                var spawnMarker = availableSpawnMarkers[randomIndex];
+
+                var bodys = Instantiate(bodyToSpawn);
+                Debug.Log("Body at: " + spawnMarker.name);
+
+                bodys.transform.position = spawnMarker.transform.position;
+                bodys.transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 365), 0);
+
+                // Remove the used spawn point
+                availableSpawnMarkers.RemoveAt(randomIndex);
+            }
+        }
+        else
+        {
+            // No first body spawner found, spawn all bodies randomly
+            for (int i = 0; i < initalBodiesInLevel && availableSpawnMarkers.Count > 0; i++)
+            {
+                // Get random index
+                int randomIndex = UnityEngine.Random.Range(0, availableSpawnMarkers.Count);
+                var spawnMarker = availableSpawnMarkers[randomIndex];
+
+                var body = Instantiate(bodyToSpawn);
+                Debug.Log("Body at: " + spawnMarker.name);
+
+                body.transform.position = spawnMarker.transform.position;
                 body.transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 365), 0);
+
+                // Remove the used spawn point
+                availableSpawnMarkers.RemoveAt(randomIndex);
             }
         }
     }

@@ -27,40 +27,58 @@ public class SaveAndLoadManager : MonoBehaviour
             // Set save path
             savePath = Path.Combine(Application.persistentDataPath, "savegame.json");
             Debug.Log("Save path: " + savePath);
+
+            // Load existing data if available
+            if (File.Exists(savePath))
+            {
+                LoadGameData();
+            }
+        }
+    }
+
+    private void Start()
+    {
+        // Ensure we have player data
+        if (currentPlayerData == null)
+        {
+            GetPlayerData();
         }
     }
 
     private void OnEnable()
     {
         // Subscribe to scene loaded event
-        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-
-        ShouldAutoSave(sceneName);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
         // Unsubscribe from scene loaded event
-        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     // Called when a scene is loaded
-    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Auto-save when entering certain levels (you can modify this condition)
+        // Auto-save when entering certain levels
         if (ShouldAutoSave(scene.name))
         {
-            AutoSave();
+            // Add a small delay to ensure everything is initialized
+            StartCoroutine(DelayedAutoSave());
         }
+    }
+
+    private IEnumerator DelayedAutoSave()
+    {
+        yield return new WaitForSeconds(0.1f);
+        AutoSave();
     }
 
     // Define which levels should trigger auto-save
     private bool ShouldAutoSave(string sceneName)
     {
         // Add the names of levels where you want to auto-save
-        string[] autoSaveLevels = { "Tutorial", "Day1House", "Day2House", "Day3House", "Day4House", "Day5House", "Day6House" };
+        string[] autoSaveLevels = { "Tutorial", "Day2House", "Day3House", "Day4House", "Day5House", "Day6House" };
 
         foreach (string level in autoSaveLevels)
         {
@@ -77,12 +95,24 @@ public class SaveAndLoadManager : MonoBehaviour
     {
         if (currentPlayerData != null)
         {
-            SaveCurrentDay(GameManager.instance.currentDay);
-            string jsonData = File.ReadAllText(savePath);
-            currentPlayerData = JsonUtility.FromJson<PlayerData>(jsonData);
-            ItemCollectionScript.instance.itemMarker = currentPlayerData.CurrentItem;
+            // Update current day from GameManager if available
+            if (GameManager.instance != null)
+            {
+                currentPlayerData.CurrentDay = GameManager.instance.currentDay;
+            }
+
+            // Update current item from ItemCollectionScript if available
+            if (ItemCollectionScript.instance != null)
+            {
+                currentPlayerData.CurrentItem = GameManager.instance.currentItem;
+            }
+
             SaveGame();
             Debug.Log("Game auto-saved!");
+        }
+        else
+        {
+            Debug.LogWarning("Cannot auto-save: currentPlayerData is null!");
         }
     }
 
@@ -91,8 +121,12 @@ public class SaveAndLoadManager : MonoBehaviour
         if (currentPlayerData != null)
         {
             currentPlayerData.Karma = karma;
-            //SaveGame(); // This actually writes to the file
+            //SaveGame(); 
             Debug.Log($"Saved Karma: {karma}");
+        }
+        else
+        {
+            Debug.LogWarning("Cannot save karma: currentPlayerData is null!");
         }
     }
 
@@ -101,8 +135,12 @@ public class SaveAndLoadManager : MonoBehaviour
         if (currentPlayerData != null)
         {
             currentPlayerData.CurrentItem = item;
-            //SaveGame(); // This actually writes to the file
+            //SaveGame(); 
             Debug.Log($"Saved CurrentItem: {item}");
+        }
+        else
+        {
+            Debug.LogWarning("Cannot save item: currentPlayerData is null!");
         }
     }
 
@@ -111,8 +149,12 @@ public class SaveAndLoadManager : MonoBehaviour
         if (currentPlayerData != null)
         {
             currentPlayerData.CurrentDay = day;
-            //SaveGame(); // This actually writes to the file
+            SaveGame(); // UNCOMMENTED - This actually writes to the file
             Debug.Log($"Saved CurrentDay: {day}");
+        }
+        else
+        {
+            Debug.LogWarning("Cannot save day: currentPlayerData is null!");
         }
     }
 
@@ -229,7 +271,7 @@ public class SaveAndLoadManager : MonoBehaviour
                     Debug.LogWarning($"Item name '{itemName}' not recognized!");
                     return;
             }
-            //SaveGame(); // This actually writes to the file
+            SaveGame(); // UNCOMMENTED - This actually writes to the file
             Debug.Log($"Saved {itemName}: {value}");
         }
         else
@@ -243,9 +285,15 @@ public class SaveAndLoadManager : MonoBehaviour
     {
         try
         {
+            if (currentPlayerData == null)
+            {
+                Debug.LogWarning("Cannot save: currentPlayerData is null!");
+                return;
+            }
+
             string jsonData = JsonUtility.ToJson(currentPlayerData, true);
             File.WriteAllText(savePath, jsonData);
-            Debug.Log("Game saved successfully!");
+            Debug.Log("Game saved successfully to: " + savePath);
         }
         catch (System.Exception e)
         {
@@ -253,14 +301,29 @@ public class SaveAndLoadManager : MonoBehaviour
         }
     }
 
+    // Load game data without changing scenes
     public void LoadGameData()
     {
-        string jsonData = File.ReadAllText(savePath);
-        currentPlayerData = JsonUtility.FromJson<PlayerData>(jsonData);
-        Debug.Log("Game loaded successfully!");
+        try
+        {
+            if (File.Exists(savePath))
+            {
+                string jsonData = File.ReadAllText(savePath);
+                currentPlayerData = JsonUtility.FromJson<PlayerData>(jsonData);
+                Debug.Log("Game data loaded successfully!");
+            }
+            else
+            {
+                Debug.Log("No save file found.");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Error loading game data: " + e.Message);
+        }
     }
 
-    // Load game data from JSON file
+    // Load game and change scene
     public void LoadGame()
     {
         try
@@ -271,49 +334,47 @@ public class SaveAndLoadManager : MonoBehaviour
                 currentPlayerData = JsonUtility.FromJson<PlayerData>(jsonData);
                 Debug.Log("Game loaded successfully!");
 
-                if(currentPlayerData.CurrentDay == 0)
+                // Load the appropriate scene based on current day
+                if (currentPlayerData.CurrentDay >= 0 && currentPlayerData.CurrentDay <= 6)
                 {
+                    string sceneName = GetSceneNameForDay(currentPlayerData.CurrentDay);
+                    SceneManager.LoadScene(sceneName);
+                }
+                else
+                {
+                    Debug.LogWarning("Invalid CurrentDay value: " + currentPlayerData.CurrentDay);
                     SceneManager.LoadScene("Tutorial");
                 }
-                if (currentPlayerData.CurrentDay == 1)
-                {
-                    SceneManager.LoadScene("Day1House");
-                }
-                if (currentPlayerData.CurrentDay == 2)
-                {
-                    SceneManager.LoadScene("Day2House");
-                }
-                if (currentPlayerData.CurrentDay == 3)
-                {
-                    SceneManager.LoadScene("Day3House");
-                }
-                if (currentPlayerData.CurrentDay == 4)
-                {
-                    SceneManager.LoadScene("Day4House");
-                }
-                if (currentPlayerData.CurrentDay == 5)
-                {
-                    SceneManager.LoadScene("Day5House");
-                }
-                if (currentPlayerData.CurrentDay == 6)
-                {
-                    SceneManager.LoadScene("Day6House");
-                }
-                
 
+                GameManager.instance.currentDay = currentPlayerData.CurrentDay;
+                GameManager.instance.currentItem = currentPlayerData.CurrentItem;
+                GameManager.instance.Karma = currentPlayerData.Karma;
             }
             else
             {
                 Debug.Log("No save file found. Starting new game.");
                 CreateNewGame();
-                
             }
         }
         catch (System.Exception e)
         {
             Debug.LogError("Error loading game: " + e.Message);
             CreateNewGame();
-            
+        }
+    }
+
+    private string GetSceneNameForDay(int day)
+    {
+        switch (day)
+        {
+            case 0: return "Tutorial";
+            case 1: return "Day1House";
+            case 2: return "Day2House";
+            case 3: return "Day3House";
+            case 4: return "Day4House";
+            case 5: return "Day5House";
+            case 6: return "Day6House";
+            default: return "Tutorial";
         }
     }
 
@@ -349,6 +410,8 @@ public class SaveAndLoadManager : MonoBehaviour
             hasPrayerBeads = false,
             hasWoodenAnimals = false
         };
+
+        SaveGame(); // Save the new game data immediately
         SceneManager.LoadScene("Tutorial");
     }
 
@@ -357,7 +420,14 @@ public class SaveAndLoadManager : MonoBehaviour
     {
         if (currentPlayerData == null)
         {
-            LoadGame(); // Try to load, or create new if no save exists
+            if (File.Exists(savePath))
+            {
+                LoadGameData();
+            }
+            else
+            {
+                CreateNewGame();
+            }
         }
         return currentPlayerData;
     }
@@ -366,6 +436,7 @@ public class SaveAndLoadManager : MonoBehaviour
     public void SetPlayerData(PlayerData data)
     {
         currentPlayerData = data;
+        SaveGame(); // Save immediately after setting
     }
 
     // Check if save file exists
@@ -392,9 +463,19 @@ public class SaveAndLoadManager : MonoBehaviour
         }
     }
 
-    // For debugging: print save path
-    public void PrintSavePath()
+    // For debugging: print save path and current data
+    public void PrintSaveInfo()
     {
         Debug.Log("Save path: " + savePath);
+        if (currentPlayerData != null)
+        {
+            Debug.Log("Current Day: " + currentPlayerData.CurrentDay);
+            Debug.Log("Current Item: " + currentPlayerData.CurrentItem);
+            Debug.Log("Karma: " + currentPlayerData.Karma);
+        }
+        else
+        {
+            Debug.Log("currentPlayerData is null");
+        }
     }
 }

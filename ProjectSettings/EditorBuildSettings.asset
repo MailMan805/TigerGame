@@ -16,22 +16,25 @@ EditorBuildSettings:
     guid: 678689f15e23f714e9a895af2fd1a343
   - enabled: 1
     path: Assets/Scenes/True Scenes/Level 2.unity
-    guid: 34712c0372dcdcc429dfebf5226f094a
+    guid: 5e97cb994c4d35f47b6c201e8711d08f
   - enabled: 1
     path: Assets/Scenes/True Scenes/Level 3.unity
-    guid: 51906e21034a7de45b53b6c9253e09b2
+    guid: 9a3090a229e6b4f4983a7a837d3a9056
   - enabled: 1
     path: Assets/Scenes/True Scenes/Level 4.unity
-    guid: 469ff5382e066e4438ec751e0e7baf7d
+    guid: 84cce5260196e3e4daac5da2f3736721
   - enabled: 1
     path: Assets/Scenes/True Scenes/Level 5.unity
-    guid: b68ec4687967b5245993c3f810fb1f4d
+    guid: 99daac95fcc3ae4418ed56cdff2d7c70
   - enabled: 1
     path: Assets/Scenes/True Scenes/Level 6.unity
-    guid: 1f20055081a4185489e42026becb54d0
+    guid: bf138cb9a7d63ae45bd1a1b292f924e7
   - enabled: 1
-    path: Assets/Scenes/True Scenes/Final Level.unity
-    guid: e1399e76a682bca4d9af84cea06cb26d
+    path: Assets/Scenes/True Scenes/Level 7.unity
+    guid: c20c0a2fbe2ec4c4ea84fe1b5e9e4f82
+  - enabled: 1
+    path: Assets/Scenes/True Scenes/Cutscene Level.unity
+    guid: bebf45982a562964d8d8e86afdefe1f8
   - enabled: 1
     path: Assets/Scenes/True Scenes/TRUE LEVELS/Day1House/Day1House.unity
     guid: 74bdc2b0ba37298479dce8f98bbb48d9

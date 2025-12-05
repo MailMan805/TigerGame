@@ -13,7 +13,8 @@ public enum SceneID
     LEVELFOUR,
     LEVELFIVE,
     LEVELSIX,
-    FINALLEVEL,
+    LEVELSEVEN,
+    CUTSCENE,
     HOUSE1,
     HOUSE2,
     HOUSE3,
@@ -28,10 +29,10 @@ public class SceneLoadingManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        if (GameManager.instance.currentDay >= (int)SceneID.FINALLEVEL)
+        if (GameManager.instance.currentDay >= (int)SceneID.CUTSCENE)
         {
             print("Loading Final Night");
-            StartCoroutine(LoadNewScene((int)SceneID.FINALLEVEL));
+            StartCoroutine(LoadNewScene((int)SceneID.CUTSCENE));
             return;
         }
 
@@ -59,6 +60,9 @@ public class SceneLoadingManager : MonoBehaviour
                 break;
             case 6:
                 StartCoroutine(LoadNewScene((int)SceneID.LEVELSIX));
+                break;
+            case 7:
+                StartCoroutine(LoadNewScene((int)SceneID.LEVELSEVEN));
                 break;
         }
         

@@ -130,21 +130,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 29254594002821345, guid: f12b11f9db12e2b438aabdac651c687f,
-        type: 3}
-      propertyPath: m_Radius
-      value: 68.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 777285485148827488, guid: f12b11f9db12e2b438aabdac651c687f,
-        type: 3}
-      propertyPath: m_Height
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 777285485148827488, guid: f12b11f9db12e2b438aabdac651c687f,
-        type: 3}
-      propertyPath: m_BaseOffset
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1443685834929940238, guid: f12b11f9db12e2b438aabdac651c687f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -202,8 +187,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9000851643399220235, guid: f12b11f9db12e2b438aabdac651c687f,
         type: 3}
-      propertyPath: awareness
-      value: 1
+      propertyPath: aggressiveness
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

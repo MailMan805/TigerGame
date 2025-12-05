@@ -35,25 +35,8 @@ public class Body : MonoBehaviour
     private void Start()
     {
         SetInitalRandomBodyMesh();
-        player.grabbingUI.enabled = false;
     }
 
-    private void Update()
-    {
-        if (withinRange)
-        {
-            player.bodyLook = true;
-            player.grabbingUI.enabled = true;
-            player.standingUI.enabled = false;
-            player.crouchingUI.enabled = false;
-            player.lookingUI.enabled = true;
-        }
-        else
-        {
-            player.bodyLook = false;
-            player.grabbingUI.enabled = false;
-        }
-    }
 
 
 
@@ -79,6 +62,7 @@ public class Body : MonoBehaviour
     public void CollectBody()
     {
         ItemCollectionScript.instance.CollectItem();
+        player.bodyLook = false;
     }
 
     public void Interact(InputAction.CallbackContext context)
@@ -98,6 +82,7 @@ public class Body : MonoBehaviour
         if(other.CompareTag(PLAYER_TAG))
         {
             withinRange = true;
+            player.bodyLook = true;
         }
     }
 
@@ -106,6 +91,7 @@ public class Body : MonoBehaviour
         if (other.CompareTag(PLAYER_TAG))
         {
             withinRange = false;
+            player.bodyLook = false;
         }
     }
 
