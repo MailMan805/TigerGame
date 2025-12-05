@@ -34,7 +34,7 @@ public class NewPlayerMovement : MonoBehaviour
     public RawImage grabbingUI;
     public RawImage lookingUI;
     public RawImage mapUI;
-    private Vector2 mapStartPosition = new Vector2(0f, -700f);
+    private Vector2 mapStartPosition = new Vector2(0f, -2000f);
     private Vector2 mapEndPosition = new Vector2(0f, 0f);
     private float mapLerpDuration = 1.0f;
     private float mapLerpSpeed = 8f;
@@ -66,6 +66,8 @@ public class NewPlayerMovement : MonoBehaviour
 
     [Header("Game Manager")]
     public GameManager gameManager;
+
+    public PlayerData playerData;
 
     public PlayerInputActions playerControls;
 
@@ -125,6 +127,7 @@ public class NewPlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
         tiger = FindAnyObjectByType<TigerAI>();
+        
     }
     void Start()
     {

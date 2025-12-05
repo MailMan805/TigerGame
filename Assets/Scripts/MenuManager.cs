@@ -24,6 +24,7 @@ public class MenuManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        pauseMenuPrefab.SetActive(false);
     }
 
     void Update()

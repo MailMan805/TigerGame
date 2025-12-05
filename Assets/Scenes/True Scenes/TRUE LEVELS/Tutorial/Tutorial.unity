@@ -2295,14 +2295,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
         type: 3}
+      propertyPath: dialogueLabelText
+      value: Husband
+      objectReference: {fileID: 0}
+    - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
+        type: 3}
       propertyPath: dialogueLines.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
         type: 3}
       propertyPath: dialogueLines.Array.data[0]
-      value: " I\u2019ll only be gone for a couple days, there\u2019s no need to
-        worry. "
+      value: "I\u2019ll only be gone for a couple days, there\u2019s no need to worry. "
       objectReference: {fileID: 0}
     - target: {fileID: 4596883952366693726, guid: 13344c94e60b4704bac3f8203a3f4c06,
         type: 3}
@@ -2958,7 +2962,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &687605872
 GameObject:

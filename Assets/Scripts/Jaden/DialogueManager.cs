@@ -8,6 +8,8 @@ public class DialogueManager : MonoBehaviour
     [Header("UI References")]
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI dialogueLabel;
+    public string dialogueLabelText;
 
     [Header("Dialogue Settings")]
     public float typingSpeed = 0.05f;
@@ -27,7 +29,7 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
-        
+        dialogueLabel.text = dialogueLabelText;
         // Ensure dialogue is hidden at start
         if (dialoguePanel != null)
             dialoguePanel.SetActive(false);
@@ -35,6 +37,7 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
+        
         player = FindAnyObjectByType<NewPlayerMovement>();
         if (startOnAwake && dialogueLines.Length > 0)
         {

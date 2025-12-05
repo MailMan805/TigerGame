@@ -93,12 +93,42 @@ public class LevelManager : MonoBehaviour
             initalBodiesInLevel = SpawnMarkers.Length;
         }
 
-        for (int i = 0; i < initalBodiesInLevel; i++) {
-            var body = Instantiate(bodyToSpawn);
-            Debug.Log(SpawnMarkers[i].name);
+        bool hasFirstBody = false;
 
-            body.transform.position = SpawnMarkers[i].transform.position;
-            body.transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0,365),0);
+        for(int i = 0; i < SpawnMarkers.Length; i++)
+        {
+            if (SpawnMarkers[i].GetComponent<BodySpwnFirstLevel>().isFirstBody)
+            {
+                var body = Instantiate(bodyToSpawn);
+                Debug.Log(SpawnMarkers[i].name);
+
+                body.transform.position = SpawnMarkers[i].transform.position;
+                body.transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 365), 0);
+
+                hasFirstBody = true;
+
+                for (int x = 0; i < initalBodiesInLevel - 1; i++)
+                {
+                    var bodys = Instantiate(bodyToSpawn);
+                    Debug.Log(SpawnMarkers[x].name);
+
+                    body.transform.position = SpawnMarkers[x].transform.position;
+                    body.transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 365), 0);
+                }
+                
+            }
+        }
+
+        if(!hasFirstBody)
+        {
+            for (int i = 0; i < initalBodiesInLevel; i++)
+            {
+                var body = Instantiate(bodyToSpawn);
+                Debug.Log(SpawnMarkers[i].name);
+
+                body.transform.position = SpawnMarkers[i].transform.position;
+                body.transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0, 365), 0);
+            }
         }
     }
 
