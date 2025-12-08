@@ -21,7 +21,7 @@ public enum SceneID
     HOUSE4,
     HOUSE5,
     HOUSE6,
-    TUTORIAL = 15
+    TUTORIAL = 16
 }
 public class SceneLoadingManager : MonoBehaviour
 {

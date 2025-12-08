@@ -48,7 +48,13 @@ public class DialogueManager : MonoBehaviour
         {
             StartDialogue();
         }
+        else if (startOnAwake && IsMIL)
+        {
+            StartDialogue();
+        }
     }
+
+    
 
     void Update()
     {

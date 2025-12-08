@@ -16,8 +16,10 @@ public class ItemCollectionScript : MonoBehaviour
     [Header("ItemCanvas")]
     public GameObject ItemCanvas;
     public GameObject ReturnableItemCanvas;
+    public GameObject FinalCanvas;
     public GameObject PlaceholderObject;
     public GameObject ReturnablePlaceholderObject;
+    public GameObject FinalPlaceholderObject;
     private MeshRenderer render;
 
 
@@ -25,6 +27,9 @@ public class ItemCollectionScript : MonoBehaviour
     public TextMeshProUGUI Thoughts;
     public TextMeshProUGUI ReturnableDescription;
     public TextMeshProUGUI ReturnableThoughts;
+
+    public TextMeshProUGUI FinalDescription;
+    public TextMeshProUGUI FinalThoughts;
 
     [Header("Item Information")]
     public ItemScriptableObject[] items; //List of items in order
@@ -55,6 +60,7 @@ public class ItemCollectionScript : MonoBehaviour
         gameManager = GameManager.instance;
         ItemCanvas.SetActive(false);
         ReturnableItemCanvas.SetActive(false);
+        FinalCanvas.SetActive(false);
 
         gameManager.OnMainLevelLoaded.AddListener(setTiger);
         gameManager.ResetGame.AddListener(ResetGameData);
@@ -82,6 +88,7 @@ public class ItemCollectionScript : MonoBehaviour
         UnlockCursor();
         gameManager.inItemMenu = true;
         tiger.TransitionToState(TigerState.Evacuating);
+        tiger.aggressiveness += 1;
         NewPlayerMovement.Instance.enabled = false;
 
         if (items[gameManager.currentItem].IsItemReturnable)
@@ -159,8 +166,69 @@ public class ItemCollectionScript : MonoBehaviour
             }
         }
 
-        
-      
+
+
+    }
+
+
+    public void CollectFinalItem()
+    {
+        UnlockCursor();
+        gameManager.inItemMenu = true;
+
+        if (items[gameManager.currentItem].IsItemReturnable)
+        {
+            //Nothing
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            FinalCanvas.SetActive(true);
+
+            // Destroy the current PlaceholderObject model if it exists
+            if (FinalPlaceholderObject.transform.childCount > 0)
+            {
+                Destroy(FinalPlaceholderObject.transform.GetChild(0).gameObject); // Destroy the existing child
+            }
+
+            // Instantiate the new 3D model from the selected item
+            GameObject newItem = Instantiate(items[gameManager.currentItem].Item3D);
+
+            // Set the new model as the child of the PlaceholderObject
+            newItem.transform.SetParent(FinalPlaceholderObject.transform);
+
+            // Optionally reset the position and rotation of the new model to match the PlaceholderObject
+            newItem.transform.localPosition = Vector3.zero;
+            //newItem.transform.localRotation = Quaternion.identity;
+
+            // Update thoughts and description based on Karma value
+            if (gameManager.Karma <= NegativeThreashHold)
+            {
+                FinalThoughts.text = items[gameManager.currentItem].ItemNegativeThoughts;
+                FinalDescription.text = items[gameManager.currentItem].ItemDescription;
+            }
+            else if (gameManager.Karma >= PositiveThreashHold)
+            {
+                FinalThoughts.text = items[gameManager.currentItem].ItemPositiveThoughts;
+                FinalDescription.text = items[gameManager.currentItem].ItemDescription;
+            }
+            else
+            {
+                FinalThoughts.text = items[gameManager.currentItem].ItemThoughts;
+                FinalDescription.text = items[gameManager.currentItem].ItemDescription;
+            }
+        }
+
+
+
+    }
+
+    public void FinalButton()
+    {
+        Time.timeScale = 1f;
+        FinalCanvas.SetActive(false);
+        GameManager.instance.CommitEnding();
+
     }
 
     public void ReturnItemBTN()
@@ -378,6 +446,7 @@ public class ItemCollectionScript : MonoBehaviour
         {
             gameManager.currentItem = items.Length - 1; // Tooth
         }
-        CollectItem();
+        CollectFinalItem();
+
     }
 }

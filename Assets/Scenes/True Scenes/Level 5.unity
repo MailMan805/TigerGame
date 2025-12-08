@@ -397,7 +397,7 @@ PrefabInstance:
     - target: {fileID: 912277189705106985, guid: b837e312479093841a336d055cc637fd,
         type: 3}
       propertyPath: initalBodiesInLevel
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 912277189705106985, guid: b837e312479093841a336d055cc637fd,
         type: 3}

@@ -214,7 +214,13 @@ public class TigerAI : MonoBehaviour
                 // Calculate direction to player with random angle offset
                 Vector3 directionToPlayer = (player.position - transform.position).normalized;
 
-                int randomAngle = Random.Range(-70, 70);
+                // Make angle range tighter based on aggressiveness (0-20 range)
+                // At max aggressiveness (20): range is -15 to 15 (tight focus)
+                // At min aggressiveness (0): range is -70 to 70 (wide wandering)
+                float aggressivenessFactor = Mathf.Clamp01((float)fullAgressiveness / 20f); // 0 to 1
+                float maxAngle = Mathf.Lerp(70f, 15f, aggressivenessFactor); // Lerp from 70 to 15
+
+                int randomAngle = Random.Range(-(int)maxAngle, (int)maxAngle);
                 Quaternion randomRotation = Quaternion.Euler(0, randomAngle, 0);
                 Vector3 randomDirection = randomRotation * directionToPlayer;
 

@@ -84,7 +84,10 @@ public class SaveAndLoadManager : MonoBehaviour
         {
             if (sceneName == level)
             {
-                return true;
+                if (GameManager.DiedInLevel == false)
+                {
+                    return true;
+                }
             }
         }
         return false;
@@ -149,7 +152,7 @@ public class SaveAndLoadManager : MonoBehaviour
         if (currentPlayerData != null)
         {
             currentPlayerData.CurrentDay = day;
-            SaveGame(); // UNCOMMENTED - This actually writes to the file
+            //SaveGame(); // UNCOMMENTED - This actually writes to the file
             Debug.Log($"Saved CurrentDay: {day}");
         }
         else
@@ -271,7 +274,7 @@ public class SaveAndLoadManager : MonoBehaviour
                     Debug.LogWarning($"Item name '{itemName}' not recognized!");
                     return;
             }
-            SaveGame(); // UNCOMMENTED - This actually writes to the file
+            //SaveGame(); // UNCOMMENTED - This actually writes to the file
             Debug.Log($"Saved {itemName}: {value}");
         }
         else
@@ -436,7 +439,7 @@ public class SaveAndLoadManager : MonoBehaviour
     public void SetPlayerData(PlayerData data)
     {
         currentPlayerData = data;
-        SaveGame(); // Save immediately after setting
+        //SaveGame(); // Save immediately after setting
     }
 
     // Check if save file exists

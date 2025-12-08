@@ -13,12 +13,15 @@ public class GameManager : MonoBehaviour
 
     [Header("VARIABLES")]
     public float SecondsBeforeLoadingSceneDelay = 3f;
-    [Range(0, 7)] public int currentDay = 1;
+    [Range(0, 9)] public int currentDay = 1;
     public int bodyCount = 0;
     public KeyCode PlayerInteractButton = KeyCode.E;
 
     public int currentItem;
     public static bool DiedInLevel { get; set; } = false; // Persists only in House segments.
+
+    public int tempCurrentItem;
+    public int tempCurrentKarma;
 
     [Header("KARMA")]
     public int Karma = 10;
@@ -82,7 +85,7 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public bool OnGoodEndingPath()
     {
-        return GetKarmaLevel() > GOODENDINGKARMA;
+        return GameManager.instance.Karma >= 12;
     }
 
     /// <summary>
@@ -110,7 +113,7 @@ public class GameManager : MonoBehaviour
 
     public void CommitEnding()
     {
-        if (GetKarmaLevel() > GOODENDINGKARMA)
+        if (Karma >= 12)
         {
             GoodEnding.Invoke();
         } else
@@ -145,7 +148,8 @@ public class GameManager : MonoBehaviour
 
     void LeavingHouse()
     {
-        
+        tempCurrentItem = currentItem;
+        tempCurrentKarma = Karma;
         DiedInLevel = false;
         sceneLoadingManager.LoadNextLevel();
     }
@@ -159,6 +163,8 @@ public class GameManager : MonoBehaviour
     void DeathData()
     {
         DiedInLevel = true;
+        Karma = tempCurrentKarma;
+        currentItem = tempCurrentItem;
         SaveAndLoadManager.Instance.LoadGameData();
         sceneLoadingManager.LoadHouse();
     }

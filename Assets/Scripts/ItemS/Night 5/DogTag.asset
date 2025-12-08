@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b7caf59a18e44abda291e1647e1c5, type: 3}
   m_Name: DogTag
   m_EditorClassIdentifier: 
-  Item3D: {fileID: 0}
+  Item3D: {fileID: 5490083970699455314, guid: 0fa55f3752b5dae47b73e839b78a962d, type: 3}
   ItemDescription: Circular pieces of steel connected witha leather strip. Something
     illegible is written on one.
   ItemThoughts: This belonged to an invader in my home, while dead he will be mourned

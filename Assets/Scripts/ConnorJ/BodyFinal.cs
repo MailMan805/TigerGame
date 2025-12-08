@@ -13,7 +13,7 @@ public class BodyFinal : MonoBehaviour
     {
         if (ItemCollectionScript.instance != null)
         {
-            ItemCollectionScript.instance.CollectItem();
+            ItemCollectionScript.instance.CollectEndingItem();
         }
         
     }

@@ -4469,8 +4469,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2107357828}
-        m_TargetAssemblyTypeName: SaveAndLoadManager, Assembly-CSharp
+      - m_Target: {fileID: 1775942043}
+        m_TargetAssemblyTypeName: MainMenuManger, Assembly-CSharp
         m_MethodName: CreateNewGame
         m_Mode: 1
         m_Arguments:
@@ -4789,6 +4789,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733455529}
   m_CullTransparentMesh: 1
+--- !u!1 &1775942042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1775942044}
+  - component: {fileID: 1775942043}
+  m_Layer: 0
+  m_Name: MainMenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1775942043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775942042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ece0b46bcf12948954d259910a16d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicVolume: {fileID: 2033829085}
+  sfxVolume: {fileID: 2033829084}
+  saver: {fileID: 0}
+--- !u!4 &1775942044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775942042}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 419.49353, y: -36.429966, z: 80.58632}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1832950477
 GameObject:
   m_ObjectHideFlags: 0
@@ -4884,8 +4931,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2033829083}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 1775942043}
+        m_TargetAssemblyTypeName: MainMenuManger, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -5276,8 +5323,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2107357828}
-        m_TargetAssemblyTypeName: SaveAndLoadManager, Assembly-CSharp
+      - m_Target: {fileID: 1775942043}
+        m_TargetAssemblyTypeName: MainMenuManger, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
@@ -5404,16 +5451,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 093b399d36f4dab44bd2cf832b89acec, type: 3}
---- !u!114 &2033829083 stripped
+--- !u!114 &2033829084 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4316037777330071573, guid: 093b399d36f4dab44bd2cf832b89acec,
+  m_CorrespondingSourceObject: {fileID: 4994451714452861244, guid: 093b399d36f4dab44bd2cf832b89acec,
     type: 3}
   m_PrefabInstance: {fileID: 2033829082}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd435f8e73a840c4894442ee7d96edc6, type: 3}
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2033829085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2285529491165723825, guid: 093b399d36f4dab44bd2cf832b89acec,
+    type: 3}
+  m_PrefabInstance: {fileID: 2033829082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2066233617
@@ -5804,18 +5863,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38dd82260d8d34a479053d88f17fda0a, type: 3}
---- !u!114 &2107357828 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 524435880326152282, guid: 38dd82260d8d34a479053d88f17fda0a,
-    type: 3}
-  m_PrefabInstance: {fileID: 2107357827}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71a67c1a85b44af4c89d63dfaade3413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2108289350
 GameObject:
   m_ObjectHideFlags: 0
@@ -5864,3 +5911,4 @@ SceneRoots:
   - {fileID: 2033829082}
   - {fileID: 942264421}
   - {fileID: 872430885}
+  - {fileID: 1775942044}
