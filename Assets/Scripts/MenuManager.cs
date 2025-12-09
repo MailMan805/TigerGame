@@ -67,6 +67,7 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 0f;
         gameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         NewPlayerMovement.Instance.GetComponentInChildren<Canvas>().enabled = false;
         NewPlayerMovement.Instance.playerControls.Disable();
     }
@@ -77,6 +78,7 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1f;
         gameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         NewPlayerMovement.Instance.GetComponentInChildren<Canvas>().enabled = true;
         NewPlayerMovement.Instance.playerControls.Enable();
     }

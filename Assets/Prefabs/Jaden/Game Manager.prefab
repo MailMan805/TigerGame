@@ -56,6 +56,8 @@ MonoBehaviour:
   bodyCount: 0
   PlayerInteractButton: 101
   currentItem: 0
+  tempCurrentItem: 0
+  tempCurrentKarma: 0
   Karma: 10
   MaxKarma: 20
   inItemMenu: 0
@@ -472,7 +474,7 @@ PrefabInstance:
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
       propertyPath: far clip plane
-      value: 1015.85
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
@@ -1444,7 +1446,7 @@ PrefabInstance:
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
       propertyPath: far clip plane
-      value: 1015.85
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
@@ -1895,8 +1897,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
+      propertyPath: field of view
+      value: 55.019936
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
+        type: 3}
       propertyPath: far clip plane
-      value: 1015.85
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 7969526881974652761, guid: 8bcfe3377b336724b9faca4fab8792a3,
         type: 3}
