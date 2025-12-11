@@ -39,11 +39,13 @@ public class TigerAI : MonoBehaviour
     private bool stalkChase = false;
     public bool isCheckingLook = false;
     public bool isCheckingAware = false;
+    public bool isAttacking = false;
 
     [Header("References")]
     public NavMeshAgent navMeshAgent;
     private Transform player;
     private GameManager gameManager;
+    private Animator animator;
 
     [Header("State Parameters")]
     [SerializeField] private float maxAggressiveness = 20f;
@@ -61,6 +63,7 @@ public class TigerAI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         gameManager = FindObjectOfType<GameManager>();
+        animator = GetComponentInChildren<Animator>();
 
         InitializeTiger();
     }
@@ -281,6 +284,7 @@ public class TigerAI : MonoBehaviour
             // Attack based on aggressiveness
             if (ShouldAttackBasedOnAggressiveness())
             {
+               // animator.SetBool("isAttacking", true);
                 AttackPlayer();
             }
         }
@@ -427,6 +431,7 @@ public class TigerAI : MonoBehaviour
             // Attack based on aggressiveness
             if (ShouldAttackBasedOnAggressiveness())
             {
+               // animator.SetBool("isAttacking", true);
                 AttackPlayer();
             }
         }
@@ -627,6 +632,10 @@ public class TigerAI : MonoBehaviour
 
     private void AttackPlayer()
     {
+        isAttacking = true;
+
+        animator.SetBool("isAttacking", true);
+
         //Putting this here for your use when you implement - Conner
         AudioManager.Instance.PlaySound("TigerAttack", gameObject);
 
@@ -634,7 +643,7 @@ public class TigerAI : MonoBehaviour
         GameManager.instance.OnDeath.Invoke();
 
         // DEMO VERSION
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
     #endregion
 

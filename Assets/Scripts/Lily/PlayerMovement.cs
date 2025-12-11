@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Movement Variables")]
     public float movementSpeed;
     public float jumpForce = 300f;
-    public float mouseSensitivity = 2.0f;
+    public float mouseSensitivity = 1.0f;
     private float gravity = -9.81f;
     private float verticalRotation;
     private float verticalVelocity;

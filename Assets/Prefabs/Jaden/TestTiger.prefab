@@ -819,6 +819,7 @@ MonoBehaviour:
   isPlayerLooking: 0
   isCheckingLook: 0
   isCheckingAware: 0
+  isAttacking: 0
   navMeshAgent: {fileID: 0}
   maxAggressiveness: 20
   idleToActiveDelay: 3
@@ -862,6 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8098621240225344558}
+  isCutscene: 0
 --- !u!1 &4950801656939900573
 GameObject:
   m_ObjectHideFlags: 0

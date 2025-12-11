@@ -478,7 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   jumpForce: 0.5
-  mouseSensitivity: 25
+  mouseSensitivity: 10
   crouchingUI: {fileID: 9162826342675267836}
   standingUI: {fileID: 5376188001372477256}
   grabbingUI: {fileID: 4849382483683580054}
@@ -497,6 +497,7 @@ MonoBehaviour:
     m_Bits: 128
   groundCheck: {fileID: 9034802654624401735}
   playerCamera: {fileID: 7308237420032503437}
+  canMove: 1
   isCrouching: 0
   gameManager: {fileID: 0}
   playerTouchingBody: {fileID: 0}
