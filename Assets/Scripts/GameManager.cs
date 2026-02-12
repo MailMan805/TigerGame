@@ -122,21 +122,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void TestLoading()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            sceneLoadingManager.LoadMainMenu();
-        }
-        else if (Input.GetKeyDown(KeyCode.X))
-        {
-            sceneLoadingManager.LoadHouse();
-        }
-        else if (Input.GetKeyDown(KeyCode.C))
-        {
-            sceneLoadingManager.LoadNextLevel();
-        }
-    }
+    //void TestLoading()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Z))
+    //    {
+    //        sceneLoadingManager.LoadMainMenu();
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.X))
+    //    {
+    //        sceneLoadingManager.LoadHouse();
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.C))
+    //    {
+    //        sceneLoadingManager.LoadNextLevel();
+    //    }
+    //}
 
     #region Data Updating
     void ResetGameData()
