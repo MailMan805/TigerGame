@@ -29,7 +29,7 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && SceneManager.GetActiveScene().name != "MAIN MENU")
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MAIN MENU")
         {
             if (gameIsPaused)
             {
