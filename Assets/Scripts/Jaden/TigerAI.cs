@@ -643,7 +643,7 @@ public class TigerAI : MonoBehaviour
         GameManager.instance.OnDeath.Invoke();
 
         // DEMO VERSION
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
     #endregion
 

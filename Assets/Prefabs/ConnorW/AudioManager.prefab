@@ -437,6 +437,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 37806c00c9f6da84fa50d9ada5bb5341, type: 3}
   - {fileID: 8300000, guid: 7a551e947bda627429ea591a3f4416b8, type: 3}
   - {fileID: 8300000, guid: 8f29f95d0b19a20428592f901686add9, type: 3}
+  - {fileID: 8300000, guid: 7dee0ed2e7905fc4a91eada898252f92, type: 3}
+  - {fileID: 8300000, guid: bc058f5c5756b8d4693f251b06b12ecc, type: 3}
   soundEffectClips:
   - {fileID: 8300000, guid: 61a9839b4e4c2b44a9cd967d8918b0fe, type: 3}
   - {fileID: 8300000, guid: 09c485c0c72ddae4aa641cf8e5d3b117, type: 3}
